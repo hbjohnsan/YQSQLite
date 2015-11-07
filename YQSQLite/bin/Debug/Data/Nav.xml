@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <RSS>
+    <中国新闻网>
+      <即时新闻>http://www.chinanews.com/rss/scroll-news.xml</即时新闻>
+      <国内新闻>http://www.chinanews.com/rss/china.xml</国内新闻>
+    </中国新闻网>
+    <路透>
+      <时事要闻>http://cn.reuters.feedsportal.com/CNTopGenNews</时事要闻>
+    </路透>
+  </RSS>
+  <论坛 />
+  <博客 />
+  <微博 />
+  <微信 />
+  <客户端 />
+  <外网 />
+</root>

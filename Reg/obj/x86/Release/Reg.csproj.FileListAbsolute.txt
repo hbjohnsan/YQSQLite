@@ -1,0 +1,9 @@
+E:\YQSQLite\Reg\bin\Release\Reg.exe
+E:\YQSQLite\Reg\bin\Release\Reg.pdb
+E:\YQSQLite\Reg\obj\x86\Release\ResolveAssemblyReference.cache
+E:\YQSQLite\Reg\obj\x86\Release\Reg.Properties.Resources.resources
+E:\YQSQLite\Reg\obj\x86\Release\Reg.Reg.resources
+E:\YQSQLite\Reg\obj\x86\Release\GenerateResource.read.1.tlog
+E:\YQSQLite\Reg\obj\x86\Release\GenerateResource.write.1.tlog
+E:\YQSQLite\Reg\obj\x86\Release\Reg.exe
+E:\YQSQLite\Reg\obj\x86\Release\Reg.pdb

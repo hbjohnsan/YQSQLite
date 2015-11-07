@@ -1,0 +1,17 @@
+E:\YQSQLite\Reg\bin\Debug\Reg.exe
+E:\YQSQLite\Reg\bin\Debug\Reg.pdb
+E:\YQSQLite\Reg\obj\x86\Debug\Reg.Properties.Resources.resources
+E:\YQSQLite\Reg\obj\x86\Debug\Reg.Reg.resources
+E:\YQSQLite\Reg\obj\x86\Debug\Reg.exe
+E:\YQSQLite\Reg\obj\x86\Debug\Reg.pdb
+E:\YQSQLite\Reg\obj\x86\Debug\Reg.csproj.GenerateResource.Cache
+E:\BaiduYunDownload\YQSQLite\Reg\bin\Debug\Reg.exe
+E:\BaiduYunDownload\YQSQLite\Reg\bin\Debug\Reg.pdb
+E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\Reg.Properties.Resources.resources
+E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\Reg.Reg.resources
+E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\Reg.exe
+E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\Reg.pdb
+E:\YQSQLite\Reg\obj\x86\Debug\Reg.csprojResolveAssemblyReference.cache

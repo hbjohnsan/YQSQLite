@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2E017619-A828-4A00-8B77-7BBFC1D69CAC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YQSQLite</RootNamespace>
+    <AssemblyName>YQSQLite</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>yq.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\packages\ScrapySharp.2.2.61\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\ScrapySharp.2.2.61\lib\net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp">
+      <HintPath>..\packages\ScrapySharp.2.2.61\lib\net40\ScrapySharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp.Core">
+      <HintPath>..\packages\ScrapySharp.2.2.61\lib\net40\ScrapySharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sonic.HtmlEditor">
+      <HintPath>..\packages\Sonic.HtmlEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.87.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>..\..\MySQLYQ\YQmysql\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="zoyobar.shared.panzer.IEBrowser">
+      <HintPath>..\packages\zoyobar.shared.panzer.IEBrowser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutFrm.Designer.cs">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrowserFrm.cs" />
+    <Compile Include="BrowserFrm.Designer.cs">
+      <DependentUpon>BrowserFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigFrm.Designer.cs">
+      <DependentUpon>ConfigFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataFrm.cs" />
+    <Compile Include="DataFrm.Designer.cs">
+      <DependentUpon>DataFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditFrm.cs" />
+    <Compile Include="EditFrm.Designer.cs">
+      <DependentUpon>EditFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HasSendFrm.cs" />
+    <Compile Include="HasSendFrm.Designer.cs">
+      <DependentUpon>HasSendFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HttpHelper.cs" />
+    <Compile Include="LoginFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="myClass.cs" />
+    <Compile Include="NavFrm.cs" />
+    <Compile Include="NavFrm.Designer.cs">
+      <DependentUpon>NavFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassFrm.Designer.cs">
+      <DependentUpon>PassFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterFrm.Designer.cs">
+      <DependentUpon>RegisterFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RssConfigFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RssConfigFrm.Designer.cs">
+      <DependentUpon>RssConfigFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RuleFrm.cs" />
+    <Compile Include="RuleFrm.Designer.cs">
+      <DependentUpon>RuleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectFrm.cs" />
+    <Compile Include="SelectFrm.Designer.cs">
+      <DependentUpon>SelectFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SendFrm.cs" />
+    <Compile Include="SendFrm.Designer.cs">
+      <DependentUpon>SendFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SQLiteDS.cs">
+      <DependentUpon>SQLiteDS.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SQLiteDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQLiteDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TotalFrm.cs" />
+    <Compile Include="TotalFrm.Designer.cs">
+      <DependentUpon>TotalFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdaterHelper.cs" />
+    <Compile Include="WaitEdit.cs" />
+    <Compile Include="WaitEdit.Designer.cs">
+      <DependentUpon>WaitEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitSendFrm.cs" />
+    <Compile Include="WaitSendFrm.Designer.cs">
+      <DependentUpon>WaitSendFrm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutFrm.resx">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowserFrm.resx">
+      <DependentUpon>BrowserFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigFrm.resx">
+      <DependentUpon>ConfigFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataFrm.resx">
+      <DependentUpon>DataFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditFrm.resx">
+      <DependentUpon>EditFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HasSendFrm.resx">
+      <DependentUpon>HasSendFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NavFrm.resx">
+      <DependentUpon>NavFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassFrm.resx">
+      <DependentUpon>PassFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RegisterFrm.resx">
+      <DependentUpon>RegisterFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RssConfigFrm.resx">
+      <DependentUpon>RssConfigFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RuleFrm.resx">
+      <DependentUpon>RuleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectFrm.resx">
+      <DependentUpon>SelectFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendFrm.resx">
+      <DependentUpon>SendFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TotalFrm.resx">
+      <DependentUpon>TotalFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitEdit.resx">
+      <DependentUpon>WaitEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitSendFrm.resx">
+      <DependentUpon>WaitSendFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Data\YQ.db" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="SQLiteDS.xsc">
+      <DependentUpon>SQLiteDS.xsd</DependentUpon>
+    </None>
+    <None Include="SQLiteDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SQLiteDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SQLiteDS.xss">
+      <DependentUpon>SQLiteDS.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\daohang-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shaixuan-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\email-send-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-file-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-complete-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Documents-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\total-s.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\modify-key-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zhuce-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tools-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Compass-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Compass-icon-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-help-about-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wait-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Send-s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-go-home-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-go-previous-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-go-next-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Next-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database-arrow-right-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20-Right-Arrow-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control-double-180-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control-double-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-go-previous-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database-delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-entry-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collect-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Xml\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IE-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door-out-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rssico.ico" />
+    <None Include="Resources\uninstall.ico" />
+    <Content Include="yq.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

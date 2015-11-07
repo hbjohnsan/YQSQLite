@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Tree>
+  <Site Name="RSS" Text="RSS" ImageIndex="0" SelectedImageIndex="0" Link="">
+    <Site Name="chinanews" Text="中国新闻网" ImageIndex="1" SelectedImageIndex="1" Link="">
+      <Site Name="chinanews_js" Text="即时新闻" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/scroll-news.xml" />
+      <Site Name="chinanews_gn" Text="国内新闻" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/china.xml" />
+      <Site Name="chinanews_ywdd" Text="要闻导读" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/importnews.xml" />
+      <Site Name="chinanews_gjxw" Text="国际新闻" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/world.xml" />
+      <Site Name="chinanews_shxw" Text="社会新闻" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/society.xml" />
+      <Site Name="chinanews_whxw" Text="文化新闻" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/culture.xml" />
+      <Site Name="chinanews_jyxw" Text="教育新闻" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/edu.xml" />
+      <Site Name="chinanews_it" Text="IT 新闻" ImageIndex="1" SelectedImageIndex="1" Link="http://www.chinanews.com/rss/it.xml" />
+    </Site>
+    <Site Name="sina" Text="新浪" ImageIndex="5" SelectedImageIndex="5" Link="">
+      <Site Name="sina_jy" Text="教育要闻" ImageIndex="5" SelectedImageIndex="5" Link="http://rss.sina.com.cn/roll/edu/hot_roll.xml" />
+      <Site Name="sina_gn" Text="国内要闻" ImageIndex="5" SelectedImageIndex="5" Link="http://rss.sina.com.cn/news/china/focus15.xml" />
+    </Site>
+    <Site Name="163" Text="网易" ImageIndex="11" SelectedImageIndex="11" Link="">
+      <Site Name="163_tt" Text="头条新闻" ImageIndex="11" SelectedImageIndex="11" Link="http://news.163.com/special/00011K6L/rss_newstop.xml" />
+    </Site>
+    <Site Name="ifeng" Text="凤凰网" ImageIndex="12" SelectedImageIndex="12" Link="">
+      <Site Name="ifeng_zh" Text="综合资讯" ImageIndex="12" SelectedImageIndex="12" Link="http://news.ifeng.com/rss/index.xml" />
+      <Site Name="ifeng_dl" Text="大陆新闻" ImageIndex="12" SelectedImageIndex="12" Link="http://news.ifeng.com/rss/mainland.xml" />
+      <Site Name="ifeng_gj" Text="国际新闻" ImageIndex="12" SelectedImageIndex="12" Link="http://news.ifeng.com/rss/world.xml" />
+      <Site Name="ifeng_sh" Text="社会新闻" ImageIndex="12" SelectedImageIndex="12" Link="http://news.ifeng.com/rss/society.xml" />
+      <Site Name="ifeng_pl" Text="评论频道" ImageIndex="12" SelectedImageIndex="12" Link="http://news.ifeng.com/opinion/rss/index.xml" />
+    </Site>
+    <Site Name="sohu" Text="搜狐" ImageIndex="13" SelectedImageIndex="13" Link="">
+      <Site Name="sohu_gn" Text="国内新闻" ImageIndex="13" SelectedImageIndex="13" Link="http://news.sohu.com/rss/guonei.xml" />
+      <Site Name="sohu_sh" Text="社会新闻" ImageIndex="13" SelectedImageIndex="13" Link="http://news.sohu.com/rss/shehui.xml" />
+      <Site Name="sohu_IT" Text="IT新闻" ImageIndex="13" SelectedImageIndex="13" Link="http://news.sohu.com/rss/it.xml" />
+      <Site Name="sohu_wj" Text="文教新闻" ImageIndex="13" SelectedImageIndex="13" Link="http://news.sohu.com/rss/learning.xml" />
+      <Site Name="sohu_gd" Text="滚动新闻" ImageIndex="13" SelectedImageIndex="13" Link="http://news.sohu.com/rss/scroll.xml" />
+    </Site>
+    <Site Name="qq" Text="腾讯" ImageIndex="15" SelectedImageIndex="15" Link="">
+      <Site Name="qq_gn" Text="国内新闻" ImageIndex="15" SelectedImageIndex="15" Link="http://news.qq.com/newsgn/rss_newsgn.xml" />
+      <Site Name="qq_sh" Text="社会新闻" ImageIndex="15" SelectedImageIndex="15" Link="http://news.qq.com/newssh/rss_newssh.xml" />
+      <Site Name="qq_kj" Text="科技滚动" ImageIndex="15" SelectedImageIndex="15" Link="http://n.rss.qq.com/rss/tech_rss.php" />
+      <Site Name="qq_jy" Text="教育新闻" ImageIndex="15" SelectedImageIndex="15" Link="http://edu.qq.com/edunew/rss_edunew.xml" />
+    </Site>
+    <Site Name="people" Text="人民网" ImageIndex="16" SelectedImageIndex="16" Link="">
+      <Site Name="people_gn" Text="国内新闻" ImageIndex="16" SelectedImageIndex="16" Link="http://www.people.com.cn/rss/politics.xml" />
+      <Site Name="people_jy" Text="教育新闻" ImageIndex="16" SelectedImageIndex="16" Link="http://www.people.com.cn/rss/edu.xml" />
+      <Site Name="people_gj" Text="国际新闻" ImageIndex="16" SelectedImageIndex="16" Link="http://www.people.com.cn/rss/world.xml" />
+      <Site Name="people" Text="理论" ImageIndex="16" SelectedImageIndex="16" Link="http://www.people.com.cn/rss/theory.xml" />
+      <Site Name="people" Text="传媒" ImageIndex="16" SelectedImageIndex="16" Link="http://www.people.com.cn/rss/media.xml" />
+    </Site>
+    <Site Name="xinhuanet" Text="新华网" ImageIndex="2" SelectedImageIndex="2" Link="">
+      <Site Name="xinhuanet_sz" Text="时政频道" ImageIndex="2" SelectedImageIndex="2" Link="http://www.xinhuanet.com/politics/news_politics.xml" />
+      <Site Name="xinhuanet_gj" Text="国际频道" ImageIndex="2" SelectedImageIndex="2" Link="http://www.xinhuanet.com/world/news_world.xml" />
+      <Site Name="xinhuanet_jy" Text="教育频道" ImageIndex="2" SelectedImageIndex="2" Link="http://www.xinhuanet.com/edu/news_edu.xml" />
+      <Site Name="xinhuanet_kj" Text="科技频道" ImageIndex="2" SelectedImageIndex="2" Link="http://www.xinhuanet.com/tech/news_tech.xml" />
+      <Site Name="xinhuanet_sh" Text="书画频道" ImageIndex="2" SelectedImageIndex="2" Link="http://www.xinhuanet.com/shuhua/news_calligraphy.xml" />
+    </Site>
+    <Site Name="ftchinese" Text="FT中文" ImageIndex="17" SelectedImageIndex="17" Link="">
+      <Site Name="ftchinese_gx" Text="每日更新" ImageIndex="17" SelectedImageIndex="17" Link="http://www.ftchinese.com/rss/feed" />
+      <Site Name="ftchinese_jd" Text="今日焦点" ImageIndex="17" SelectedImageIndex="17" Link="http://www.ftchinese.com/rss/news" />
+      <Site Name="ftchinese_rm" Text="热门文章" ImageIndex="17" SelectedImageIndex="17" Link="http://www.ftchinese.com/rss/hotstoryby7day" />
+      <Site Name="ftchinese_jd" Text="第一时间解读" ImageIndex="17" SelectedImageIndex="17" Link="http://www.ftchinese.com/rss/column/007000005" />
+      <Site Name="ftchinese_zg" Text="远观中国" ImageIndex="17" SelectedImageIndex="17" Link="http://www.ftchinese.com/rss/column/007000004" />
+      <Site Name="ftchinese_js" Text="中国纪事" ImageIndex="17" SelectedImageIndex="17" Link="" />
+      <Site Name="ftchinese_hs" Text="读者有话说" ImageIndex="17" SelectedImageIndex="17" Link="http://www.ftchinese.com/rss/letter" />
+      <Site Name="ftchinese_pl" Text="评论" ImageIndex="17" SelectedImageIndex="17" Link="http://www.ftchinese.com/rss/column/007000012" />
+    </Site>
+  </Site>
+  <Site Name="bbs" Text="论坛" ImageIndex="3" SelectedImageIndex="3" Link="" />
+  <Site Name="blog" Text="博客" ImageIndex="4" SelectedImageIndex="4" Link="" />
+  <Site Name="weibo" Text="微博" ImageIndex="5" SelectedImageIndex="5" Link="" />
+  <Site Name="weixin" Text="微信" ImageIndex="6" SelectedImageIndex="6" Link="" />
+  <Site Name="kehuduan" Text="客户端" ImageIndex="9" SelectedImageIndex="9" Link="" />
+  <Site Name="wall" Text="外网" ImageIndex="7" SelectedImageIndex="7" Link="">
+    <Site Name="reuters" Text="路透" ImageIndex="10" SelectedImageIndex="10" Link="">
+      <Site Name="reuters_ssyw" Text="时事要闻" ImageIndex="10" SelectedImageIndex="10" Link="http://cn.reuters.feedsportal.com/CNTopGenNews" />
+    </Site>
+    <Site Name="zaobao" Text="联合早报" ImageIndex="14" SelectedImageIndex="14" Link="">
+      <Site Name="zaobao_js" Text="即时报道" ImageIndex="14" SelectedImageIndex="14" Link="http://realtime.zaobao.com/news.xml" />
+      <Site Name="zaobao_zg" Text="中国新闻" ImageIndex="14" SelectedImageIndex="14" Link="http://www.zaobao.com/zg/zg.xml" />
+      <Site Name="zaobao_gd" Text="今日观点" ImageIndex="14" SelectedImageIndex="14" Link="http://www.zaobao.com/yl/yl.xml" />
+      <Site Name="zaobao_fk" Text="早报副刊" ImageIndex="14" SelectedImageIndex="14" Link="http://www.zaobao.com/fk/fk.xml" />
+      <Site Name="zaobao_dny" Text="东南亚新闻" ImageIndex="14" SelectedImageIndex="14" Link="http://www.zaobao.com/yx/yx.xml" />
+      <Site Name="zaobao_gd" Text="今日观点" ImageIndex="14" SelectedImageIndex="14" Link="http://www.zaobao.com/yl/yl.xml" />
+    </Site>
+  </Site>
+</Tree>

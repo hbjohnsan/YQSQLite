@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<update>
+  <file ver="534DDDC517330FF90E4A8E1E332E61FA" path="Data\YQ.db" />
+  <file ver="819F916D7A0BECEB2AA0FB2014F11DAF" path="FSharp.Core.DLL" />
+  <file ver="D631F1924D735E079E61E6B46F0BACAD" path="HtmlAgilityPack.DLL" />
+  <file ver="72EFA620BBDF0035012182F8DF047D48" path="Microsoft.mshtml.dll" />
+  <file ver="177E0DE516D4D14AE0BD268185161BAD" path="qupdater.exe" />
+  <file ver="4EFB03AA95EF442871B5A6A288BF7E25" path="qupdater.ini" />
+  <file ver="4BED828C63EE7861E1EDCDA0A14A43DA" path="ScrapySharp.Core.DLL" />
+  <file ver="E8AC8F3DB5D34E3B19D884B5F6E2D028" path="ScrapySharp.DLL" />
+  <file ver="8EA00211D1DDDE31893259D260E140BC" path="Sonic.HtmlEditor.DLL" />
+  <file ver="0A9F915731799816480F01706B5730F0" path="System.Data.SQLite.dll" />
+  <file ver="67CEF1FFFD831877AC27798E7FF6ED5A" path="WeifenLuo.WinFormsUI.Docking.DLL" />
+  <file ver="4DD966E00CE6EF8CC7D36B7619BF091B" path="YQSQLite.exe" />
+  <file ver="01E80C2B142F94D7D512CE5E84382236" path="zoyobar.shared.panzer.IEBrowser.DLL" />
+  <file ver="309EE7F73449FD79A99015DD8889B368" path="安装说明.txt" />
+</update>
