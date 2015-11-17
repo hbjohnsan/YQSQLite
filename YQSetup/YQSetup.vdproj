@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_429A795F1A9C48E2990257605393C8F0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_67C7C9CAECF14751A273622D3965D2F7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -134,26 +128,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_429A795F1A9C48E2990257605393C8F0"
-            {
-            "SourcePath" = "8:..\\YQSQLite\\Data\\YQ.db"
-            "TargetName" = "8:YQ.db"
-            "Tag" = "8:"
-            "Folder" = "8:_583E36EEEF0543C1AD035DD9971B051B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_67C7C9CAECF14751A273622D3965D2F7"
             {
             "SourcePath" = "8:..\\YQSQLite\\bin\\Debug\\qupdater.exe"
@@ -293,7 +267,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:舆情报送v1.2.1"
         "ProductCode" = "8:{3C65DFB1-2E43-45CA-B18E-131D76417483}"
-        "PackageCode" = "8:{1DB6AE50-728B-4652-A176-B21D42F99A28}"
+        "PackageCode" = "8:{055F6AA0-3382-41C5-93E3-4165559BBF70}"
         "UpgradeCode" = "8:{4DA03F9D-A5CC-4C66-AA5B-9174E6F9FBD9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

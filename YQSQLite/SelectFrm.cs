@@ -140,12 +140,12 @@ namespace YQSQLite
 
             if (navurl.Link != null)
             {
-                listView1.Items.Clear();
-                Thread t = new Thread(new ParameterizedThreadStart(CaijiRule));
-                object cn = new clNode(e.Node.Parent.Text, navurl.Link, e.Node.Text);
-                t.IsBackground = true;
-                t.Start(cn);
-                CaijiRule(new clNode(e.Node.Parent.Text, navurl.Link, e.Node.Text));
+                //listView1.Items.Clear();
+                //Thread t = new Thread(new ParameterizedThreadStart(CaijiRule));
+                //object cn = new clNode(e.Node.Parent.Text, navurl.Link, e.Node.Text);
+                //t.IsBackground = true;
+                //t.Start(cn);
+                //CaijiRule(new clNode(e.Node.Parent.Text, navurl.Link, e.Node.Text));
             }
 
         }
