@@ -40,7 +40,7 @@ namespace YQSQLite
             List<NavUrl> NavUrls = new List<NavUrl>();
             var q = from p in mf.DS.NavUrl.AsEnumerable()
                     select p;
-            foreach (SQLiteDS.NavUrlRow kind in q)
+            foreach (YQDataSet.NavUrlRow kind in q)
             {
                 NavUrl nu = new NavUrl();
                 nu.ID = (int)kind.ID;
@@ -221,7 +221,7 @@ namespace YQSQLite
         private void btnSave_Click(object sender, EventArgs e)
         {
             int id = int.Parse(labelxx.Text);
-            SQLiteDS.NavUrlRow nur = mf.DS.NavUrl.FindByID(id);
+            YQDataSet.NavUrlRow nur = mf.DS.NavUrl.FindByID(id);
             nur.Name = txtFNodeText.Text.Trim();
             nur.PID = Int32.Parse(txtID.Text);
             nur.Code = txtThisCode.Text.Trim();
@@ -242,7 +242,7 @@ namespace YQSQLite
         {
             //注意MF中NavUrl表的重新填充，及NavFrm中的数据绑定--dialogResult.OK后数据重新从库中绑定了。
             //新建一个具体的对象，然后把该对象行，加入到内存表中就OK了，最后可到库一下。转了很长时间的的圈子一下明白了。呵呵~
-            SQLiteDS.NavUrlRow nr = mf.DS.NavUrl.NewNavUrlRow();
+            YQDataSet.NavUrlRow nr = mf.DS.NavUrl.NewNavUrlRow();
             nr.Name = txtNodeName.Text.Trim();
             nr.Code = txtNewCode.Text.Trim();
             nr.level = (int)nudNewlevel.Value;

@@ -106,7 +106,7 @@ namespace YQSQLite
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            SQLiteDS.serverRow serverow = mf.DS.server.First();
+            YQDataSet.serverRow serverow = mf.DS.server.First();
             serverow.smtp = cmbSmtp.Text.Trim();
             serverow.user = txtUser.Text.Trim();
             serverow.pwd = txtPwd.Text.Trim();
@@ -125,7 +125,7 @@ namespace YQSQLite
             if ((cmbRank.Text != "") && (cmbKind.Text != "") && (cmbSmtp.Text != ""))
             {
                 string straddlink = rabYes.Checked ? "是" : "否";
-                SQLiteDS.sendtoRow sr = mf.DS.sendto.AddsendtoRow(txtRankName.Text, cmbRank.Text, cmbKind.Text, txtEmail.Text, txtReTitle.Text, straddlink);
+                YQDataSet.sendtoRow sr = mf.DS.sendto.AddsendtoRow(txtRankName.Text, cmbRank.Text, cmbKind.Text, txtEmail.Text, txtReTitle.Text, straddlink);
                 //更新到库
                 mf.sendtoTap.Update(sr);
                 //更新DS,消除用dispose,比clear更快，消了再填充
@@ -150,7 +150,7 @@ namespace YQSQLite
 
         private void btnEidt_Click(object sender, EventArgs e)
         {
-           SQLiteDS.sendtoRow srs = mf.DS.sendto.FindById(Int32.Parse(labID.Text));
+            YQDataSet.sendtoRow srs = mf.DS.sendto.FindById(Int32.Parse(labID.Text));
             srs.RankName = txtRankName.Text;
             srs.Rank = cmbRank.Text;
             srs.Kind = cmbKind.Text;

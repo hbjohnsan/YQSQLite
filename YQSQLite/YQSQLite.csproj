@@ -194,15 +194,6 @@
     <Compile Include="SendFrm.Designer.cs">
       <DependentUpon>SendFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SQLiteDS.cs">
-      <DependentUpon>SQLiteDS.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SQLiteDS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SQLiteDS.xsd</DependentUpon>
-    </Compile>
     <Compile Include="TotalFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +212,11 @@
     </Compile>
     <Compile Include="WaitSendFrm.Designer.cs">
       <DependentUpon>WaitSendFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YQDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>YQDataSet.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutFrm.resx">
       <DependentUpon>AboutFrm.cs</DependentUpon>
@@ -301,16 +297,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SQLiteDS.xsc">
-      <DependentUpon>SQLiteDS.xsd</DependentUpon>
+    <None Include="YQDataSet.xsc">
+      <DependentUpon>YQDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SQLiteDS.xsd">
+    <None Include="YQDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SQLiteDS.Designer.cs</LastGenOutput>
+      <LastGenOutput>YQDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SQLiteDS.xss">
-      <DependentUpon>SQLiteDS.xsd</DependentUpon>
+    <None Include="YQDataSet.xss">
+      <DependentUpon>YQDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -34,8 +34,6 @@ E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.HasSendFrm.resources
 E:\YQSQLite\YQSQLite\bin\Debug\Sonic.HtmlEditor.dll
 E:\YQSQLite\YQSQLite\bin\Debug\zoyobar.shared.panzer.IEBrowser.dll
 E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.RssConfigFrm.resources
-E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.csprojResolveAssemblyReference.cache
-E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.csproj.GenerateResource.Cache
 E:\BaiduYunDownload\YQSQLite\YQSQLite\bin\Debug\YQSQLite.exe.config
 E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.exe
 E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.pdb
@@ -77,3 +75,6 @@ E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.NavEidt.resources
 E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.NavEidt.resources
+E:\YQSQLite\YQSQLite\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\YQSQLite\YQSQLite\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\YQSQLite\YQSQLite\obj\x86\Debug\GenerateResource.write.1.tlog

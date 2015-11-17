@@ -74,7 +74,7 @@ namespace YQSQLite
             List<NavUrl> NavUrls = new List<NavUrl>();
             var q = from p in mf.DS.NavUrl.AsEnumerable()
                     select p;
-            foreach (SQLiteDS.NavUrlRow kind in q)
+            foreach (YQDataSet.NavUrlRow kind in q)
             {
                 NavUrl nu = new NavUrl();
                 nu.ID = (int)kind.ID;

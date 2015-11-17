@@ -39,14 +39,14 @@ namespace YQSQLite
         public string DirXml = Application.StartupPath + @"\Xml\";
         public configYQ configyq;
 
-        public SQLiteDS DS;
-        public SQLiteDSTableAdapters.cpcuseTableAdapter cpcTap;
-        public SQLiteDSTableAdapters.RssItemTableAdapter rssTap;
-        public SQLiteDSTableAdapters.upsendTableAdapter upsendTap;
-        public SQLiteDSTableAdapters.sendtoTableAdapter sendtoTap;
-        public SQLiteDSTableAdapters.serverTableAdapter serverTap;
-        public SQLiteDSTableAdapters.RuleTableAdapter ruleTap;
-        public SQLiteDSTableAdapters.NavUrlTableAdapter navurlTap;
+        public YQDataSet DS;
+        public YQDataSetTableAdapters.cpcuseTableAdapter cpcTap;
+        public YQDataSetTableAdapters.RssItemTableAdapter rssTap;
+        public YQDataSetTableAdapters.upsendTableAdapter upsendTap;
+        public YQDataSetTableAdapters.sendtoTableAdapter sendtoTap;
+        public YQDataSetTableAdapters.serverTableAdapter serverTap;
+        public YQDataSetTableAdapters.RuleTableAdapter ruleTap;
+        public YQDataSetTableAdapters.NavUrlTableAdapter navurlTap;
 
         public CookieContainer cc = new CookieContainer();
         //检测系统是否注册
@@ -56,14 +56,14 @@ namespace YQSQLite
         {
             InitializeComponent();
             #region 数据填充
-            DS = new SQLiteDS();
-            cpcTap = new SQLiteDSTableAdapters.cpcuseTableAdapter();
-            rssTap = new SQLiteDSTableAdapters.RssItemTableAdapter();
-            upsendTap = new SQLiteDSTableAdapters.upsendTableAdapter();
-            sendtoTap = new SQLiteDSTableAdapters.sendtoTableAdapter();
-            serverTap = new SQLiteDSTableAdapters.serverTableAdapter();
-            ruleTap = new SQLiteDSTableAdapters.RuleTableAdapter();
-            navurlTap = new SQLiteDSTableAdapters.NavUrlTableAdapter();
+            DS = new YQDataSet();
+            cpcTap = new YQDataSetTableAdapters.cpcuseTableAdapter();
+            rssTap = new YQDataSetTableAdapters.RssItemTableAdapter();
+            upsendTap = new YQDataSetTableAdapters.upsendTableAdapter();
+            sendtoTap = new YQDataSetTableAdapters.sendtoTableAdapter();
+            serverTap = new YQDataSetTableAdapters.serverTableAdapter();
+            ruleTap = new YQDataSetTableAdapters.RuleTableAdapter();
+            navurlTap = new YQDataSetTableAdapters.NavUrlTableAdapter();
 
             cpcTap.Fill(DS.cpcuse);
             rssTap.Fill(DS.RssItem);
@@ -162,9 +162,9 @@ namespace YQSQLite
             selectFm.NavNodeClik(sender, e);
         }
         //新闻列表选择加入待处理窗体
-        public void NewsAdd(string title)
+        public void NewsAdd(int Rssitemid)
         {
-            waiteditFm.AddRssItem(title);
+            waiteditFm.AddRssItem(Rssitemid);
         }
         //待处理窗体移除新闻
         public void RemoveAll()
@@ -178,7 +178,7 @@ namespace YQSQLite
         }
 
         //到编辑窗体编辑“待处理” 项
-        public void RssToEditFm(string title)
+        public void RssToEditFm(int rssitemid)
         {
             //判断打开窗口
             if (editFm == null || editFm.IsDisposed)
@@ -187,7 +187,7 @@ namespace YQSQLite
                 editFm.Show(dockPanel);
             }
             editFm.Activate();
-            editFm.EditRssItem(title);
+            editFm.EditRssItem(rssitemid);
         }
 
         //待处理窗体重新加载
@@ -411,7 +411,7 @@ namespace YQSQLite
         }
         private void 清空Rss新闻ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (SQLiteDS.RssItemRow row in DS.RssItem.Rows)
+            foreach (YQDataSet.RssItemRow row in DS.RssItem.Rows)
             {
                 row.Delete();
             }

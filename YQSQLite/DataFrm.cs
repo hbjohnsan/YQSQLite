@@ -107,7 +107,7 @@ namespace YQSQLite
         {
             if (MessageBox.Show("确定删除？删除后数据无法回复！", "删除", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                SQLiteDS.cpcuseRow cpcrow = mf.DS.cpcuse.FindById(Int32.Parse(labID.Text));
+                YQDataSet.cpcuseRow cpcrow = mf.DS.cpcuse.FindById(Int32.Parse(labID.Text));
                 mf.DS.cpcuse.Rows.Remove(cpcrow);
                 mf.cpcTap.Update(cpcrow);
                 ReLoad();
@@ -129,7 +129,7 @@ namespace YQSQLite
                         mrank = ra.Text;
                     }
                 }
-                SQLiteDS.cpcuseRow cr = mf.DS.cpcuse.FindById(Int32.Parse(labID.Text));
+                YQDataSet.cpcuseRow cr = mf.DS.cpcuse.FindById(Int32.Parse(labID.Text));
                 cr.Rank = mrank;
                 cr.UseTime = Convert.ToDateTime(cmbTime.Text);
                 cr.Term = cmbQs.Text;
@@ -155,7 +155,7 @@ namespace YQSQLite
                 }
             }
             // mf.cpcuseTap.InsertQuery(sRank, Convert.ToDateTime(cmbTime.Text), cmbQs.Text, txtTitle.Text, htmlEditor1.HTML, cmbKw.Text);
-            SQLiteDS.cpcuseRow cr = mf.DS.cpcuse.NewcpcuseRow();
+            YQDataSet.cpcuseRow cr = mf.DS.cpcuse.NewcpcuseRow();
             cr.Rank = sRank;
             cr.UseTime = Convert.ToDateTime(cmbTime.Text);
             cr.Term = cmbQs.Text;

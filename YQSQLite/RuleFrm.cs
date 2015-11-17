@@ -45,14 +45,14 @@ namespace YQSQLite
         {
             if (btnAdd.Text == "添加")
             {
-                SQLiteDS.RuleRow rw = mf.DS.Rule.AddRuleRow(txtSiteName.Text.Trim(), txtUrlFlag.Text.Trim(), txtContFlag.Text.Trim(), txtRemove.Text.Trim());
+                YQDataSet.RuleRow rw = mf.DS.Rule.AddRuleRow(txtSiteName.Text.Trim(), txtUrlFlag.Text.Trim(), txtContFlag.Text.Trim(), txtRemove.Text.Trim());
                 mf.ruleTap.Update(rw);
                 clear();
                 reload();
             }
             if (btnAdd.Text == "修改")
             {
-                SQLiteDS.RuleRow rw = mf.DS.Rule.FindByUrlFlag(txtUrlFlag.Text.Trim());
+                YQDataSet.RuleRow rw = mf.DS.Rule.FindByUrlFlag(txtUrlFlag.Text.Trim());
                 rw.SiteName = txtSiteName.Text;
                 rw.UrlFlag = txtUrlFlag.Text;
                 rw.ContFlag = txtContFlag.Text;
@@ -99,7 +99,7 @@ namespace YQSQLite
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                SQLiteDS.RuleRow rw = mf.DS.Rule.FindByUrlFlag(listView1.SelectedItems[0].SubItems[1].Text);
+                YQDataSet.RuleRow rw = mf.DS.Rule.FindByUrlFlag(listView1.SelectedItems[0].SubItems[1].Text);
                 rw.Delete();
                 mf.ruleTap.Update(mf.DS.Rule);
                 listView1.SelectedItems[0].Remove();

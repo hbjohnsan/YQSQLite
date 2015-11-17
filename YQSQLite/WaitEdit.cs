@@ -50,9 +50,9 @@ namespace YQSQLite
         }
 
         //加入Rss新闻为预处理
-        public void AddRssItem(string title)
+        public void AddRssItem(int itemID)
         {
-            SQLiteDS.RssItemRow row = mf.DS.RssItem.FindByTitle(title);
+            YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(itemID);
             RssItem rsit = new RssItem();
             rsit.Site = row.Site;
             rsit.Title = row.Title;
@@ -71,7 +71,7 @@ namespace YQSQLite
             if (listView1.SelectedItems.Count > 0)
             {
                 RssItem rssit = listView1.SelectedItems[0].Tag as RssItem;
-                SQLiteDS.RssItemRow row = mf.DS.RssItem.FindByTitle(rssit.Title);
+                YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(rssit.RssItemID);
                 row.IsRead = "不处理";
                 mf.rssTap.Update(row);
                 listView1.SelectedItems[0].Remove();
@@ -83,7 +83,7 @@ namespace YQSQLite
             foreach (ListViewItem lv in listView1.Items)
             {
                 RssItem it = lv.Tag as RssItem;
-                SQLiteDS.RssItemRow row = mf.DS.RssItem.FindByTitle(it.Title);
+                YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(it.RssItemID);
                 row.IsRead = "不处理";
             }
             mf.rssTap.Update(mf.DS.RssItem);
@@ -97,7 +97,7 @@ namespace YQSQLite
             if (listView1.SelectedItems.Count != 0)
             {
                 RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-                mf.RssToEditFm(rssitem.Title);
+                mf.RssToEditFm(rssitem.RssItemID);
             }
         }
         public void listClear()

@@ -16,6 +16,7 @@ namespace YQSQLite
         private MainFrm mf;
         private string contSite = "";//来源
         private string contKind = "";//类别
+        private int RssitemID;
         private StringBuilder stWillSendTO = new StringBuilder();//报送到
 
         public EditFrm()
@@ -41,15 +42,16 @@ namespace YQSQLite
         /// 接收到待处理窗体方法
         /// </summary>
         /// <param name="rssit"></param>
-        public void EditRssItem(string title)
+        public void EditRssItem(int itemID)
         {
+            RssitemID = itemID;
             htmlEditor1.HTML = "";
             btnRemove.Enabled = true;
             btnAdd.Text = "待报";
             rabSourc.Checked = true;
 
             //需使用多线程代理类
-            SQLiteDS.RssItemRow row = mf.DS.RssItem.FindByTitle(title);
+            YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(itemID);
             txtTitle.Text = row.Title;
             labLink.Text = row.Link;
             labUpTime.Text = row.PubDate.ToString();
@@ -109,7 +111,7 @@ namespace YQSQLite
                     stWillSendTO.Clear();
                     getContrlText();
                     //如果是自采，时间是当前计算机时间
-                    SQLiteDS.upsendRow row;
+                    YQDataSet.upsendRow row;
                     if (contSite == "自采")
                     {
                         row = mf.DS.upsend.AddupsendRow(contSite, txtTitle.Text.Trim(), DateTime.Now, labLink.Text, htmlEditor1.HTML, "待报送", "待报送", contKind, stWillSendTO.ToString());
@@ -123,7 +125,7 @@ namespace YQSQLite
                     else
                     {
                         row = mf.DS.upsend.AddupsendRow(contSite, txtTitle.Text.Trim(), Convert.ToDateTime(labUpTime.Text), labLink.Text, htmlEditor1.HTML, "待报送", "待报送", contKind, stWillSendTO.ToString());
-                        SQLiteDS.RssItemRow rssrow = mf.DS.RssItem.FindByTitle(txtTitle.Text.Trim());
+                        YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(RssitemID);// (txtTitle.Text.Trim());
                         rssrow.IsRead = "已读";
                         mf.rssTap.Update(rssrow);
                         //更新到库
@@ -143,7 +145,7 @@ namespace YQSQLite
                     stWillSendTO.Clear();
                     getContrlText();
 
-                    SQLiteDS.upsendRow row = mf.DS.upsend.FindByTitle(txtTitle.Text.Trim());
+                    YQDataSet.upsendRow row = mf.DS.upsend.FindByTitle(txtTitle.Text.Trim());
                     row.Title = txtTitle.Text.Trim();
                     row.UpTime = Convert.ToDateTime(labUpTime.Text);
                     row.Content = htmlEditor1.HTML;
@@ -223,7 +225,7 @@ namespace YQSQLite
             {
                 getContrlText();
                 //如果是自采，时间是当前计算机时间
-                SQLiteDS.upsendRow row;
+                YQDataSet.upsendRow row;
                 if (contSite == "自采")
                 {
                     row = mf.DS.upsend.FindByTitle(txtTitle.Text.Trim());
@@ -243,7 +245,7 @@ namespace YQSQLite
                         row.Delete();
                     }
 
-                    SQLiteDS.RssItemRow rssrow = mf.DS.RssItem.FindByTitle(txtTitle.Text.Trim());
+                    YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(RssitemID);
                     //如果Rss新闻表被清空，移除时会出错！
                     if (rssrow != null)
                     {
