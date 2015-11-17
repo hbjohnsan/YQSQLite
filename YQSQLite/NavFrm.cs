@@ -37,19 +37,12 @@ namespace YQSQLite
 
         }
 
-
-
-
-
         #region 鼠标事件
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            mf.NodeClick(sender, e);
+            //取消 点击事件传递。所有数据在本窗口中处理。
+            //mf.NodeClick(sender, e);
         }
-
-
-
-
         #endregion
 
         #region 右键菜单
@@ -57,9 +50,9 @@ namespace YQSQLite
         //编辑导航
         private void 编辑tsm_Click(object sender, EventArgs e)
         {
-            NavEidt NE = new NavEidt(mf);            
+            NavEidt NE = new NavEidt(mf);
             NE.ShowDialog();
-            if (NE.DialogResult==DialogResult.OK)
+            if (NE.DialogResult == DialogResult.OK)
             {
                 ReLoadTree();
             }
@@ -69,7 +62,11 @@ namespace YQSQLite
         {
             ReLoadTree();
         }
-        //重新加载treeview
+
+        #endregion
+
+        #region 重新加载treeview
+        //
         public void ReLoadTree()
         {
             treeView1.Nodes.Clear();
@@ -99,6 +96,7 @@ namespace YQSQLite
 
 
         }
+
 
         private List<TreeNode> GetTreeNodes(List<NavUrl> NavUrls)
         {
@@ -141,18 +139,7 @@ namespace YQSQLite
 
         }
 
-
         #endregion
-
-
-
-
-
-
-
-
-
-
 
     }
 

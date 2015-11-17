@@ -32,6 +32,7 @@ namespace YQSQLite
 
         }
 
+        #region 加载TreeView
         private void LoadTreeView()
         {
             treeView1.Nodes.Clear();
@@ -99,7 +100,8 @@ namespace YQSQLite
             }
 
 
-        }
+        } 
+        #endregion
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
