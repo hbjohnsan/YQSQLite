@@ -108,8 +108,6 @@ namespace YQSQLite
             if (e.Node.Parent != null && e.Node.Nodes.Count > 0)
             {
                 #region 加载数据
-
-
                 //listBox1.Items.Clear();
                 listView1.Items.Clear();
                 var q2 = from p in mf.DS.RssItem.AsEnumerable()
