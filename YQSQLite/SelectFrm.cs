@@ -62,81 +62,7 @@ namespace YQSQLite
         public void NavNodeClik(object sender, TreeNodeMouseClickEventArgs e)
         {
             NavUrl navurl = e.Node.Tag as NavUrl;
-            var q = from p in mf.DS.RssItem.AsEnumerable()
-                    where p.IsRead == "未读"
-                    orderby p.PubDate descending, p.Title
-                    select p;
-            //如果没有数据，返回。
-            if (e.Node.Tag == null)
-            {
-                return;
-            }
-            //URl为空出错。
-            if (string.IsNullOrEmpty(navurl.Link))
-            {
-                return;
-            }
-            if (navurl.PID == 0 && navurl.level == 0)
-            {
-                return;
-            }
-            //一级分类
-            if (e.Node.Parent == null)
-            {
-                //listBox1.Items.Clear();
-                listView1.Items.Clear();
-                var q1 = from p in q
-                         orderby p.PubDate descending, p.Title
-                         select p;
-
-                foreach (var item in q1)
-                {
-                    RssItem rsit = new RssItem();
-                    rsit.Site = item.Site;
-                    rsit.Title = item.Title;
-                    rsit.Link = item.Link;
-                    rsit.PubDate = item.PubDate;
-                    rsit.IsRead = item.IsRead;
-                    rsit.Content = item.Content;
-                    //listBox1.Items.Add(rsit);
-                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.Site });
-                    lv.Tag = rsit;
-                    listView1.Items.Add(lv);
-                }
-            }
-            //二级分类
-            if (e.Node.Parent != null && e.Node.Nodes.Count > 0)
-            {
-                #region 加载数据
-                //listBox1.Items.Clear();
-                listView1.Items.Clear();
-                var q2 = from p in mf.DS.RssItem.AsEnumerable()
-                         where p.IsRead == "未读" && p.Site == e.Node.Text
-                         orderby p.PubDate descending, p.Title
-                         select p;
-                foreach (var item in q2)
-                {
-                    RssItem rsit = new RssItem();
-                    rsit.Site = item.Site;
-                    rsit.Title = item.Title;
-                    rsit.Link = item.Link;
-                    rsit.PubDate = item.PubDate;
-                    rsit.IsRead = item.IsRead;
-                    rsit.Content = item.Content;
-
-                    //listBox1.Items.Add(rsit);
-                    //加入临时列表；
-                    //DBRssItem.Add(rsit);
-                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.Site });
-                    lv.Tag = rsit;
-                    listView1.Items.Add(lv);
-                }
-
-                #endregion
-
-            }
-
-            //  if (e.Node.GetNodeCount(false) == 0)
+           
 
             if (navurl.Link != null)
             {
@@ -448,16 +374,18 @@ namespace YQSQLite
         #region 新闻列表点击，得到正文
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count != 0)
-            {
-                listView1.SelectedItems[0].BackColor = Color.Bisque;
-                RssItem it = listView1.SelectedItems[0].Tag as RssItem;
-                //初始化
-                rtbCode.Clear();
-                rtbText.Clear();
-                htmlEditor1.HTML = "";
-                DownContent(it.Link);
-            }
+            //不做点一次，采集一次了。把内容一次全部采集到库
+
+            //if (listView1.SelectedItems.Count != 0)
+            //{
+            //    listView1.SelectedItems[0].BackColor = Color.Bisque;
+            //    RssItem it = listView1.SelectedItems[0].Tag as RssItem;
+            //    //初始化
+            //    rtbCode.Clear();
+            //    rtbText.Clear();
+            //    htmlEditor1.HTML = "";
+            //    DownContent(it.Link);
+            //}
         }
         //定义不同网站，不同的正文定义，和排除部分源码标记
         private void DownContent(string link)
@@ -684,6 +612,18 @@ namespace YQSQLite
                     return OrderOfSort;
                 }
             }
+        }
+        #endregion
+
+        #region 导步更新ListView
+        public void ReloadLiatView(ListViewItem it)
+        {
+            this.Invoke(new ThreadStart(delegate
+            {
+               
+                listView1.Items.Add(it);
+            }));
+            
         }
         #endregion
     }

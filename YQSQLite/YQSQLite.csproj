@@ -213,6 +213,10 @@
     <Compile Include="WaitSendFrm.Designer.cs">
       <DependentUpon>WaitSendFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="YQDataSet.cs">
+      <DependentUpon>YQDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="YQDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

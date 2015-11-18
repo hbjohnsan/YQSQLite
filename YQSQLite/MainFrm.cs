@@ -12,6 +12,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Net;
+using System.Threading;
 
 namespace YQSQLite
 {
@@ -73,6 +74,19 @@ namespace YQSQLite
             ruleTap.Fill(DS.Rule);
             navurlTap.Fill(DS.NavUrl);
             #endregion
+            //用多线程实现统计信息条数
+            Thread th = new Thread(new ThreadStart(delegate
+            {
+                CountNum_RssItem2NavUrl();
+            }));
+            th.IsBackground = true;
+            th.Start();
+
+            //LoginFrm lgfrm = new LoginFrm();
+            //if (lgfrm.ShowDialog() != DialogResult.OK)//表示当f1的DialogResult等于Ok时主程序才开始运行，所以在Form1中登录成功时要将Dialogresult设为OK
+            //{
+            //    Application.Exit();
+            //}
         }
 
         #region 窗体加载
@@ -94,8 +108,18 @@ namespace YQSQLite
             hassendfm.Show(waitsendFm.Pane, DockAlignment.Bottom, 0.5);
             #endregion
 
-            GetConfig();
-            Reg();
+            Thread ts = new Thread(new ThreadStart(delegate
+            {
+                GetConfig();
+            }));
+            ts.Start();
+            
+            //Thread t = new Thread(new ThreadStart(delegate
+            //{
+                Reg();
+            //}));
+            //t.Start();
+
         }
         //取得配置文件
         private void GetConfig()
@@ -120,8 +144,7 @@ namespace YQSQLite
         }
         #endregion
 
-
-        //写入注册表项，判断是否已注册
+        #region 写入注册表项，判断是否已注册
         private void Reg()
         {
             RegistryKey rk = Registry.LocalMachine.OpenSubKey("SOFTWARE", true);
@@ -147,20 +170,49 @@ namespace YQSQLite
                 MessageBox.Show("不好意思，请已经超出试用次数！请注册后再使用！");
                 Application.Exit();
             }
-        }
+        } 
+        #endregion
 
         #region 中间调用方法
-        //导航列表点击事件
-        public void NodeClick(object sender, TreeNodeMouseClickEventArgs e)
+        //统计RssItem表中的数量，更新NavUrl中的ItemCount和NoReadCount数量
+        public void CountNum_RssItem2NavUrl()
         {
-            if (selectFm == null || selectFm.IsDisposed)
+            var navs = from p in DS.NavUrl.AsEnumerable()
+                       select p;
+
+            foreach (var nv in navs)
             {
-                selectFm = new SelectFrm(this);
-                selectFm.Show(dockPanel);
+                nv.ItemCount = (from q in DS.RssItem.AsEnumerable()
+                                where q.ChannelCode == nv.Code
+                                select q).Count();
+                nv.NoReadCount = (from s in DS.RssItem.AsEnumerable()
+                                  where (s.IsRead == "F" && s.ChannelCode == nv.Code)
+                                  select s).Count();
             }
-            selectFm.Activate();
-            selectFm.NavNodeClik(sender, e);
+            navurlTap.Update(DS.NavUrl);
         }
+
+        //导航列表点击事件
+        //public void NodeClick(object sender, TreeNodeMouseClickEventArgs e)
+        //{
+        //    if (selectFm == null || selectFm.IsDisposed)
+        //    {
+        //        selectFm = new SelectFrm(this);
+        //        selectFm.Show(dockPanel);
+        //    }
+        //    selectFm.Activate();
+        //    selectFm.NavNodeClik(sender, e);
+        //}
+        //SelectFrom窗体的数据重载
+        public void SelectFrmListViewReload(ListViewItem li)
+        {
+            selectFm.ReloadLiatView(li);
+        }
+        public void SelectFrmListviewClear()
+        {
+            selectFm.listClear();
+        }
+
         //新闻列表选择加入待处理窗体
         public void NewsAdd(int Rssitemid)
         {
@@ -470,11 +522,5 @@ namespace YQSQLite
             }
         }
         #endregion
-
-        #region 文件
-
-        #endregion
-
-
     }
 }

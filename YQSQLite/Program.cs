@@ -26,7 +26,7 @@ namespace YQSQLite
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-
+                //Application.Run(new MainFrm());
                 LoginFrm lgfrm = new LoginFrm();
                 if (lgfrm.ShowDialog() == DialogResult.OK)//表示当f1的DialogResult等于Ok时主程序才开始运行，所以在Form1中登录成功时要将Dialogresult设为OK
                 {

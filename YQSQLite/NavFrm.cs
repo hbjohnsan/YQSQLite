@@ -42,9 +42,57 @@ namespace YQSQLite
         {
             //取消 点击事件传递。所有数据在本窗口中处理。
             //mf.NodeClick(sender, e);
+            //1、判断点击的项是分类项，还是有采集地址的具体项，可以用level项判断。2、如果是分类项直接从库中显示已采所有数据。如果是采集项则进行下一步的更新采集。
+            NavUrl navurl = e.Node.Tag as NavUrl;
+           
+            if (navurl.Leaf == 0)//根据level可以判断出是否是分类项。是否用数据库中提取
+            {
+                //先要清空筛选窗体中listview中的项
+                mf.SelectFrmListviewClear();
+                var q = from p in mf.DS.RssItem.AsEnumerable()
+                        where p.ChannelCode.StartsWith(navurl.Code)
+                        orderby p.PubDate descending, p.Title
+                        select p;
+                foreach (var item in q)
+                {
+                    RssItem rsit = new RssItem();
+                    rsit.RssItemID = item.RssItemID;
+                    rsit.ChannelCode = item.ChannelCode;
+                    rsit.Site = item.Site;
+                    rsit.Title = item.Title;
+                    rsit.Link = item.Link;
+                    rsit.PubDate = item.PubDate;
+                    rsit.IsRead = item.IsRead;
+                    rsit.Content = item.Content;
+                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.Site });
+                    lv.Tag = rsit;
+                    mf.SelectFrmListViewReload(lv);
+                }
+               
+            }
+            else//去采集
+            {
+
+            }
+            RequestRss();
         }
         #endregion
 
+        #region 刷新重采集
+        public void RequestRss()
+        {
+            NavUrl nu = treeView1.SelectedNode.Tag as NavUrl;
+            //先采集回Rss列表，通过link比较DataSet中RssItem中是否有相同的Link数据。如果有去重，如果没有→采集→到库→更新表，显示到筛选表中。
+            //
+
+            //试用多线程
+            Thread t = new Thread(new ThreadStart(delegate
+            {
+
+            }));
+            t.Start();
+        }
+        #endregion
         #region 右键菜单
 
         //编辑导航
@@ -85,12 +133,15 @@ namespace YQSQLite
                 nu.Leaf = (int)kind.Leaf;
                 nu.Link = kind.Link;
                 nu.Image = (int)kind.Image;
+                nu.ItemCount = (int)kind.ItemCount;
+                nu.NoReadCount = (int)kind.NoReadCount;
                 NavUrls.Add(nu);
             }
 
             List<TreeNode> LT = GetTreeNodes(NavUrls);
             foreach (TreeNode tn in LT)
             {
+
                 treeView1.Nodes.Add(tn);
             }
 
@@ -108,7 +159,8 @@ namespace YQSQLite
                 if (u.PID == 0 && u.level == 0)
                 {
                     TreeNode tn = new TreeNode();
-                    tn.Text = u.Name;
+                    //实现了信息条目的显示。
+                    tn.Text = u.Name + "(" + u.NoReadCount.ToString() + "/" + u.ItemCount.ToString() + ")";
                     tn.ImageIndex = tn.SelectedImageIndex = u.Image;
                     tn.Tag = u;
                     //2、递归子层；
@@ -127,7 +179,8 @@ namespace YQSQLite
                 if (n.PID == u.ID)
                 {
                     TreeNode tn = new TreeNode();
-                    tn.Text = n.Name;
+                    //实现了信息条目的显示。
+                    tn.Text = n.Name + "(" + n.NoReadCount.ToString() + "/" + n.ItemCount.ToString() + ")";
                     tn.ImageIndex = tn.SelectedImageIndex = n.Image;
                     tn.Tag = n;
                     //2、递归子层；
