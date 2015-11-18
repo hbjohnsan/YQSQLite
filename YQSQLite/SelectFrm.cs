@@ -54,27 +54,7 @@ namespace YQSQLite
         #endregion
 
         #region Rss导航新闻列表事件
-        /// <summary>
-        /// Rss导航新闻列表事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void NavNodeClik(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            NavUrl navurl = e.Node.Tag as NavUrl;
-           
-
-            if (navurl.Link != null)
-            {
-                //listView1.Items.Clear();
-                //Thread t = new Thread(new ParameterizedThreadStart(CaijiRule));
-                //object cn = new clNode(e.Node.Parent.Text, navurl.Link, e.Node.Text);
-                //t.IsBackground = true;
-                //t.Start(cn);
-                //CaijiRule(new clNode(e.Node.Parent.Text, navurl.Link, e.Node.Text));
-            }
-
-        }
+       
         //定义委托
         //private delegate void delCaijiRule(clNode e);
 
@@ -620,7 +600,6 @@ namespace YQSQLite
         {
             this.Invoke(new ThreadStart(delegate
             {
-               
                 listView1.Items.Add(it);
             }));
             

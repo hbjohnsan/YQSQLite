@@ -183,12 +183,13 @@ namespace YQSQLite
             foreach (var nv in navs)
             {
                 nv.ItemCount = (from q in DS.RssItem.AsEnumerable()
-                                where q.ChannelCode == nv.Code
+                                where q.ChannelCode.StartsWith(nv.Code)
                                 select q).Count();
                 nv.NoReadCount = (from s in DS.RssItem.AsEnumerable()
-                                  where (s.IsRead == "F" && s.ChannelCode == nv.Code)
+                                  where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
                                   select s).Count();
             }
+            //todo:DataSet中统计比较后，还更新数据。采集时要实时更新项。
             navurlTap.Update(DS.NavUrl);
         }
 
@@ -522,5 +523,19 @@ namespace YQSQLite
             }
         }
         #endregion
+
+        //主窗体关闭时再更新所有数据？？？
+      
+
+        private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            cpcTap.Update(DS.cpcuse);
+            rssTap.Update(DS.RssItem);
+            upsendTap.Update(DS.upsend);
+            sendtoTap.Update(DS.sendto);
+            serverTap.Update(DS.server);
+            ruleTap.Update(DS.Rule);
+            navurlTap.Update(DS.NavUrl);
+        }
     }
 }

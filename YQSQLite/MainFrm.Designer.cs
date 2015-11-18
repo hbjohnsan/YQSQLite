@@ -29,79 +29,79 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
-            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin1 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient1 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient2 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient3 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient1 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient4 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient5 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin2 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin2 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient4 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient8 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient9 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient5 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient10 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient2 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient11 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient12 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient6 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient13 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient14 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.筛选ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.上报ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.资料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.工具栏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.状态栏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.导航ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.待处理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.待报送ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.已报送toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.采集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.浏览器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.自采ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mysqlToSqliteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.清空Rss新闻ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.系统配置ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.注册ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.rss配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
-            this.筛选ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.编辑ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.上报ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.资料ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.统计ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导航ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.待处理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.待报送ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.已报送toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.采集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.浏览器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.退出ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mysqlToSqliteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.清空Rss新闻ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.系统配置ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.注册ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rss配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -146,6 +146,51 @@
             this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
             this.编辑ToolStripMenuItem.Text = "视图(&V)";
             // 
+            // 筛选ToolStripMenuItem1
+            // 
+            this.筛选ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.shaixuan_s;
+            this.筛选ToolStripMenuItem1.Name = "筛选ToolStripMenuItem1";
+            this.筛选ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.筛选ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.筛选ToolStripMenuItem1.Text = "筛选";
+            this.筛选ToolStripMenuItem1.Click += new System.EventHandler(this.筛选ToolStripMenuItem1_Click);
+            // 
+            // 编辑ToolStripMenuItem1
+            // 
+            this.编辑ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.edit_file_icon_s;
+            this.编辑ToolStripMenuItem1.Name = "编辑ToolStripMenuItem1";
+            this.编辑ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.编辑ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.编辑ToolStripMenuItem1.Text = "编辑";
+            this.编辑ToolStripMenuItem1.Click += new System.EventHandler(this.编辑ToolStripMenuItem1_Click);
+            // 
+            // 上报ToolStripMenuItem1
+            // 
+            this.上报ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.Send_s;
+            this.上报ToolStripMenuItem1.Name = "上报ToolStripMenuItem1";
+            this.上报ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.上报ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.上报ToolStripMenuItem1.Text = "上报";
+            this.上报ToolStripMenuItem1.Click += new System.EventHandler(this.上报ToolStripMenuItem1_Click);
+            // 
+            // 资料ToolStripMenuItem
+            // 
+            this.资料ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Documents_icon_s;
+            this.资料ToolStripMenuItem.Name = "资料ToolStripMenuItem";
+            this.资料ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.资料ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.资料ToolStripMenuItem.Text = "资料";
+            this.资料ToolStripMenuItem.Click += new System.EventHandler(this.资料ToolStripMenuItem_Click);
+            // 
+            // 统计ToolStripMenuItem
+            // 
+            this.统计ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.total_s;
+            this.统计ToolStripMenuItem.Name = "统计ToolStripMenuItem";
+            this.统计ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.统计ToolStripMenuItem.Text = "统计";
+            this.统计ToolStripMenuItem.Click += new System.EventHandler(this.统计ToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
@@ -174,20 +219,76 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(118, 6);
             // 
+            // 导航ToolStripMenuItem
+            // 
+            this.导航ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Compass_icon_s;
+            this.导航ToolStripMenuItem.Name = "导航ToolStripMenuItem";
+            this.导航ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.导航ToolStripMenuItem.Text = "导航";
+            this.导航ToolStripMenuItem.Click += new System.EventHandler(this.导航ToolStripMenuItem_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(118, 6);
+            // 
+            // 待处理ToolStripMenuItem
+            // 
+            this.待处理ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.wait_icon;
+            this.待处理ToolStripMenuItem.Name = "待处理ToolStripMenuItem";
+            this.待处理ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.待处理ToolStripMenuItem.Text = "待处理";
+            this.待处理ToolStripMenuItem.Click += new System.EventHandler(this.待处理ToolStripMenuItem_Click);
+            // 
+            // 待报送ToolStripMenuItem
+            // 
+            this.待报送ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.send_icon;
+            this.待报送ToolStripMenuItem.Name = "待报送ToolStripMenuItem";
+            this.待报送ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.待报送ToolStripMenuItem.Text = "待报送";
+            this.待报送ToolStripMenuItem.Click += new System.EventHandler(this.待报送ToolStripMenuItem_Click);
+            // 
+            // 已报送toolStripMenuItem
+            // 
+            this.已报送toolStripMenuItem.Image = global::YQSQLite.Properties.Resources.email_send_icon_s;
+            this.已报送toolStripMenuItem.Name = "已报送toolStripMenuItem";
+            this.已报送toolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.已报送toolStripMenuItem.Text = "已报送";
+            this.已报送toolStripMenuItem.Click += new System.EventHandler(this.已报送toolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(118, 6);
             // 
+            // 采集ToolStripMenuItem
+            // 
+            this.采集ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.collect_icon;
+            this.采集ToolStripMenuItem.Name = "采集ToolStripMenuItem";
+            this.采集ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.采集ToolStripMenuItem.Text = "采集";
+            this.采集ToolStripMenuItem.Click += new System.EventHandler(this.采集规则ToolStripMenuItem_Click);
+            // 
+            // 浏览器ToolStripMenuItem
+            // 
+            this.浏览器ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.IE_icon;
+            this.浏览器ToolStripMenuItem.Name = "浏览器ToolStripMenuItem";
+            this.浏览器ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.浏览器ToolStripMenuItem.Text = "浏览器";
+            this.浏览器ToolStripMenuItem.Click += new System.EventHandler(this.浏览器ToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(118, 6);
+            // 
+            // 退出ToolStripMenuItem1
+            // 
+            this.退出ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.door_out_icon;
+            this.退出ToolStripMenuItem1.Name = "退出ToolStripMenuItem1";
+            this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.退出ToolStripMenuItem1.Text = "退出";
+            this.退出ToolStripMenuItem1.Click += new System.EventHandler(this.退出ToolStripMenuItem1_Click);
             // 
             // 自采ToolStripMenuItem
             // 
@@ -197,6 +298,21 @@
             this.自采ToolStripMenuItem.Name = "自采ToolStripMenuItem";
             this.自采ToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
             this.自采ToolStripMenuItem.Text = "工具(&T)";
+            // 
+            // mysqlToSqliteToolStripMenuItem
+            // 
+            this.mysqlToSqliteToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Tools_icon_s;
+            this.mysqlToSqliteToolStripMenuItem.Name = "mysqlToSqliteToolStripMenuItem";
+            this.mysqlToSqliteToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.mysqlToSqliteToolStripMenuItem.Text = "MysqlToSqlite";
+            // 
+            // 清空Rss新闻ToolStripMenuItem
+            // 
+            this.清空Rss新闻ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.uninstall;
+            this.清空Rss新闻ToolStripMenuItem.Name = "清空Rss新闻ToolStripMenuItem";
+            this.清空Rss新闻ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.清空Rss新闻ToolStripMenuItem.Text = "清空Rss新闻";
+            this.清空Rss新闻ToolStripMenuItem.Click += new System.EventHandler(this.清空Rss新闻ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -210,6 +326,43 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(60, 21);
             this.toolStripMenuItem4.Text = "配置(&C)";
             // 
+            // 系统配置ToolStripMenuItem1
+            // 
+            this.系统配置ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.config_s;
+            this.系统配置ToolStripMenuItem1.Name = "系统配置ToolStripMenuItem1";
+            this.系统配置ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.系统配置ToolStripMenuItem1.Text = "系统配置";
+            this.系统配置ToolStripMenuItem1.Click += new System.EventHandler(this.系统配置ToolStripMenuItem1_Click);
+            // 
+            // 注册ToolStripMenuItem
+            // 
+            this.注册ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.zhuce_s;
+            this.注册ToolStripMenuItem.Name = "注册ToolStripMenuItem";
+            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.注册ToolStripMenuItem.Text = "注册";
+            this.注册ToolStripMenuItem.Click += new System.EventHandler(this.注册ToolStripMenuItem_Click);
+            // 
+            // 修改密码ToolStripMenuItem
+            // 
+            this.修改密码ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.modify_key_icon_s;
+            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改密码ToolStripMenuItem.Text = "修改密码";
+            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(121, 6);
+            // 
+            // rss配置ToolStripMenuItem
+            // 
+            this.rss配置ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.rssico;
+            this.rss配置ToolStripMenuItem.Name = "rss配置ToolStripMenuItem";
+            this.rss配置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.rss配置ToolStripMenuItem.Text = "Rss配置";
+            this.rss配置ToolStripMenuItem.Click += new System.EventHandler(this.rss配置ToolStripMenuItem_Click);
+            // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -217,6 +370,14 @@
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
             this.帮助ToolStripMenuItem.Text = "帮助(&H)";
+            // 
+            // 关于ToolStripMenuItem
+            // 
+            this.关于ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Actions_help_about_icon;
+            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.关于ToolStripMenuItem.Text = "关于";
+            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -245,114 +406,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(984, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // dockPanel
-            // 
-            this.dockPanel.ActiveAutoHideContent = null;
-            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockPanel.DockBackColor = System.Drawing.SystemColors.Control;
-            this.dockPanel.DockLeftPortion = 0.15D;
-            this.dockPanel.DockRightPortion = 0.15D;
-            this.dockPanel.Location = new System.Drawing.Point(0, 50);
-            this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(984, 610);
-            dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
-            autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
-            tabGradient1.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient1.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            autoHideStripSkin1.TabGradient = tabGradient1;
-            dockPanelSkin1.AutoHideStripSkin = autoHideStripSkin1;
-            tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
-            tabGradient2.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient1.ActiveTabGradient = tabGradient2;
-            dockPanelGradient2.EndColor = System.Drawing.SystemColors.Control;
-            dockPanelGradient2.StartColor = System.Drawing.SystemColors.Control;
-            dockPaneStripGradient1.DockStripGradient = dockPanelGradient2;
-            tabGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
-            tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripGradient1.InactiveTabGradient = tabGradient3;
-            dockPaneStripSkin1.DocumentGradient = dockPaneStripGradient1;
-            tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
-            tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
-            tabGradient4.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dockPaneStripToolWindowGradient1.ActiveCaptionGradient = tabGradient4;
-            tabGradient5.EndColor = System.Drawing.SystemColors.Control;
-            tabGradient5.StartColor = System.Drawing.SystemColors.Control;
-            tabGradient5.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient1.ActiveTabGradient = tabGradient5;
-            dockPanelGradient3.EndColor = System.Drawing.SystemColors.ControlLight;
-            dockPanelGradient3.StartColor = System.Drawing.SystemColors.ControlLight;
-            dockPaneStripToolWindowGradient1.DockStripGradient = dockPanelGradient3;
-            tabGradient6.EndColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient6.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            tabGradient6.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            tabGradient6.TextColor = System.Drawing.SystemColors.ControlText;
-            dockPaneStripToolWindowGradient1.InactiveCaptionGradient = tabGradient6;
-            tabGradient7.EndColor = System.Drawing.Color.Transparent;
-            tabGradient7.StartColor = System.Drawing.Color.Transparent;
-            tabGradient7.TextColor = System.Drawing.SystemColors.ControlDarkDark;
-            dockPaneStripToolWindowGradient1.InactiveTabGradient = tabGradient7;
-            dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
-            dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
-            this.dockPanel.Skin = dockPanelSkin1;
-            this.dockPanel.TabIndex = 6;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 660);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.BalloonTipText = "舆情报送系统";
-            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "舆情报送系统";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.退出ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
-            // 
-            // 退出ToolStripMenuItem
-            // 
-            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.退出ToolStripMenuItem.Text = "退出";
-            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(149, 6);
             // 
             // toolStripButton1
             // 
@@ -414,6 +467,11 @@
             this.toolStripButton6.Text = "统计";
             this.toolStripButton6.Click += new System.EventHandler(this.统计ToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButton10
             // 
             this.toolStripButton10.Image = global::YQSQLite.Properties.Resources.wait_icon;
@@ -439,6 +497,11 @@
             this.toolStripButton15.Name = "toolStripButton15";
             this.toolStripButton15.Size = new System.Drawing.Size(64, 22);
             this.toolStripButton15.Text = "已报送";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton7
             // 
@@ -478,6 +541,11 @@
             this.toolStripButton13.Text = "采集";
             this.toolStripButton13.Click += new System.EventHandler(this.采集规则ToolStripMenuItem_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButton14
             // 
             this.toolStripButton14.Image = global::YQSQLite.Properties.Resources.IE_icon;
@@ -505,161 +573,93 @@
             this.tsbExit.Text = "退出";
             this.tsbExit.Click += new System.EventHandler(this.退出ToolStripMenuItem1_Click);
             // 
-            // 筛选ToolStripMenuItem1
+            // dockPanel
             // 
-            this.筛选ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.shaixuan_s;
-            this.筛选ToolStripMenuItem1.Name = "筛选ToolStripMenuItem1";
-            this.筛选ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.筛选ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
-            this.筛选ToolStripMenuItem1.Text = "筛选";
-            this.筛选ToolStripMenuItem1.Click += new System.EventHandler(this.筛选ToolStripMenuItem1_Click);
+            this.dockPanel.ActiveAutoHideContent = null;
+            this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockPanel.DockBackColor = System.Drawing.SystemColors.Control;
+            this.dockPanel.DockLeftPortion = 0.15D;
+            this.dockPanel.DockRightPortion = 0.15D;
+            this.dockPanel.Location = new System.Drawing.Point(0, 50);
+            this.dockPanel.Name = "dockPanel";
+            this.dockPanel.Size = new System.Drawing.Size(984, 610);
+            dockPanelGradient4.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient4.StartColor = System.Drawing.SystemColors.ControlLight;
+            autoHideStripSkin2.DockStripGradient = dockPanelGradient4;
+            tabGradient8.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient8.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient8.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            autoHideStripSkin2.TabGradient = tabGradient8;
+            dockPanelSkin2.AutoHideStripSkin = autoHideStripSkin2;
+            tabGradient9.EndColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient9.StartColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient9.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient2.ActiveTabGradient = tabGradient9;
+            dockPanelGradient5.EndColor = System.Drawing.SystemColors.Control;
+            dockPanelGradient5.StartColor = System.Drawing.SystemColors.Control;
+            dockPaneStripGradient2.DockStripGradient = dockPanelGradient5;
+            tabGradient10.EndColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient10.StartColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient10.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient2.InactiveTabGradient = tabGradient10;
+            dockPaneStripSkin2.DocumentGradient = dockPaneStripGradient2;
+            tabGradient11.EndColor = System.Drawing.SystemColors.ActiveCaption;
+            tabGradient11.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient11.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
+            tabGradient11.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dockPaneStripToolWindowGradient2.ActiveCaptionGradient = tabGradient11;
+            tabGradient12.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient12.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient12.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient2.ActiveTabGradient = tabGradient12;
+            dockPanelGradient6.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient6.StartColor = System.Drawing.SystemColors.ControlLight;
+            dockPaneStripToolWindowGradient2.DockStripGradient = dockPanelGradient6;
+            tabGradient13.EndColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient13.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient13.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient13.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient2.InactiveCaptionGradient = tabGradient13;
+            tabGradient14.EndColor = System.Drawing.Color.Transparent;
+            tabGradient14.StartColor = System.Drawing.Color.Transparent;
+            tabGradient14.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            dockPaneStripToolWindowGradient2.InactiveTabGradient = tabGradient14;
+            dockPaneStripSkin2.ToolWindowGradient = dockPaneStripToolWindowGradient2;
+            dockPanelSkin2.DockPaneStripSkin = dockPaneStripSkin2;
+            this.dockPanel.Skin = dockPanelSkin2;
+            this.dockPanel.TabIndex = 6;
             // 
-            // 编辑ToolStripMenuItem1
+            // statusStrip1
             // 
-            this.编辑ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.edit_file_icon_s;
-            this.编辑ToolStripMenuItem1.Name = "编辑ToolStripMenuItem1";
-            this.编辑ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.编辑ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
-            this.编辑ToolStripMenuItem1.Text = "编辑";
-            this.编辑ToolStripMenuItem1.Click += new System.EventHandler(this.编辑ToolStripMenuItem1_Click);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 660);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // 上报ToolStripMenuItem1
+            // notifyIcon1
             // 
-            this.上报ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.Send_s;
-            this.上报ToolStripMenuItem1.Name = "上报ToolStripMenuItem1";
-            this.上报ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.上报ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
-            this.上报ToolStripMenuItem1.Text = "上报";
-            this.上报ToolStripMenuItem1.Click += new System.EventHandler(this.上报ToolStripMenuItem1_Click);
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "舆情报送系统";
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "舆情报送系统";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
-            // 资料ToolStripMenuItem
+            // contextMenuStrip1
             // 
-            this.资料ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Documents_icon_s;
-            this.资料ToolStripMenuItem.Name = "资料ToolStripMenuItem";
-            this.资料ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.资料ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.资料ToolStripMenuItem.Text = "资料";
-            this.资料ToolStripMenuItem.Click += new System.EventHandler(this.资料ToolStripMenuItem_Click);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.退出ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
             // 
-            // 统计ToolStripMenuItem
+            // 退出ToolStripMenuItem
             // 
-            this.统计ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.total_s;
-            this.统计ToolStripMenuItem.Name = "统计ToolStripMenuItem";
-            this.统计ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.统计ToolStripMenuItem.Text = "统计";
-            this.统计ToolStripMenuItem.Click += new System.EventHandler(this.统计ToolStripMenuItem_Click);
-            // 
-            // 导航ToolStripMenuItem
-            // 
-            this.导航ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Compass_icon_s;
-            this.导航ToolStripMenuItem.Name = "导航ToolStripMenuItem";
-            this.导航ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.导航ToolStripMenuItem.Text = "导航";
-            this.导航ToolStripMenuItem.Click += new System.EventHandler(this.导航ToolStripMenuItem_Click);
-            // 
-            // 待处理ToolStripMenuItem
-            // 
-            this.待处理ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.wait_icon;
-            this.待处理ToolStripMenuItem.Name = "待处理ToolStripMenuItem";
-            this.待处理ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.待处理ToolStripMenuItem.Text = "待处理";
-            this.待处理ToolStripMenuItem.Click += new System.EventHandler(this.待处理ToolStripMenuItem_Click);
-            // 
-            // 待报送ToolStripMenuItem
-            // 
-            this.待报送ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.send_icon;
-            this.待报送ToolStripMenuItem.Name = "待报送ToolStripMenuItem";
-            this.待报送ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.待报送ToolStripMenuItem.Text = "待报送";
-            this.待报送ToolStripMenuItem.Click += new System.EventHandler(this.待报送ToolStripMenuItem_Click);
-            // 
-            // 已报送toolStripMenuItem
-            // 
-            this.已报送toolStripMenuItem.Image = global::YQSQLite.Properties.Resources.email_send_icon_s;
-            this.已报送toolStripMenuItem.Name = "已报送toolStripMenuItem";
-            this.已报送toolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.已报送toolStripMenuItem.Text = "已报送";
-            this.已报送toolStripMenuItem.Click += new System.EventHandler(this.已报送toolStripMenuItem_Click);
-            // 
-            // 采集ToolStripMenuItem
-            // 
-            this.采集ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.collect_icon;
-            this.采集ToolStripMenuItem.Name = "采集ToolStripMenuItem";
-            this.采集ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.采集ToolStripMenuItem.Text = "采集";
-            this.采集ToolStripMenuItem.Click += new System.EventHandler(this.采集规则ToolStripMenuItem_Click);
-            // 
-            // 浏览器ToolStripMenuItem
-            // 
-            this.浏览器ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.IE_icon;
-            this.浏览器ToolStripMenuItem.Name = "浏览器ToolStripMenuItem";
-            this.浏览器ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.浏览器ToolStripMenuItem.Text = "浏览器";
-            this.浏览器ToolStripMenuItem.Click += new System.EventHandler(this.浏览器ToolStripMenuItem_Click);
-            // 
-            // 退出ToolStripMenuItem1
-            // 
-            this.退出ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.door_out_icon;
-            this.退出ToolStripMenuItem1.Name = "退出ToolStripMenuItem1";
-            this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
-            this.退出ToolStripMenuItem1.Text = "退出";
-            this.退出ToolStripMenuItem1.Click += new System.EventHandler(this.退出ToolStripMenuItem1_Click);
-            // 
-            // mysqlToSqliteToolStripMenuItem
-            // 
-            this.mysqlToSqliteToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Tools_icon_s;
-            this.mysqlToSqliteToolStripMenuItem.Name = "mysqlToSqliteToolStripMenuItem";
-            this.mysqlToSqliteToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.mysqlToSqliteToolStripMenuItem.Text = "MysqlToSqlite";
-            // 
-            // 清空Rss新闻ToolStripMenuItem
-            // 
-            this.清空Rss新闻ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.uninstall;
-            this.清空Rss新闻ToolStripMenuItem.Name = "清空Rss新闻ToolStripMenuItem";
-            this.清空Rss新闻ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.清空Rss新闻ToolStripMenuItem.Text = "清空Rss新闻";
-            this.清空Rss新闻ToolStripMenuItem.Click += new System.EventHandler(this.清空Rss新闻ToolStripMenuItem_Click);
-            // 
-            // 系统配置ToolStripMenuItem1
-            // 
-            this.系统配置ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.config_s;
-            this.系统配置ToolStripMenuItem1.Name = "系统配置ToolStripMenuItem1";
-            this.系统配置ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.系统配置ToolStripMenuItem1.Text = "系统配置";
-            this.系统配置ToolStripMenuItem1.Click += new System.EventHandler(this.系统配置ToolStripMenuItem1_Click);
-            // 
-            // 注册ToolStripMenuItem
-            // 
-            this.注册ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.zhuce_s;
-            this.注册ToolStripMenuItem.Name = "注册ToolStripMenuItem";
-            this.注册ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.注册ToolStripMenuItem.Text = "注册";
-            this.注册ToolStripMenuItem.Click += new System.EventHandler(this.注册ToolStripMenuItem_Click);
-            // 
-            // 修改密码ToolStripMenuItem
-            // 
-            this.修改密码ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.modify_key_icon_s;
-            this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.修改密码ToolStripMenuItem.Text = "修改密码";
-            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
-            // 
-            // rss配置ToolStripMenuItem
-            // 
-            this.rss配置ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.rssico;
-            this.rss配置ToolStripMenuItem.Name = "rss配置ToolStripMenuItem";
-            this.rss配置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.rss配置ToolStripMenuItem.Text = "Rss配置";
-            this.rss配置ToolStripMenuItem.Click += new System.EventHandler(this.rss配置ToolStripMenuItem_Click);
-            // 
-            // 关于ToolStripMenuItem
-            // 
-            this.关于ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Actions_help_about_icon;
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.关于ToolStripMenuItem.Text = "关于";
-            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem1_Click);
             // 
             // MainFrm
             // 
@@ -675,6 +675,8 @@
             this.Name = "MainFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "舆情报送系统（V1.2）";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFrm_FormClosing);
+           
             this.Load += new System.EventHandler(this.MainFrm_Load);
             this.Resize += new System.EventHandler(this.MainFrm_Resize);
             this.menuStrip1.ResumeLayout(false);

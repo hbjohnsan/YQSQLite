@@ -44,10 +44,11 @@ namespace YQSQLite
             //mf.NodeClick(sender, e);
             //1、判断点击的项是分类项，还是有采集地址的具体项，可以用Leaf项判断。2、如果是分类项直接从库中显示已采所有数据。如果是采集项则进行下一步的更新采集。
             NavUrl navurl = e.Node.Tag as NavUrl;
+            mf.SelectFrmListviewClear();
             if (navurl.Leaf == 0)//根据Leaf可以判断出是否是分类项。是否用数据库中提取
             {
                 //先要清空筛选窗体中listview中的项
-                mf.SelectFrmListviewClear();
+
                 var q = from p in mf.DS.RssItem.AsEnumerable()
                         where p.ChannelCode.StartsWith(navurl.Code)
                         orderby p.PubDate descending, p.Title
@@ -57,7 +58,7 @@ namespace YQSQLite
                     RssItem rsit = new RssItem();
                     rsit.RssItemID = item.RssItemID;
                     rsit.ChannelCode = item.ChannelCode;
-                  //  rsit.Site = item.Site;
+                    //  rsit.Site = item.Site;
                     rsit.Title = item.Title;
                     rsit.Link = item.Link;
                     rsit.PubDate = item.PubDate;
@@ -80,6 +81,7 @@ namespace YQSQLite
                 t.Start();
             }
             RequestRss();
+            //mf.rssTap.Update(mf.DS.RssItem);
         }
         //去采集下载Rss新闻源列表
         private void DownLoadRssItem(NavUrl navurl)
@@ -115,28 +117,43 @@ namespace YQSQLite
 
 
                     //通过Link查找DataSet中是否有相同的网址
-                    //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集
-                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.ChannelCode == navurl.Code && p.Link == result.Link) select p).ToList().Count;
+                    //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
+                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title==result.Title) select p).ToList().Count;
+                    //取得最大ID值+1; 
+                    int maxId;
+
+                    if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
+                    {
+                        maxId = 1;
+                    }
+                    else
+                    {
+                        maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
+                    }
+
+
+
                     if (f == 0)
                     {
-                        RssItem it = new RssItem(navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
-                      //  ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
-                      //  lv.Tag = it;
-                     //   listView1.Items.Add(lv);
+                        RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), navurl.Code });
+                        lv.Tag = it;
+                        mf.SelectFrmListViewReload(lv);
+                        //需要更新RSS统计
+                        //用多线程实现统计信息条数
 
-                     YQDataSet.RssItemRow ri=  mf.DS.RssItem.NewRssItemRow();
-                     ri.ChannelCode = navurl.Code;
-                     ri.Title = result.Title.Trim();
-                     ri.Link = result.Link;
-                     ri.PubDate = Convert.ToDateTime(result.PubDate);
-                     ri.IsRead = "F";
-                     mf.DS.RssItem.AddRssItemRow(ri);
-                      
+                      //  mf.CountNum_RssItem2NavUrl();
+
+
+                        //方法一：直接到库，但了更新DataSet中的表。
+                        // mf.rssTap.InsertQuery(navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                        //方法二：在DataSet中添加行，然后一次提交到库
+                        mf.DS.RssItem.AddRssItemRow(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
                     }
-                    mf.rssTap.Update(mf.DS.RssItem);
+
                 }
-
-
+                //最后再写入数据，否则太频繁。
+              
             }
             catch (Exception ex)
             {
@@ -162,6 +179,7 @@ namespace YQSQLite
             t.Start();
         }
         #endregion
+
         #region 右键菜单
 
         //编辑导航

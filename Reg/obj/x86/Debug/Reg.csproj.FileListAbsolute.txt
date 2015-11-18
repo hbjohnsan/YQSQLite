@@ -13,6 +13,4 @@ E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\Reg.exe
 E:\BaiduYunDownload\YQSQLite\Reg\obj\x86\Debug\Reg.pdb
-E:\YQSQLite\Reg\obj\x86\Debug\ResolveAssemblyReference.cache
-E:\YQSQLite\Reg\obj\x86\Debug\GenerateResource.read.1.tlog
-E:\YQSQLite\Reg\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\YQSQLite\Reg\obj\x86\Debug\Reg.csproj.GenerateResource.Cache
