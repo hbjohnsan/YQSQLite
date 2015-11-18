@@ -38,7 +38,7 @@ namespace YQSQLite
             {
                 RssItem rssit = new RssItem();
                 rssit.Title = it.Title;
-                rssit.Site = it.Site;
+             //   rssit.Site = it.Site;
                 rssit.PubDate = it.PubDate;
                 rssit.Link = it.Link;
                 rssit.Content = it.Content;
@@ -54,7 +54,7 @@ namespace YQSQLite
         {
             YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(itemID);
             RssItem rsit = new RssItem();
-            rsit.Site = row.Site;
+           // rsit.Site = row.Site;
             rsit.Title = row.Title;
             rsit.PubDate = row.PubDate;
             rsit.Link = row.Link;

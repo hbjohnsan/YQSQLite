@@ -42,10 +42,9 @@ namespace YQSQLite
         {
             //取消 点击事件传递。所有数据在本窗口中处理。
             //mf.NodeClick(sender, e);
-            //1、判断点击的项是分类项，还是有采集地址的具体项，可以用level项判断。2、如果是分类项直接从库中显示已采所有数据。如果是采集项则进行下一步的更新采集。
+            //1、判断点击的项是分类项，还是有采集地址的具体项，可以用Leaf项判断。2、如果是分类项直接从库中显示已采所有数据。如果是采集项则进行下一步的更新采集。
             NavUrl navurl = e.Node.Tag as NavUrl;
-           
-            if (navurl.Leaf == 0)//根据level可以判断出是否是分类项。是否用数据库中提取
+            if (navurl.Leaf == 0)//根据Leaf可以判断出是否是分类项。是否用数据库中提取
             {
                 //先要清空筛选窗体中listview中的项
                 mf.SelectFrmListviewClear();
@@ -58,23 +57,92 @@ namespace YQSQLite
                     RssItem rsit = new RssItem();
                     rsit.RssItemID = item.RssItemID;
                     rsit.ChannelCode = item.ChannelCode;
-                    rsit.Site = item.Site;
+                  //  rsit.Site = item.Site;
                     rsit.Title = item.Title;
                     rsit.Link = item.Link;
                     rsit.PubDate = item.PubDate;
                     rsit.IsRead = item.IsRead;
                     rsit.Content = item.Content;
-                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.Site });
+                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.ChannelCode });
                     lv.Tag = rsit;
                     mf.SelectFrmListViewReload(lv);
                 }
-               
-            }
-            else//去采集
-            {
 
             }
+            else//有采集RSS的地址，去采集
+            {
+                //试用多线程
+                Thread t = new Thread(new ThreadStart(delegate
+                {
+                    DownLoadRssItem(navurl);
+                }));
+                t.IsBackground = true;
+                t.Start();
+            }
             RequestRss();
+        }
+        //去采集下载Rss新闻源列表
+        private void DownLoadRssItem(NavUrl navurl)
+        {
+            #region 正常规则
+            try
+            {
+                //加载RSS新闻数据
+                XElement rssData = XElement.Load(navurl.Link);
+
+                //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+                var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+                                select new
+                                {
+                                    Title = item.Element(XName.Get("title")).Value.Trim(),
+                                    Link = item.Element(XName.Get("link")).Value,
+                                    PubDate = item.Element(XName.Get("pubDate")).Value
+                                };
+
+                foreach (var result in itemQuery)
+                {
+                    ////查数据库中是否已有相同标题，没有再追加！
+                    //if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
+                    //{
+                    //    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+                    //    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
+                    //    lv.Tag = it;
+                    //    listView1.Items.Add(lv);
+
+                    //    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+                    //    mf.rssTap.Update(rssRow);
+                    //}
+
+
+                    //通过Link查找DataSet中是否有相同的网址
+                    //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集
+                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.ChannelCode == navurl.Code && p.Link == result.Link) select p).ToList().Count;
+                    if (f == 0)
+                    {
+                        RssItem it = new RssItem(navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                      //  ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
+                      //  lv.Tag = it;
+                     //   listView1.Items.Add(lv);
+
+                     YQDataSet.RssItemRow ri=  mf.DS.RssItem.NewRssItemRow();
+                     ri.ChannelCode = navurl.Code;
+                     ri.Title = result.Title.Trim();
+                     ri.Link = result.Link;
+                     ri.PubDate = Convert.ToDateTime(result.PubDate);
+                     ri.IsRead = "F";
+                     mf.DS.RssItem.AddRssItemRow(ri);
+                      
+                    }
+                    mf.rssTap.Update(mf.DS.RssItem);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            #endregion
         }
         #endregion
 
@@ -90,6 +158,7 @@ namespace YQSQLite
             {
 
             }));
+            t.IsBackground = true;
             t.Start();
         }
         #endregion
@@ -127,6 +196,7 @@ namespace YQSQLite
                 NavUrl nu = new NavUrl();
                 nu.ID = (int)kind.ID;
                 nu.Name = kind.Name;
+                nu.Nav_Domain = kind.Nav_Domain;
                 nu.PID = (int)kind.PID;
                 nu.Code = kind.Code;
                 nu.level = (int)kind.level;

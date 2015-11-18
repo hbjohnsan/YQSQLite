@@ -35,7 +35,7 @@ namespace YQSQLite
                     select p;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { i.SiteName, i.UrlFlag, i.ContFlag, i.RemoveFlag });
+                ListViewItem lv = new ListViewItem(new string[] { i.SiteName, i.Rule_Domain, i.ContFlag, i.RemoveFlag });
                 listView1.Items.Add(lv);
             }
         }
@@ -52,9 +52,9 @@ namespace YQSQLite
             }
             if (btnAdd.Text == "修改")
             {
-                YQDataSet.RuleRow rw = mf.DS.Rule.FindByUrlFlag(txtUrlFlag.Text.Trim());
+                YQDataSet.RuleRow rw = mf.DS.Rule.FindByRule_Domain(txtUrlFlag.Text.Trim());
                 rw.SiteName = txtSiteName.Text;
-                rw.UrlFlag = txtUrlFlag.Text;
+                rw.Rule_Domain = txtUrlFlag.Text;
                 rw.ContFlag = txtContFlag.Text;
                 rw.RemoveFlag = txtRemove.Text;
                 mf.ruleTap.Update(rw);
@@ -99,7 +99,7 @@ namespace YQSQLite
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                YQDataSet.RuleRow rw = mf.DS.Rule.FindByUrlFlag(listView1.SelectedItems[0].SubItems[1].Text);
+                YQDataSet.RuleRow rw = mf.DS.Rule.FindByRule_Domain(listView1.SelectedItems[0].SubItems[1].Text);
                 rw.Delete();
                 mf.ruleTap.Update(mf.DS.Rule);
                 listView1.SelectedItems[0].Remove();

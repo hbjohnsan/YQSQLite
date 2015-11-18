@@ -28,13 +28,13 @@ namespace YQSQLite {
         
         private upsendDataTable tableupsend;
         
-        private RuleDataTable tableRule;
-        
         private sendtoDataTable tablesendto;
         
         private serverDataTable tableserver;
         
         private NavUrlDataTable tableNavUrl;
+        
+        private RuleDataTable tableRule;
         
         private RssItemDataTable tableRssItem;
         
@@ -72,9 +72,6 @@ namespace YQSQLite {
                 if ((ds.Tables["upsend"] != null)) {
                     base.Tables.Add(new upsendDataTable(ds.Tables["upsend"]));
                 }
-                if ((ds.Tables["Rule"] != null)) {
-                    base.Tables.Add(new RuleDataTable(ds.Tables["Rule"]));
-                }
                 if ((ds.Tables["sendto"] != null)) {
                     base.Tables.Add(new sendtoDataTable(ds.Tables["sendto"]));
                 }
@@ -83,6 +80,9 @@ namespace YQSQLite {
                 }
                 if ((ds.Tables["NavUrl"] != null)) {
                     base.Tables.Add(new NavUrlDataTable(ds.Tables["NavUrl"]));
+                }
+                if ((ds.Tables["Rule"] != null)) {
+                    base.Tables.Add(new RuleDataTable(ds.Tables["Rule"]));
                 }
                 if ((ds.Tables["RssItem"] != null)) {
                     base.Tables.Add(new RssItemDataTable(ds.Tables["RssItem"]));
@@ -129,16 +129,6 @@ namespace YQSQLite {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RuleDataTable Rule {
-            get {
-                return this.tableRule;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public sendtoDataTable sendto {
             get {
                 return this.tablesendto;
@@ -162,6 +152,16 @@ namespace YQSQLite {
         public NavUrlDataTable NavUrl {
             get {
                 return this.tableNavUrl;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public RuleDataTable Rule {
+            get {
+                return this.tableRule;
             }
         }
         
@@ -248,9 +248,6 @@ namespace YQSQLite {
                 if ((ds.Tables["upsend"] != null)) {
                     base.Tables.Add(new upsendDataTable(ds.Tables["upsend"]));
                 }
-                if ((ds.Tables["Rule"] != null)) {
-                    base.Tables.Add(new RuleDataTable(ds.Tables["Rule"]));
-                }
                 if ((ds.Tables["sendto"] != null)) {
                     base.Tables.Add(new sendtoDataTable(ds.Tables["sendto"]));
                 }
@@ -259,6 +256,9 @@ namespace YQSQLite {
                 }
                 if ((ds.Tables["NavUrl"] != null)) {
                     base.Tables.Add(new NavUrlDataTable(ds.Tables["NavUrl"]));
+                }
+                if ((ds.Tables["Rule"] != null)) {
+                    base.Tables.Add(new RuleDataTable(ds.Tables["Rule"]));
                 }
                 if ((ds.Tables["RssItem"] != null)) {
                     base.Tables.Add(new RssItemDataTable(ds.Tables["RssItem"]));
@@ -308,12 +308,6 @@ namespace YQSQLite {
                     this.tableupsend.InitVars();
                 }
             }
-            this.tableRule = ((RuleDataTable)(base.Tables["Rule"]));
-            if ((initTable == true)) {
-                if ((this.tableRule != null)) {
-                    this.tableRule.InitVars();
-                }
-            }
             this.tablesendto = ((sendtoDataTable)(base.Tables["sendto"]));
             if ((initTable == true)) {
                 if ((this.tablesendto != null)) {
@@ -330,6 +324,12 @@ namespace YQSQLite {
             if ((initTable == true)) {
                 if ((this.tableNavUrl != null)) {
                     this.tableNavUrl.InitVars();
+                }
+            }
+            this.tableRule = ((RuleDataTable)(base.Tables["Rule"]));
+            if ((initTable == true)) {
+                if ((this.tableRule != null)) {
+                    this.tableRule.InitVars();
                 }
             }
             this.tableRssItem = ((RssItemDataTable)(base.Tables["RssItem"]));
@@ -352,14 +352,14 @@ namespace YQSQLite {
             base.Tables.Add(this.tablecpcuse);
             this.tableupsend = new upsendDataTable();
             base.Tables.Add(this.tableupsend);
-            this.tableRule = new RuleDataTable();
-            base.Tables.Add(this.tableRule);
             this.tablesendto = new sendtoDataTable();
             base.Tables.Add(this.tablesendto);
             this.tableserver = new serverDataTable();
             base.Tables.Add(this.tableserver);
             this.tableNavUrl = new NavUrlDataTable();
             base.Tables.Add(this.tableNavUrl);
+            this.tableRule = new RuleDataTable();
+            base.Tables.Add(this.tableRule);
             this.tableRssItem = new RssItemDataTable();
             base.Tables.Add(this.tableRssItem);
         }
@@ -378,12 +378,6 @@ namespace YQSQLite {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeRule() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializesendto() {
             return false;
         }
@@ -397,6 +391,12 @@ namespace YQSQLite {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeNavUrl() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeRule() {
             return false;
         }
         
@@ -468,9 +468,6 @@ namespace YQSQLite {
         public delegate void upsendRowChangeEventHandler(object sender, upsendRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void RuleRowChangeEventHandler(object sender, RuleRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void sendtoRowChangeEventHandler(object sender, sendtoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -478,6 +475,9 @@ namespace YQSQLite {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void NavUrlRowChangeEventHandler(object sender, NavUrlRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void RuleRowChangeEventHandler(object sender, RuleRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void RssItemRowChangeEventHandler(object sender, RssItemRowChangeEvent e);
@@ -1241,310 +1241,6 @@ namespace YQSQLite {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RuleDataTable : global::System.Data.TypedTableBase<RuleRow> {
-            
-            private global::System.Data.DataColumn columnSiteName;
-            
-            private global::System.Data.DataColumn columnUrlFlag;
-            
-            private global::System.Data.DataColumn columnContFlag;
-            
-            private global::System.Data.DataColumn columnRemoveFlag;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RuleDataTable() {
-                this.TableName = "Rule";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RuleDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected RuleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SiteNameColumn {
-                get {
-                    return this.columnSiteName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UrlFlagColumn {
-                get {
-                    return this.columnUrlFlag;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ContFlagColumn {
-                get {
-                    return this.columnContFlag;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn RemoveFlagColumn {
-                get {
-                    return this.columnRemoveFlag;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RuleRow this[int index] {
-                get {
-                    return ((RuleRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RuleRowChangeEventHandler RuleRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RuleRowChangeEventHandler RuleRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RuleRowChangeEventHandler RuleRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RuleRowChangeEventHandler RuleRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddRuleRow(RuleRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RuleRow AddRuleRow(string SiteName, string UrlFlag, string ContFlag, string RemoveFlag) {
-                RuleRow rowRuleRow = ((RuleRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        SiteName,
-                        UrlFlag,
-                        ContFlag,
-                        RemoveFlag};
-                rowRuleRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRuleRow);
-                return rowRuleRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RuleRow FindByUrlFlag(string UrlFlag) {
-                return ((RuleRow)(this.Rows.Find(new object[] {
-                            UrlFlag})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                RuleDataTable cln = ((RuleDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new RuleDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnSiteName = base.Columns["SiteName"];
-                this.columnUrlFlag = base.Columns["UrlFlag"];
-                this.columnContFlag = base.Columns["ContFlag"];
-                this.columnRemoveFlag = base.Columns["RemoveFlag"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnSiteName = new global::System.Data.DataColumn("SiteName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSiteName);
-                this.columnUrlFlag = new global::System.Data.DataColumn("UrlFlag", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUrlFlag);
-                this.columnContFlag = new global::System.Data.DataColumn("ContFlag", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnContFlag);
-                this.columnRemoveFlag = new global::System.Data.DataColumn("RemoveFlag", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRemoveFlag);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnUrlFlag}, true));
-                this.columnSiteName.MaxLength = 10;
-                this.columnUrlFlag.AllowDBNull = false;
-                this.columnUrlFlag.Unique = true;
-                this.columnUrlFlag.MaxLength = 20;
-                this.columnContFlag.MaxLength = 50;
-                this.columnRemoveFlag.MaxLength = 100;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RuleRow NewRuleRow() {
-                return ((RuleRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RuleRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(RuleRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.RuleRowChanged != null)) {
-                    this.RuleRowChanged(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.RuleRowChanging != null)) {
-                    this.RuleRowChanging(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.RuleRowDeleted != null)) {
-                    this.RuleRowDeleted(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.RuleRowDeleting != null)) {
-                    this.RuleRowDeleting(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveRuleRow(RuleRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                YQDataSet ds = new YQDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RuleDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class sendtoDataTable : global::System.Data.TypedTableBase<sendtoRow> {
             
             private global::System.Data.DataColumn columnId;
@@ -2196,6 +1892,8 @@ namespace YQSQLite {
             
             private global::System.Data.DataColumn columnName;
             
+            private global::System.Data.DataColumn columnNav_Domain;
+            
             private global::System.Data.DataColumn columnPID;
             
             private global::System.Data.DataColumn columnCode;
@@ -2258,6 +1956,14 @@ namespace YQSQLite {
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Nav_DomainColumn {
+                get {
+                    return this.columnNav_Domain;
                 }
             }
             
@@ -2362,11 +2068,12 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NavUrlRow AddNavUrlRow(string Name, long PID, string Code, long level, long Leaf, string Link, long Image, long NoReadCount, long ItemCount) {
+            public NavUrlRow AddNavUrlRow(string Name, string Nav_Domain, long PID, string Code, long level, long Leaf, string Link, long Image, int NoReadCount, int ItemCount) {
                 NavUrlRow rowNavUrlRow = ((NavUrlRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
+                        Nav_Domain,
                         PID,
                         Code,
                         level,
@@ -2406,6 +2113,7 @@ namespace YQSQLite {
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
                 this.columnName = base.Columns["Name"];
+                this.columnNav_Domain = base.Columns["Nav_Domain"];
                 this.columnPID = base.Columns["PID"];
                 this.columnCode = base.Columns["Code"];
                 this.columnlevel = base.Columns["level"];
@@ -2423,6 +2131,8 @@ namespace YQSQLite {
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
+                this.columnNav_Domain = new global::System.Data.DataColumn("Nav_Domain", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNav_Domain);
                 this.columnPID = new global::System.Data.DataColumn("PID", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPID);
                 this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2435,9 +2145,9 @@ namespace YQSQLite {
                 base.Columns.Add(this.columnLink);
                 this.columnImage = new global::System.Data.DataColumn("Image", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImage);
-                this.columnNoReadCount = new global::System.Data.DataColumn("NoReadCount", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnNoReadCount = new global::System.Data.DataColumn("NoReadCount", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNoReadCount);
-                this.columnItemCount = new global::System.Data.DataColumn("ItemCount", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnItemCount = new global::System.Data.DataColumn("ItemCount", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnItemCount);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
@@ -2447,6 +2157,7 @@ namespace YQSQLite {
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnName.MaxLength = 20;
+                this.columnNav_Domain.MaxLength = 20;
                 this.columnCode.MaxLength = 20;
                 this.columnLink.MaxLength = 100;
             }
@@ -2580,13 +2291,315 @@ namespace YQSQLite {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class RuleDataTable : global::System.Data.TypedTableBase<RuleRow> {
+            
+            private global::System.Data.DataColumn columnSiteName;
+            
+            private global::System.Data.DataColumn columnRule_Domain;
+            
+            private global::System.Data.DataColumn columnContFlag;
+            
+            private global::System.Data.DataColumn columnRemoveFlag;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RuleDataTable() {
+                this.TableName = "Rule";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RuleDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected RuleDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SiteNameColumn {
+                get {
+                    return this.columnSiteName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Rule_DomainColumn {
+                get {
+                    return this.columnRule_Domain;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ContFlagColumn {
+                get {
+                    return this.columnContFlag;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RemoveFlagColumn {
+                get {
+                    return this.columnRemoveFlag;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RuleRow this[int index] {
+                get {
+                    return ((RuleRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RuleRowChangeEventHandler RuleRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RuleRowChangeEventHandler RuleRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RuleRowChangeEventHandler RuleRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event RuleRowChangeEventHandler RuleRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddRuleRow(RuleRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RuleRow AddRuleRow(string SiteName, string Rule_Domain, string ContFlag, string RemoveFlag) {
+                RuleRow rowRuleRow = ((RuleRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        SiteName,
+                        Rule_Domain,
+                        ContFlag,
+                        RemoveFlag};
+                rowRuleRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRuleRow);
+                return rowRuleRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RuleRow FindByRule_Domain(string Rule_Domain) {
+                return ((RuleRow)(this.Rows.Find(new object[] {
+                            Rule_Domain})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                RuleDataTable cln = ((RuleDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new RuleDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnSiteName = base.Columns["SiteName"];
+                this.columnRule_Domain = base.Columns["Rule_Domain"];
+                this.columnContFlag = base.Columns["ContFlag"];
+                this.columnRemoveFlag = base.Columns["RemoveFlag"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnSiteName = new global::System.Data.DataColumn("SiteName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSiteName);
+                this.columnRule_Domain = new global::System.Data.DataColumn("Rule_Domain", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRule_Domain);
+                this.columnContFlag = new global::System.Data.DataColumn("ContFlag", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContFlag);
+                this.columnRemoveFlag = new global::System.Data.DataColumn("RemoveFlag", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRemoveFlag);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnRule_Domain}, true));
+                this.columnSiteName.MaxLength = 10;
+                this.columnRule_Domain.AllowDBNull = false;
+                this.columnRule_Domain.Unique = true;
+                this.columnRule_Domain.MaxLength = 20;
+                this.columnContFlag.MaxLength = 50;
+                this.columnRemoveFlag.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RuleRow NewRuleRow() {
+                return ((RuleRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new RuleRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(RuleRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.RuleRowChanged != null)) {
+                    this.RuleRowChanged(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.RuleRowChanging != null)) {
+                    this.RuleRowChanging(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.RuleRowDeleted != null)) {
+                    this.RuleRowDeleted(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.RuleRowDeleting != null)) {
+                    this.RuleRowDeleting(this, new RuleRowChangeEvent(((RuleRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveRuleRow(RuleRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                YQDataSet ds = new YQDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "RuleDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class RssItemDataTable : global::System.Data.TypedTableBase<RssItemRow> {
             
             private global::System.Data.DataColumn columnRssItemID;
             
             private global::System.Data.DataColumn columnChannelCode;
-            
-            private global::System.Data.DataColumn columnSite;
             
             private global::System.Data.DataColumn columnTitle;
             
@@ -2644,14 +2657,6 @@ namespace YQSQLite {
             public global::System.Data.DataColumn ChannelCodeColumn {
                 get {
                     return this.columnChannelCode;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SiteColumn {
-                get {
-                    return this.columnSite;
                 }
             }
             
@@ -2732,12 +2737,11 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RssItemRow AddRssItemRow(int RssItemID, string ChannelCode, string Site, string Title, string Link, System.DateTime PubDate, string IsRead, string Content) {
+            public RssItemRow AddRssItemRow(int RssItemID, string ChannelCode, string Title, string Link, System.DateTime PubDate, string IsRead, string Content) {
                 RssItemRow rowRssItemRow = ((RssItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         RssItemID,
                         ChannelCode,
-                        Site,
                         Title,
                         Link,
                         PubDate,
@@ -2774,7 +2778,6 @@ namespace YQSQLite {
             internal void InitVars() {
                 this.columnRssItemID = base.Columns["RssItemID"];
                 this.columnChannelCode = base.Columns["ChannelCode"];
-                this.columnSite = base.Columns["Site"];
                 this.columnTitle = base.Columns["Title"];
                 this.columnLink = base.Columns["Link"];
                 this.columnPubDate = base.Columns["PubDate"];
@@ -2789,8 +2792,6 @@ namespace YQSQLite {
                 base.Columns.Add(this.columnRssItemID);
                 this.columnChannelCode = new global::System.Data.DataColumn("ChannelCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnChannelCode);
-                this.columnSite = new global::System.Data.DataColumn("Site", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSite);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTitle);
                 this.columnLink = new global::System.Data.DataColumn("Link", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2806,7 +2807,6 @@ namespace YQSQLite {
                 this.columnRssItemID.AllowDBNull = false;
                 this.columnRssItemID.Unique = true;
                 this.columnChannelCode.MaxLength = 6;
-                this.columnSite.MaxLength = 20;
                 this.columnTitle.MaxLength = 100;
                 this.columnLink.MaxLength = 2147483647;
                 this.columnIsRead.MaxLength = 1;
@@ -3208,116 +3208,6 @@ namespace YQSQLite {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class RuleRow : global::System.Data.DataRow {
-            
-            private RuleDataTable tableRule;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RuleRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableRule = ((RuleDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string SiteName {
-                get {
-                    try {
-                        return ((string)(this[this.tableRule.SiteNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Rule”中列“SiteName”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableRule.SiteNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UrlFlag {
-                get {
-                    return ((string)(this[this.tableRule.UrlFlagColumn]));
-                }
-                set {
-                    this[this.tableRule.UrlFlagColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ContFlag {
-                get {
-                    try {
-                        return ((string)(this[this.tableRule.ContFlagColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Rule”中列“ContFlag”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableRule.ContFlagColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string RemoveFlag {
-                get {
-                    try {
-                        return ((string)(this[this.tableRule.RemoveFlagColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Rule”中列“RemoveFlag”的值为 DBNull。", e);
-                    }
-                }
-                set {
-                    this[this.tableRule.RemoveFlagColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSiteNameNull() {
-                return this.IsNull(this.tableRule.SiteNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSiteNameNull() {
-                this[this.tableRule.SiteNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsContFlagNull() {
-                return this.IsNull(this.tableRule.ContFlagColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetContFlagNull() {
-                this[this.tableRule.ContFlagColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsRemoveFlagNull() {
-                return this.IsNull(this.tableRule.RemoveFlagColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetRemoveFlagNull() {
-                this[this.tableRule.RemoveFlagColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class sendtoRow : global::System.Data.DataRow {
             
             private sendtoDataTable tablesendto;
@@ -3662,6 +3552,22 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nav_Domain {
+                get {
+                    if (this.IsNav_DomainNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableNavUrl.Nav_DomainColumn]));
+                    }
+                }
+                set {
+                    this[this.tableNavUrl.Nav_DomainColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public long PID {
                 get {
                     try {
@@ -3758,10 +3664,10 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long NoReadCount {
+            public int NoReadCount {
                 get {
                     try {
-                        return ((long)(this[this.tableNavUrl.NoReadCountColumn]));
+                        return ((int)(this[this.tableNavUrl.NoReadCountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“NavUrl”中列“NoReadCount”的值为 DBNull。", e);
@@ -3774,10 +3680,10 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long ItemCount {
+            public int ItemCount {
                 get {
                     try {
-                        return ((long)(this[this.tableNavUrl.ItemCountColumn]));
+                        return ((int)(this[this.tableNavUrl.ItemCountColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“NavUrl”中列“ItemCount”的值为 DBNull。", e);
@@ -3798,6 +3704,18 @@ namespace YQSQLite {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNameNull() {
                 this[this.tableNavUrl.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNav_DomainNull() {
+                return this.IsNull(this.tableNavUrl.Nav_DomainColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNav_DomainNull() {
+                this[this.tableNavUrl.Nav_DomainColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3900,6 +3818,116 @@ namespace YQSQLite {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class RuleRow : global::System.Data.DataRow {
+            
+            private RuleDataTable tableRule;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal RuleRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRule = ((RuleDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SiteName {
+                get {
+                    try {
+                        return ((string)(this[this.tableRule.SiteNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Rule”中列“SiteName”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableRule.SiteNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Rule_Domain {
+                get {
+                    return ((string)(this[this.tableRule.Rule_DomainColumn]));
+                }
+                set {
+                    this[this.tableRule.Rule_DomainColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ContFlag {
+                get {
+                    if (this.IsContFlagNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableRule.ContFlagColumn]));
+                    }
+                }
+                set {
+                    this[this.tableRule.ContFlagColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RemoveFlag {
+                get {
+                    if (this.IsRemoveFlagNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableRule.RemoveFlagColumn]));
+                    }
+                }
+                set {
+                    this[this.tableRule.RemoveFlagColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSiteNameNull() {
+                return this.IsNull(this.tableRule.SiteNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSiteNameNull() {
+                this[this.tableRule.SiteNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsContFlagNull() {
+                return this.IsNull(this.tableRule.ContFlagColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetContFlagNull() {
+                this[this.tableRule.ContFlagColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRemoveFlagNull() {
+                return this.IsNull(this.tableRule.RemoveFlagColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRemoveFlagNull() {
+                this[this.tableRule.RemoveFlagColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class RssItemRow : global::System.Data.DataRow {
             
             private RssItemDataTable tableRssItem;
@@ -3926,11 +3954,11 @@ namespace YQSQLite {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ChannelCode {
                 get {
-                    if (this.IsChannelCodeNull()) {
-                        return string.Empty;
-                    }
-                    else {
+                    try {
                         return ((string)(this[this.tableRssItem.ChannelCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RssItem”中列“ChannelCode”的值为 DBNull。", e);
                     }
                 }
                 set {
@@ -3940,29 +3968,13 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Site {
-                get {
-                    if (this.IsSiteNull()) {
-                        return string.Empty;
-                    }
-                    else {
-                        return ((string)(this[this.tableRssItem.SiteColumn]));
-                    }
-                }
-                set {
-                    this[this.tableRssItem.SiteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Title {
                 get {
-                    if (this.IsTitleNull()) {
-                        return string.Empty;
-                    }
-                    else {
+                    try {
                         return ((string)(this[this.tableRssItem.TitleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“RssItem”中列“Title”的值为 DBNull。", e);
                     }
                 }
                 set {
@@ -4044,18 +4056,6 @@ namespace YQSQLite {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetChannelCodeNull() {
                 this[this.tableRssItem.ChannelCodeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSiteNull() {
-                return this.IsNull(this.tableRssItem.SiteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSiteNull() {
-                this[this.tableRssItem.SiteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4191,40 +4191,6 @@ namespace YQSQLite {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class RuleRowChangeEvent : global::System.EventArgs {
-            
-            private RuleRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RuleRowChangeEvent(RuleRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RuleRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public class sendtoRowChangeEvent : global::System.EventArgs {
             
             private sendtoRow eventRow;
@@ -4309,6 +4275,40 @@ namespace YQSQLite {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public NavUrlRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class RuleRowChangeEvent : global::System.EventArgs {
+            
+            private RuleRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RuleRowChangeEvent(RuleRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RuleRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5800,549 +5800,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class RuleTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
-        
-        private global::System.Data.SQLite.SQLiteConnection _connection;
-        
-        private global::System.Data.SQLite.SQLiteTransaction _transaction;
-        
-        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public RuleTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Rule";
-            tableMapping.ColumnMappings.Add("SiteName", "SiteName");
-            tableMapping.ColumnMappings.Add("UrlFlag", "UrlFlag");
-            tableMapping.ColumnMappings.Add("ContFlag", "ContFlag");
-            tableMapping.ColumnMappings.Add("RemoveFlag", "RemoveFlag");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[Rule] WHERE (((@IsNull_SiteName = 1 AND [SiteName] IS NULL) OR ([SiteName] = @Original_SiteName)) AND ([UrlFlag] = @Original_UrlFlag) AND ((@IsNull_ContFlag = 1 AND [ContFlag] IS NULL) OR ([ContFlag] = @Original_ContFlag)) AND ((@IsNull_RemoveFlag = 1 AND [RemoveFlag] IS NULL) OR ([RemoveFlag] = @Original_RemoveFlag)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_SiteName";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "SiteName";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_SiteName";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "SiteName";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_UrlFlag";
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.SourceColumn = "UrlFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_ContFlag";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "ContFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_ContFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "ContFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_RemoveFlag";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "RemoveFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_RemoveFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "RemoveFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [main].[sqlite_default_schema].[Rule] ([SiteName], [UrlFlag], [ContFl" +
-                "ag], [RemoveFlag]) VALUES (@SiteName, @UrlFlag, @ContFlag, @RemoveFlag)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@SiteName";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "SiteName";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@UrlFlag";
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.SourceColumn = "UrlFlag";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ContFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "ContFlag";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@RemoveFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "RemoveFlag";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[Rule] SET [SiteName] = @SiteName, [UrlFlag] = @UrlFlag, [ContFlag] = @ContFlag, [RemoveFlag] = @RemoveFlag WHERE (((@IsNull_SiteName = 1 AND [SiteName] IS NULL) OR ([SiteName] = @Original_SiteName)) AND ([UrlFlag] = @Original_UrlFlag) AND ((@IsNull_ContFlag = 1 AND [ContFlag] IS NULL) OR ([ContFlag] = @Original_ContFlag)) AND ((@IsNull_RemoveFlag = 1 AND [RemoveFlag] IS NULL) OR ([RemoveFlag] = @Original_RemoveFlag)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@SiteName";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "SiteName";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@UrlFlag";
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.SourceColumn = "UrlFlag";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@ContFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "ContFlag";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@RemoveFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "RemoveFlag";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_SiteName";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "SiteName";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_SiteName";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "SiteName";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_UrlFlag";
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
-            param.SourceColumn = "UrlFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_ContFlag";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "ContFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_ContFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "ContFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_RemoveFlag";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "RemoveFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_RemoveFlag";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "RemoveFlag";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SQLite.SQLiteConnection();
-            this._connection.ConnectionString = global::YQSQLite.Properties.Settings.Default.YQConnectionString1;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
-            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [SiteName], [UrlFlag], [ContFlag], [RemoveFlag] FROM [Rule]";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(YQDataSet.RuleDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual YQDataSet.RuleDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            YQDataSet.RuleDataTable dataTable = new YQDataSet.RuleDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(YQDataSet.RuleDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(YQDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Rule");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_SiteName, string Original_UrlFlag, string Original_ContFlag, string Original_RemoveFlag) {
-            if ((Original_SiteName == null)) {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_SiteName));
-            }
-            if ((Original_UrlFlag == null)) {
-                throw new global::System.ArgumentNullException("Original_UrlFlag");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_UrlFlag));
-            }
-            if ((Original_ContFlag == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_ContFlag));
-            }
-            if ((Original_RemoveFlag == null)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_RemoveFlag));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string SiteName, string UrlFlag, string ContFlag, string RemoveFlag) {
-            if ((SiteName == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(SiteName));
-            }
-            if ((UrlFlag == null)) {
-                throw new global::System.ArgumentNullException("UrlFlag");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(UrlFlag));
-            }
-            if ((ContFlag == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ContFlag));
-            }
-            if ((RemoveFlag == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(RemoveFlag));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string SiteName, string UrlFlag, string ContFlag, string RemoveFlag, string Original_SiteName, string Original_UrlFlag, string Original_ContFlag, string Original_RemoveFlag) {
-            if ((SiteName == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(SiteName));
-            }
-            if ((UrlFlag == null)) {
-                throw new global::System.ArgumentNullException("UrlFlag");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(UrlFlag));
-            }
-            if ((ContFlag == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(ContFlag));
-            }
-            if ((RemoveFlag == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(RemoveFlag));
-            }
-            if ((Original_SiteName == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_SiteName));
-            }
-            if ((Original_UrlFlag == null)) {
-                throw new global::System.ArgumentNullException("Original_UrlFlag");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_UrlFlag));
-            }
-            if ((Original_ContFlag == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ContFlag));
-            }
-            if ((Original_RemoveFlag == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_RemoveFlag));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string SiteName, string ContFlag, string RemoveFlag, string Original_SiteName, string Original_UrlFlag, string Original_ContFlag, string Original_RemoveFlag) {
-            return this.Update(SiteName, Original_UrlFlag, ContFlag, RemoveFlag, Original_SiteName, Original_UrlFlag, Original_ContFlag, Original_RemoveFlag);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class sendtoTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
@@ -7446,6 +6903,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
             tableMapping.DataSetTable = "NavUrl";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Nav_Domain", "Nav_Domain");
             tableMapping.ColumnMappings.Add("PID", "PID");
             tableMapping.ColumnMappings.Add("Code", "Code");
             tableMapping.ColumnMappings.Add("level", "level");
@@ -7457,7 +6915,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[NavUrl] WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_PID = 1 AND [PID] IS NULL) OR ([PID] = @Original_PID)) AND ((@IsNull_Code = 1 AND [Code] IS NULL) OR ([Code] = @Original_Code)) AND ((@IsNull_level = 1 AND [level] IS NULL) OR ([level] = @Original_level)) AND ((@IsNull_Leaf = 1 AND [Leaf] IS NULL) OR ([Leaf] = @Original_Leaf)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ((@IsNull_NoReadCount = 1 AND [NoReadCount] IS NULL) OR ([NoReadCount] = @Original_NoReadCount)) AND ((@IsNull_ItemCount = 1 AND [ItemCount] IS NULL) OR ([ItemCount] = @Original_ItemCount)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[NavUrl] WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Nav_Domain = 1 AND [Nav_Domain] IS NULL) OR ([Nav_Domain] = @Original_Nav_Domain)) AND ((@IsNull_PID = 1 AND [PID] IS NULL) OR ([PID] = @Original_PID)) AND ((@IsNull_Code = 1 AND [Code] IS NULL) OR ([Code] = @Original_Code)) AND ((@IsNull_level = 1 AND [level] IS NULL) OR ([level] = @Original_level)) AND ((@IsNull_Leaf = 1 AND [Leaf] IS NULL) OR ([Leaf] = @Original_Leaf)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ((@IsNull_NoReadCount = 1 AND [NoReadCount] IS NULL) OR ([NoReadCount] = @Original_NoReadCount)) AND ((@IsNull_ItemCount = 1 AND [ItemCount] IS NULL) OR ([ItemCount] = @Original_ItemCount)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_ID";
@@ -7479,6 +6937,21 @@ namespace YQSQLite.YQDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "Name";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_Nav_Domain";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "Nav_Domain";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_Nav_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Nav_Domain";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -7603,15 +7076,22 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [main].[sqlite_default_schema].[NavUrl] ([Name], [PID], [Code], [leve" +
-                "l], [Leaf], [Link], [Image], [NoReadCount], [ItemCount]) VALUES (@Name, @PID, @C" +
-                "ode, @level, @Leaf, @Link, @Image, @NoReadCount, @ItemCount)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [main].[sqlite_default_schema].[NavUrl] ([Name], [Nav_Domain], [PID]," +
+                " [Code], [level], [Leaf], [Link], [Image], [NoReadCount], [ItemCount]) VALUES (@" +
+                "Name, @Nav_Domain, @PID, @Code, @level, @Leaf, @Link, @Image, @NoReadCount, @Ite" +
+                "mCount)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Name";
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "Name";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Nav_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Nav_Domain";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@PID";
@@ -7663,13 +7143,19 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[NavUrl] SET [Name] = @Name, [PID] = @PID, [Code] = @Code, [level] = @level, [Leaf] = @Leaf, [Link] = @Link, [Image] = @Image, [NoReadCount] = @NoReadCount, [ItemCount] = @ItemCount WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_PID = 1 AND [PID] IS NULL) OR ([PID] = @Original_PID)) AND ((@IsNull_Code = 1 AND [Code] IS NULL) OR ([Code] = @Original_Code)) AND ((@IsNull_level = 1 AND [level] IS NULL) OR ([level] = @Original_level)) AND ((@IsNull_Leaf = 1 AND [Leaf] IS NULL) OR ([Leaf] = @Original_Leaf)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ((@IsNull_NoReadCount = 1 AND [NoReadCount] IS NULL) OR ([NoReadCount] = @Original_NoReadCount)) AND ((@IsNull_ItemCount = 1 AND [ItemCount] IS NULL) OR ([ItemCount] = @Original_ItemCount)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[NavUrl] SET [Name] = @Name, [Nav_Domain] = @Nav_Domain, [PID] = @PID, [Code] = @Code, [level] = @level, [Leaf] = @Leaf, [Link] = @Link, [Image] = @Image, [NoReadCount] = @NoReadCount, [ItemCount] = @ItemCount WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Nav_Domain = 1 AND [Nav_Domain] IS NULL) OR ([Nav_Domain] = @Original_Nav_Domain)) AND ((@IsNull_PID = 1 AND [PID] IS NULL) OR ([PID] = @Original_PID)) AND ((@IsNull_Code = 1 AND [Code] IS NULL) OR ([Code] = @Original_Code)) AND ((@IsNull_level = 1 AND [level] IS NULL) OR ([level] = @Original_level)) AND ((@IsNull_Leaf = 1 AND [Leaf] IS NULL) OR ([Leaf] = @Original_Leaf)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ((@IsNull_NoReadCount = 1 AND [NoReadCount] IS NULL) OR ([NoReadCount] = @Original_NoReadCount)) AND ((@IsNull_ItemCount = 1 AND [ItemCount] IS NULL) OR ([ItemCount] = @Original_ItemCount)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Name";
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "Name";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Nav_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Nav_Domain";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@PID";
@@ -7739,6 +7225,21 @@ namespace YQSQLite.YQDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "Name";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_Nav_Domain";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "Nav_Domain";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_Nav_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Nav_Domain";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -7876,8 +7377,8 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [ID], [Name], [PID], [Code], [level], [Leaf], [Link], [Image], [NoReadCoun" +
-                "t], [ItemCount] FROM [NavUrl]";
+            this._commandCollection[0].CommandText = "SELECT [ID], [Name], [Nav_Domain], [PID], [Code], [level], [Leaf], [Link], [Image" +
+                "], [NoReadCount], [ItemCount] FROM [NavUrl]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7938,7 +7439,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_ID, string Original_Name, global::System.Nullable<long> Original_PID, string Original_Code, global::System.Nullable<long> Original_level, global::System.Nullable<long> Original_Leaf, string Original_Link, global::System.Nullable<long> Original_Image, global::System.Nullable<long> Original_NoReadCount, global::System.Nullable<long> Original_ItemCount) {
+        public virtual int Delete(long Original_ID, string Original_Name, string Original_Nav_Domain, global::System.Nullable<long> Original_PID, string Original_Code, global::System.Nullable<long> Original_level, global::System.Nullable<long> Original_Leaf, string Original_Link, global::System.Nullable<long> Original_Image, global::System.Nullable<long> Original_NoReadCount, global::System.Nullable<long> Original_ItemCount) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_ID));
             if ((Original_Name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -7948,69 +7449,77 @@ namespace YQSQLite.YQDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Name));
             }
-            if ((Original_PID.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((long)(Original_PID.Value));
-            }
-            else {
+            if ((Original_Nav_Domain == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_Code == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Nav_Domain));
+            }
+            if ((Original_PID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((long)(Original_PID.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Code));
-            }
-            if ((Original_level.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((long)(Original_level.Value));
-            }
-            else {
+            if ((Original_Code == null)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_Leaf.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Code));
+            }
+            if ((Original_level.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((long)(Original_Leaf.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((long)(Original_level.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_Link == null)) {
+            if ((Original_Leaf.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((long)(Original_Leaf.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Link));
-            }
-            if ((Original_Image.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((long)(Original_Image.Value));
-            }
-            else {
+            if ((Original_Link == null)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((Original_NoReadCount.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_Link));
+            }
+            if ((Original_Image.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((long)(Original_NoReadCount.Value));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((long)(Original_Image.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Original_ItemCount.HasValue == true)) {
+            if ((Original_NoReadCount.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((long)(Original_ItemCount.Value));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((long)(Original_NoReadCount.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ItemCount.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((long)(Original_ItemCount.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8032,60 +7541,66 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, global::System.Nullable<long> PID, string Code, global::System.Nullable<long> level, global::System.Nullable<long> Leaf, string Link, global::System.Nullable<long> Image, global::System.Nullable<long> NoReadCount, global::System.Nullable<long> ItemCount) {
+        public virtual int Insert(string Name, string Nav_Domain, global::System.Nullable<long> PID, string Code, global::System.Nullable<long> level, global::System.Nullable<long> Leaf, string Link, global::System.Nullable<long> Image, global::System.Nullable<long> NoReadCount, global::System.Nullable<long> ItemCount) {
             if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
-            if ((PID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((long)(PID.Value));
-            }
-            else {
+            if ((Nav_Domain == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Code == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Nav_Domain));
+            }
+            if ((PID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((long)(PID.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Code));
-            }
-            if ((level.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((long)(level.Value));
-            }
-            else {
+            if ((Code == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Leaf.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((long)(Leaf.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Code));
+            }
+            if ((level.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((long)(level.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Link == null)) {
+            if ((Leaf.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((long)(Leaf.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Link));
-            }
-            if ((Image.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((long)(Image.Value));
-            }
-            else {
+            if ((Link == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((NoReadCount.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((long)(NoReadCount.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Link));
+            }
+            if ((Image.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((long)(Image.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((ItemCount.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((long)(ItemCount.Value));
+            if ((NoReadCount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((long)(NoReadCount.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((ItemCount.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((long)(ItemCount.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8109,6 +7624,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string Name, 
+                    string Nav_Domain, 
                     global::System.Nullable<long> PID, 
                     string Code, 
                     global::System.Nullable<long> level, 
@@ -8119,6 +7635,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     global::System.Nullable<long> ItemCount, 
                     long Original_ID, 
                     string Original_Name, 
+                    string Original_Nav_Domain, 
                     global::System.Nullable<long> Original_PID, 
                     string Original_Code, 
                     global::System.Nullable<long> Original_level, 
@@ -8133,126 +7650,140 @@ namespace YQSQLite.YQDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
-            if ((PID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((long)(PID.Value));
-            }
-            else {
+            if ((Nav_Domain == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Code == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Nav_Domain));
+            }
+            if ((PID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((long)(PID.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Code));
-            }
-            if ((level.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((long)(level.Value));
-            }
-            else {
+            if ((Code == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Leaf.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(Leaf.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Code));
+            }
+            if ((level.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((long)(level.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Link == null)) {
+            if ((Leaf.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((long)(Leaf.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Link));
-            }
-            if ((Image.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((long)(Image.Value));
-            }
-            else {
+            if ((Link == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((NoReadCount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(NoReadCount.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Link));
+            }
+            if ((Image.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Image.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((ItemCount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(ItemCount.Value));
+            if ((NoReadCount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(NoReadCount.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(Original_ID));
-            if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            if ((ItemCount.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((long)(ItemCount.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((long)(Original_ID));
+            if ((Original_Name == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Name));
+            }
+            if ((Original_Nav_Domain == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Nav_Domain));
             }
             if ((Original_PID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((long)(Original_PID.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((long)(Original_PID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_Code == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Code));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Code));
             }
             if ((Original_level.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((long)(Original_level.Value));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((long)(Original_level.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             if ((Original_Leaf.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((long)(Original_Leaf.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((long)(Original_Leaf.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             if ((Original_Link == null)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Link));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Link));
             }
             if ((Original_Image.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((long)(Original_Image.Value));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((long)(Original_Image.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             if ((Original_NoReadCount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((long)(Original_NoReadCount.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((long)(Original_NoReadCount.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             if ((Original_ItemCount.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((long)(Original_ItemCount.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((long)(Original_ItemCount.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8268,6 +7799,549 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class RuleTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::System.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.SQLite.SQLiteTransaction _transaction;
+        
+        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public RuleTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Rule";
+            tableMapping.ColumnMappings.Add("SiteName", "SiteName");
+            tableMapping.ColumnMappings.Add("Rule_Domain", "Rule_Domain");
+            tableMapping.ColumnMappings.Add("ContFlag", "ContFlag");
+            tableMapping.ColumnMappings.Add("RemoveFlag", "RemoveFlag");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[Rule] WHERE (((@IsNull_SiteName = 1 AND [SiteName] IS NULL) OR ([SiteName] = @Original_SiteName)) AND ([Rule_Domain] = @Original_Rule_Domain) AND ((@IsNull_ContFlag = 1 AND [ContFlag] IS NULL) OR ([ContFlag] = @Original_ContFlag)) AND ((@IsNull_RemoveFlag = 1 AND [RemoveFlag] IS NULL) OR ([RemoveFlag] = @Original_RemoveFlag)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_SiteName";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "SiteName";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_SiteName";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "SiteName";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_Rule_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Rule_Domain";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_ContFlag";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "ContFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_ContFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "ContFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_RemoveFlag";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "RemoveFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_RemoveFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "RemoveFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [main].[sqlite_default_schema].[Rule] ([SiteName], [Rule_Domain], [Co" +
+                "ntFlag], [RemoveFlag]) VALUES (@SiteName, @Rule_Domain, @ContFlag, @RemoveFlag)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SiteName";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "SiteName";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Rule_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Rule_Domain";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@ContFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "ContFlag";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RemoveFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "RemoveFlag";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[Rule] SET [SiteName] = @SiteName, [Rule_Domain] = @Rule_Domain, [ContFlag] = @ContFlag, [RemoveFlag] = @RemoveFlag WHERE (((@IsNull_SiteName = 1 AND [SiteName] IS NULL) OR ([SiteName] = @Original_SiteName)) AND ([Rule_Domain] = @Original_Rule_Domain) AND ((@IsNull_ContFlag = 1 AND [ContFlag] IS NULL) OR ([ContFlag] = @Original_ContFlag)) AND ((@IsNull_RemoveFlag = 1 AND [RemoveFlag] IS NULL) OR ([RemoveFlag] = @Original_RemoveFlag)))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@SiteName";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "SiteName";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Rule_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Rule_Domain";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@ContFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "ContFlag";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@RemoveFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "RemoveFlag";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_SiteName";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "SiteName";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_SiteName";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "SiteName";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_Rule_Domain";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "Rule_Domain";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_ContFlag";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "ContFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_ContFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "ContFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@IsNull_RemoveFlag";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.SourceColumn = "RemoveFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@Original_RemoveFlag";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SourceColumn = "RemoveFlag";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::YQSQLite.Properties.Settings.Default.YQConnectionString1;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT [SiteName], [Rule_Domain], [ContFlag], [RemoveFlag] FROM [Rule]";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(YQDataSet.RuleDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual YQDataSet.RuleDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            YQDataSet.RuleDataTable dataTable = new YQDataSet.RuleDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(YQDataSet.RuleDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(YQDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Rule");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string Original_SiteName, string Original_Rule_Domain, string Original_ContFlag, string Original_RemoveFlag) {
+            if ((Original_SiteName == null)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_SiteName));
+            }
+            if ((Original_Rule_Domain == null)) {
+                throw new global::System.ArgumentNullException("Original_Rule_Domain");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Rule_Domain));
+            }
+            if ((Original_ContFlag == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_ContFlag));
+            }
+            if ((Original_RemoveFlag == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_RemoveFlag));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string SiteName, string Rule_Domain, string ContFlag, string RemoveFlag) {
+            if ((SiteName == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(SiteName));
+            }
+            if ((Rule_Domain == null)) {
+                throw new global::System.ArgumentNullException("Rule_Domain");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Rule_Domain));
+            }
+            if ((ContFlag == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ContFlag));
+            }
+            if ((RemoveFlag == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(RemoveFlag));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string SiteName, string Rule_Domain, string ContFlag, string RemoveFlag, string Original_SiteName, string Original_Rule_Domain, string Original_ContFlag, string Original_RemoveFlag) {
+            if ((SiteName == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(SiteName));
+            }
+            if ((Rule_Domain == null)) {
+                throw new global::System.ArgumentNullException("Rule_Domain");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Rule_Domain));
+            }
+            if ((ContFlag == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(ContFlag));
+            }
+            if ((RemoveFlag == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(RemoveFlag));
+            }
+            if ((Original_SiteName == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_SiteName));
+            }
+            if ((Original_Rule_Domain == null)) {
+                throw new global::System.ArgumentNullException("Original_Rule_Domain");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Rule_Domain));
+            }
+            if ((Original_ContFlag == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ContFlag));
+            }
+            if ((Original_RemoveFlag == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_RemoveFlag));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string SiteName, string ContFlag, string RemoveFlag, string Original_SiteName, string Original_Rule_Domain, string Original_ContFlag, string Original_RemoveFlag) {
+            return this.Update(SiteName, Original_Rule_Domain, ContFlag, RemoveFlag, Original_SiteName, Original_Rule_Domain, Original_ContFlag, Original_RemoveFlag);
         }
     }
     
@@ -8394,7 +8468,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
             tableMapping.DataSetTable = "RssItem";
             tableMapping.ColumnMappings.Add("RssItemID", "RssItemID");
             tableMapping.ColumnMappings.Add("ChannelCode", "ChannelCode");
-            tableMapping.ColumnMappings.Add("Site", "Site");
             tableMapping.ColumnMappings.Add("Title", "Title");
             tableMapping.ColumnMappings.Add("Link", "Link");
             tableMapping.ColumnMappings.Add("PubDate", "PubDate");
@@ -8403,7 +8476,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[RssItem] WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Site = 1 AND [Site] IS NULL) OR ([Site] = @Original_Site)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [main].[sqlite_default_schema].[RssItem] WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Original_RssItemID";
@@ -8425,21 +8498,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "ChannelCode";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Site";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Site";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Site";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "Site";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -8518,8 +8576,8 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [main].[sqlite_default_schema].[RssItem] ([RssItemID], [ChannelCode]," +
-                " [Site], [Title], [Link], [PubDate], [IsRead], [Content]) VALUES (@RssItemID, @C" +
-                "hannelCode, @Site, @Title, @Link, @PubDate, @IsRead, @Content)";
+                " [Title], [Link], [PubDate], [IsRead], [Content]) VALUES (@RssItemID, @ChannelCo" +
+                "de, @Title, @Link, @PubDate, @IsRead, @Content)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@RssItemID";
@@ -8532,12 +8590,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "ChannelCode";
-            this._adapter.InsertCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Site";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "Site";
             this._adapter.InsertCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Title";
@@ -8569,7 +8621,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::System.Data.SQLite.SQLiteCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[RssItem] SET [RssItemID] = @RssItemID, [ChannelCode] = @ChannelCode, [Site] = @Site, [Title] = @Title, [Link] = @Link, [PubDate] = @PubDate, [IsRead] = @IsRead, [Content] = @Content WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Site = 1 AND [Site] IS NULL) OR ([Site] = @Original_Site)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [main].[sqlite_default_schema].[RssItem] SET [RssItemID] = @RssItemID, [ChannelCode] = @ChannelCode, [Title] = @Title, [Link] = @Link, [PubDate] = @PubDate, [IsRead] = @IsRead, [Content] = @Content WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@RssItemID";
@@ -8582,12 +8634,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "ChannelCode";
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Site";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "Site";
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
             param.ParameterName = "@Title";
@@ -8637,21 +8683,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.DbType = global::System.Data.DbType.AnsiStringFixedLength;
             param.SourceColumn = "ChannelCode";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@IsNull_Site";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.DbType = global::System.Data.DbType.Int32;
-            param.SourceColumn = "Site";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::System.Data.SQLite.SQLiteParameter();
-            param.ParameterName = "@Original_Site";
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.DbType = global::System.Data.DbType.AnsiString;
-            param.SourceColumn = "Site";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::System.Data.SQLite.SQLiteParameter();
@@ -8742,8 +8773,8 @@ namespace YQSQLite.YQDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [RssItemID], [ChannelCode], [Site], [Title], [Link], [PubDate], [IsRead], " +
-                "[Content] FROM [RssItem]";
+            this._commandCollection[0].CommandText = "SELECT [RssItemID], [ChannelCode], [Title], [Link], [PubDate], [IsRead], [Content" +
+                "] FROM [RssItem]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8804,7 +8835,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_RssItemID, string Original_ChannelCode, string Original_Site, string Original_Title, string Original_Link, global::System.Nullable<global::System.DateTime> Original_PubDate, string Original_IsRead, string Original_Content) {
+        public virtual int Delete(long Original_RssItemID, string Original_ChannelCode, string Original_Title, string Original_Link, global::System.Nullable<global::System.DateTime> Original_PubDate, string Original_IsRead, string Original_Content) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_RssItemID));
             if ((Original_ChannelCode == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -8814,53 +8845,45 @@ namespace YQSQLite.YQDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_ChannelCode));
             }
-            if ((Original_Site == null)) {
+            if ((Original_Title == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Site));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Title));
             }
-            if ((Original_Title == null)) {
+            if ((Original_Link == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Title));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Link));
             }
-            if ((Original_Link == null)) {
+            if ((Original_PubDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_PubDate.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Link));
-            }
-            if ((Original_PubDate.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_PubDate.Value));
-            }
-            else {
+            if ((Original_IsRead == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_IsRead == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_IsRead));
+            }
+            if ((Original_Content == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_IsRead));
-            }
-            if ((Original_Content == null)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_Content));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Content));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8882,7 +8905,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(long RssItemID, string ChannelCode, string Site, string Title, string Link, global::System.Nullable<global::System.DateTime> PubDate, string IsRead, string Content) {
+        public virtual int Insert(long RssItemID, string ChannelCode, string Title, string Link, global::System.Nullable<global::System.DateTime> PubDate, string IsRead, string Content) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((long)(RssItemID));
             if ((ChannelCode == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -8890,41 +8913,35 @@ namespace YQSQLite.YQDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ChannelCode));
             }
-            if ((Site == null)) {
+            if ((Title == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Site));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Title));
             }
-            if ((Title == null)) {
+            if ((Link == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Title));
-            }
-            if ((Link == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Link));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Link));
             }
             if ((PubDate.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(PubDate.Value));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(PubDate.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((IsRead == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(IsRead));
+            }
+            if ((Content == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(IsRead));
-            }
-            if ((Content == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Content));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Content));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8946,23 +8963,7 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    long RssItemID, 
-                    string ChannelCode, 
-                    string Site, 
-                    string Title, 
-                    string Link, 
-                    global::System.Nullable<global::System.DateTime> PubDate, 
-                    string IsRead, 
-                    string Content, 
-                    long Original_RssItemID, 
-                    string Original_ChannelCode, 
-                    string Original_Site, 
-                    string Original_Title, 
-                    string Original_Link, 
-                    global::System.Nullable<global::System.DateTime> Original_PubDate, 
-                    string Original_IsRead, 
-                    string Original_Content) {
+        public virtual int Update(long RssItemID, string ChannelCode, string Title, string Link, global::System.Nullable<global::System.DateTime> PubDate, string IsRead, string Content, long Original_RssItemID, string Original_ChannelCode, string Original_Title, string Original_Link, global::System.Nullable<global::System.DateTime> Original_PubDate, string Original_IsRead, string Original_Content) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((long)(RssItemID));
             if ((ChannelCode == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -8970,98 +8971,84 @@ namespace YQSQLite.YQDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(ChannelCode));
             }
-            if ((Site == null)) {
+            if ((Title == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Site));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Title));
             }
-            if ((Title == null)) {
+            if ((Link == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Title));
-            }
-            if ((Link == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Link));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Link));
             }
             if ((PubDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(PubDate.Value));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(PubDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((IsRead == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(IsRead));
+            }
+            if ((Content == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(IsRead));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Content));
             }
-            if ((Content == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Content));
-            }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((long)(Original_RssItemID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((long)(Original_RssItemID));
             if ((Original_ChannelCode == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_ChannelCode));
-            }
-            if ((Original_Site == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Site));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_ChannelCode));
             }
             if ((Original_Title == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Title));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Title));
             }
             if ((Original_Link == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Link));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Link));
             }
             if ((Original_PubDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_PubDate.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_PubDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_IsRead == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_IsRead));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_IsRead));
             }
             if ((Original_Content == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Content));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Content));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9083,8 +9070,8 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ChannelCode, string Site, string Title, string Link, global::System.Nullable<global::System.DateTime> PubDate, string IsRead, string Content, long Original_RssItemID, string Original_ChannelCode, string Original_Site, string Original_Title, string Original_Link, global::System.Nullable<global::System.DateTime> Original_PubDate, string Original_IsRead, string Original_Content) {
-            return this.Update(Original_RssItemID, ChannelCode, Site, Title, Link, PubDate, IsRead, Content, Original_RssItemID, Original_ChannelCode, Original_Site, Original_Title, Original_Link, Original_PubDate, Original_IsRead, Original_Content);
+        public virtual int Update(string ChannelCode, string Title, string Link, global::System.Nullable<global::System.DateTime> PubDate, string IsRead, string Content, long Original_RssItemID, string Original_ChannelCode, string Original_Title, string Original_Link, global::System.Nullable<global::System.DateTime> Original_PubDate, string Original_IsRead, string Original_Content) {
+            return this.Update(Original_RssItemID, ChannelCode, Title, Link, PubDate, IsRead, Content, Original_RssItemID, Original_ChannelCode, Original_Title, Original_Link, Original_PubDate, Original_IsRead, Original_Content);
         }
     }
     
@@ -9104,13 +9091,13 @@ namespace YQSQLite.YQDataSetTableAdapters {
         
         private upsendTableAdapter _upsendTableAdapter;
         
-        private RuleTableAdapter _ruleTableAdapter;
-        
         private sendtoTableAdapter _sendtoTableAdapter;
         
         private serverTableAdapter _serverTableAdapter;
         
         private NavUrlTableAdapter _navUrlTableAdapter;
+        
+        private RuleTableAdapter _ruleTableAdapter;
         
         private RssItemTableAdapter _rssItemTableAdapter;
         
@@ -9162,20 +9149,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public RuleTableAdapter RuleTableAdapter {
-            get {
-                return this._ruleTableAdapter;
-            }
-            set {
-                this._ruleTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public sendtoTableAdapter sendtoTableAdapter {
             get {
                 return this._sendtoTableAdapter;
@@ -9210,6 +9183,20 @@ namespace YQSQLite.YQDataSetTableAdapters {
             }
             set {
                 this._navUrlTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public RuleTableAdapter RuleTableAdapter {
+            get {
+                return this._ruleTableAdapter;
+            }
+            set {
+                this._ruleTableAdapter = value;
             }
         }
         
@@ -9254,10 +9241,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
                             && (this._upsendTableAdapter.Connection != null))) {
                     return this._upsendTableAdapter.Connection;
                 }
-                if (((this._ruleTableAdapter != null) 
-                            && (this._ruleTableAdapter.Connection != null))) {
-                    return this._ruleTableAdapter.Connection;
-                }
                 if (((this._sendtoTableAdapter != null) 
                             && (this._sendtoTableAdapter.Connection != null))) {
                     return this._sendtoTableAdapter.Connection;
@@ -9269,6 +9252,10 @@ namespace YQSQLite.YQDataSetTableAdapters {
                 if (((this._navUrlTableAdapter != null) 
                             && (this._navUrlTableAdapter.Connection != null))) {
                     return this._navUrlTableAdapter.Connection;
+                }
+                if (((this._ruleTableAdapter != null) 
+                            && (this._ruleTableAdapter.Connection != null))) {
+                    return this._ruleTableAdapter.Connection;
                 }
                 if (((this._rssItemTableAdapter != null) 
                             && (this._rssItemTableAdapter.Connection != null))) {
@@ -9293,9 +9280,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
                 if ((this._upsendTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._ruleTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._sendtoTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -9303,6 +9287,9 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     count = (count + 1);
                 }
                 if ((this._navUrlTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._ruleTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._rssItemTableAdapter != null)) {
@@ -9319,21 +9306,21 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(YQDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._serverTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.server.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._serverTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._navUrlTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.NavUrl.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._navUrlTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._ruleTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Rule.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._ruleTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -9346,12 +9333,12 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._sendtoTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.sendto.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._serverTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.server.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._sendtoTableAdapter.Update(updatedRows));
+                    result = (result + this._serverTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -9373,12 +9360,12 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._ruleTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Rule.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._sendtoTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.sendto.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._ruleTableAdapter.Update(updatedRows));
+                    result = (result + this._sendtoTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -9392,19 +9379,19 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(YQDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._serverTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.server.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._serverTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._navUrlTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.NavUrl.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._navUrlTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._ruleTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Rule.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._ruleTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -9416,11 +9403,11 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._sendtoTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.sendto.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._serverTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.server.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._sendtoTableAdapter.Update(addedRows));
+                    result = (result + this._serverTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -9440,11 +9427,11 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._ruleTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Rule.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._sendtoTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.sendto.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._ruleTableAdapter.Update(addedRows));
+                    result = (result + this._sendtoTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -9458,11 +9445,11 @@ namespace YQSQLite.YQDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(YQDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._ruleTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Rule.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._sendtoTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.sendto.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._ruleTableAdapter.Update(deletedRows));
+                    result = (result + this._sendtoTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9482,11 +9469,11 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._sendtoTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.sendto.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._serverTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.server.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._sendtoTableAdapter.Update(deletedRows));
+                    result = (result + this._serverTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9498,19 +9485,19 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._ruleTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Rule.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._ruleTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._navUrlTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.NavUrl.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._navUrlTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._serverTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.server.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._serverTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9561,10 +9548,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
                         && (this.MatchTableAdapterConnection(this._upsendTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
             }
-            if (((this._ruleTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._ruleTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
-            }
             if (((this._sendtoTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._sendtoTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
@@ -9575,6 +9558,10 @@ namespace YQSQLite.YQDataSetTableAdapters {
             }
             if (((this._navUrlTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._navUrlTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
+            }
+            if (((this._ruleTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._ruleTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("由 TableAdapterManager 管理的所有 TableAdapter 必须使用相同的连接字符串。");
             }
             if (((this._rssItemTableAdapter != null) 
@@ -9630,15 +9617,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
                         adaptersWithAcceptChangesDuringUpdate.Add(this._upsendTableAdapter.Adapter);
                     }
                 }
-                if ((this._ruleTableAdapter != null)) {
-                    revertConnections.Add(this._ruleTableAdapter, this._ruleTableAdapter.Connection);
-                    this._ruleTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(workConnection));
-                    this._ruleTableAdapter.Transaction = ((global::System.Data.SQLite.SQLiteTransaction)(workTransaction));
-                    if (this._ruleTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._ruleTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._ruleTableAdapter.Adapter);
-                    }
-                }
                 if ((this._sendtoTableAdapter != null)) {
                     revertConnections.Add(this._sendtoTableAdapter, this._sendtoTableAdapter.Connection);
                     this._sendtoTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(workConnection));
@@ -9664,6 +9642,15 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     if (this._navUrlTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._navUrlTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._navUrlTableAdapter.Adapter);
+                    }
+                }
+                if ((this._ruleTableAdapter != null)) {
+                    revertConnections.Add(this._ruleTableAdapter, this._ruleTableAdapter.Connection);
+                    this._ruleTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._ruleTableAdapter.Transaction = ((global::System.Data.SQLite.SQLiteTransaction)(workTransaction));
+                    if (this._ruleTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._ruleTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._ruleTableAdapter.Adapter);
                     }
                 }
                 if ((this._rssItemTableAdapter != null)) {
@@ -9741,10 +9728,6 @@ namespace YQSQLite.YQDataSetTableAdapters {
                     this._upsendTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._upsendTableAdapter]));
                     this._upsendTableAdapter.Transaction = null;
                 }
-                if ((this._ruleTableAdapter != null)) {
-                    this._ruleTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._ruleTableAdapter]));
-                    this._ruleTableAdapter.Transaction = null;
-                }
                 if ((this._sendtoTableAdapter != null)) {
                     this._sendtoTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._sendtoTableAdapter]));
                     this._sendtoTableAdapter.Transaction = null;
@@ -9756,6 +9739,10 @@ namespace YQSQLite.YQDataSetTableAdapters {
                 if ((this._navUrlTableAdapter != null)) {
                     this._navUrlTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._navUrlTableAdapter]));
                     this._navUrlTableAdapter.Transaction = null;
+                }
+                if ((this._ruleTableAdapter != null)) {
+                    this._ruleTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._ruleTableAdapter]));
+                    this._ruleTableAdapter.Transaction = null;
                 }
                 if ((this._rssItemTableAdapter != null)) {
                     this._rssItemTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._rssItemTableAdapter]));

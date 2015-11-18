@@ -76,50 +76,50 @@ namespace YQSQLite
 
         }
         //定义委托
-        private delegate void delCaijiRule(clNode e);
+        //private delegate void delCaijiRule(clNode e);
 
 
         //采集规则
         //private void CaijiRule(object e)
         //{
-        //    clNode cn = e as clNode;
+        //    //clNode cn = e as clNode;
         //    if (this.InvokeRequired == false)
         //    {
         //        #region 新浪规则
         //        //判断新浪sina网站的Url需要截取
         //        // if (cn.Name.Contains("sina"))
-        //        if (cn.Link.Contains("sina.com.cn"))
-        //        {
-        //            //加载RSS新闻数据
-        //            Regex regex = new Regex(@"(?<=[=]).*");
-        //            //http://go.rss.sina.com.cn/redirect.php?url=http://tech.sina.com.cn/it/2013-11-16/09198919884.shtml
-        //            XElement rssData = XElement.Load(cn.Link);
+        //        //if (cn.Link.Contains("sina.com.cn"))
+        //        //{
+        //        //    //加载RSS新闻数据
+        //        //    Regex regex = new Regex(@"(?<=[=]).*");
+        //        //    //http://go.rss.sina.com.cn/redirect.php?url=http://tech.sina.com.cn/it/2013-11-16/09198919884.shtml
+        //        //    XElement rssData = XElement.Load(cn.Link);
 
-        //            //取出新闻标题，转成RssItem对象，并暂存到列表控件中
-        //            var itemQuery = from item in rssData.Descendants(XName.Get("item"))
-        //                            select new
-        //                            {
-        //                                Title = item.Element(XName.Get("title")).Value.Trim(),
-        //                                Link = regex.Match(item.Element(XName.Get("link")).Value).ToString(),
-        //                                PubDate = item.Element(XName.Get("pubDate")).Value
-        //                            };
-        //            foreach (var result in itemQuery)
-        //            {
+        //        //    //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+        //        //    var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+        //        //                    select new
+        //        //                    {
+        //        //                        Title = item.Element(XName.Get("title")).Value.Trim(),
+        //        //                        Link = regex.Match(item.Element(XName.Get("link")).Value).ToString(),
+        //        //                        PubDate = item.Element(XName.Get("pubDate")).Value
+        //        //                    };
+        //        //    foreach (var result in itemQuery)
+        //        //    {
 
-        //                //查数据库中是否已有相同标题，没有再追加！
-        //                if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(resuslt.Title))))
-        //                {
-        //                    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
-        //                    lv.Tag = it;
-        //                    listView1.Items.Add(lv);
+        //        //        //查数据库中是否已有相同标题，没有再追加！
+        //        //        //if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(resuslt.Title))))
+        //        //        //{
+        //        //        //    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //        //    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
+        //        //        //    lv.Tag = it;
+        //        //        //    listView1.Items.Add(lv);
 
-        //                    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    mf.rssTap.Update(rssRow);
-        //                }
+        //        //        //    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //        //    mf.rssTap.Update(rssRow);
+        //        //        //}
 
-        //            }
-        //        }
+        //        //    }
+        //        //}
         //        #endregion
 
         //        #region 网易规则
@@ -127,175 +127,175 @@ namespace YQSQLite
         //        ////163网易
         //        ////http://news.163.com/13/1114/02/9DK05PBU0001124J.html
         //        ////http://news.163.com/13/1114/02/9DK05PBU0001124J_all.html
-        //        if (cn.Name.Contains("163"))
-        //        {
-        //            //加载RSS新闻数据
-        //            //string s1 = "http://news.163.com/13/1114/02/9DK05PBU0001124J.html";
-        //            //string s = s1.Insert(s1.LastIndexOf('.'),"_all");
-        //            //MessageBox.Show(s);
+        //        //if (cn.Name.Contains("163"))
+        //        //{
+        //        //    //加载RSS新闻数据
+        //        //    //string s1 = "http://news.163.com/13/1114/02/9DK05PBU0001124J.html";
+        //        //    //string s = s1.Insert(s1.LastIndexOf('.'),"_all");
+        //        //    //MessageBox.Show(s);
 
-        //            XElement rssData = XElement.Load(cn.Link);
+        //        //    XElement rssData = XElement.Load(cn.Link);
 
-        //            //取出新闻标题，转成RssItem对象，并暂存到列表控件中
-        //            var itemQuery = from item in rssData.Descendants(XName.Get("item"))
-        //                            select new
-        //                            {
-        //                                Title = item.Element(XName.Get("title")).Value.Trim(),
-        //                                Link = item.Element(XName.Get("guid")).Value,
-        //                                PubDate = item.Element(XName.Get("pubDate")).Value
-        //                            };
-        //            foreach (var result in itemQuery)
-        //            {
+        //        //    //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+        //        //    var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+        //        //                    select new
+        //        //                    {
+        //        //                        Title = item.Element(XName.Get("title")).Value.Trim(),
+        //        //                        Link = item.Element(XName.Get("guid")).Value,
+        //        //                        PubDate = item.Element(XName.Get("pubDate")).Value
+        //        //                    };
+        //        //    foreach (var result in itemQuery)
+        //        //    {
 
-        //                //查数据库中是否已有相同标题，没有再追加！
-        //                if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
-        //                {
-        //                    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), (result.Link.Insert(result.Link.LastIndexOf("."), "_all")), Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
-        //                    lv.Tag = it;
-        //                    listView1.Items.Add(lv);
-        //                    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, (result.Link.Insert(result.Link.LastIndexOf("."), "_all")), Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    mf.rssTap.Update(rssRow);
-        //                }
+        //        //        //查数据库中是否已有相同标题，没有再追加！
+        //        //        if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
+        //        //        {
+        //        //            RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), (result.Link.Insert(result.Link.LastIndexOf("."), "_all")), Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //            ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
+        //        //            lv.Tag = it;
+        //        //            listView1.Items.Add(lv);
+        //        //            YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, (result.Link.Insert(result.Link.LastIndexOf("."), "_all")), Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //            mf.rssTap.Update(rssRow);
+        //        //        }
 
-        //            }
-        //        }
+        //        //    }
+        //        //}
         //        #endregion
 
         //        #region 新华网规则
-        //        if (cn.Name.Contains("xinhuanet"))
-        //        {
-        //            //加载RSS新闻数据
-        //            XElement rssData = XElement.Load(cn.Link);
+        //        //if (cn.Name.Contains("xinhuanet"))
+        //        //{
+        //        //    //加载RSS新闻数据
+        //        //    XElement rssData = XElement.Load(cn.Link);
 
-        //            //看来只能用正规截取了！
-        //            //<link>http://news.xinhuanet.com/shuhua/2013-11/16/c_125712954.htm</link> 
-        //            //Sat,16-Nov-2013 11:33:12 GMT 
-        //            //<description>
-        //            Regex regex = new Regex(@"(?<=<\/link>)(.*?)(?=<description>)");
-        //            //想到的办法：一是通过xelement对象，正规取得；二是在源码中加入pubDate标签。
-        //            //取出新闻标题，转成RssItem对象，并暂存到列表控件中
-        //            #region test
-        //            //var i = rssData.Descendants(XName.Get("item")).First();
-        //            //MessageBox.Show(i.ToString());//保留了xelement格式。
-        //            //去除标题的a标签。
-        //            Regex regTitle = new Regex(@"</?.+?>");
-        //            //去除连接中的双引号                       
-        //            //string s="\"http://news.xinhuanet.com/edu/2013-10/11/c_125515383.htm\"";
-        //            //MessageBox.Show(s.Replace("\"", ""));
-        //            #endregion
-        //            var itemQuery = from item in rssData.Descendants(XName.Get("item"))
-        //                            select new
-        //                            {
-        //                                Title = regTitle.Replace(item.Element(XName.Get("title")).Value.Trim(), ""),
-        //                                Link = item.Element(XName.Get("link")).Value.Replace("\"", ""),
-        //                                PubDate = regex.Match(item.ToString()).ToString()
-        //                                //PubDate = item.Element(XName.Get("pubDate")).Value
+        //        //    //看来只能用正规截取了！
+        //        //    //<link>http://news.xinhuanet.com/shuhua/2013-11/16/c_125712954.htm</link> 
+        //        //    //Sat,16-Nov-2013 11:33:12 GMT 
+        //        //    //<description>
+        //        //    Regex regex = new Regex(@"(?<=<\/link>)(.*?)(?=<description>)");
+        //        //    //想到的办法：一是通过xelement对象，正规取得；二是在源码中加入pubDate标签。
+        //        //    //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+        //        //    #region test
+        //        //    //var i = rssData.Descendants(XName.Get("item")).First();
+        //        //    //MessageBox.Show(i.ToString());//保留了xelement格式。
+        //        //    //去除标题的a标签。
+        //        //    Regex regTitle = new Regex(@"</?.+?>");
+        //        //    //去除连接中的双引号                       
+        //        //    //string s="\"http://news.xinhuanet.com/edu/2013-10/11/c_125515383.htm\"";
+        //        //    //MessageBox.Show(s.Replace("\"", ""));
+        //        //    #endregion
+        //        //    var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+        //        //                    select new
+        //        //                    {
+        //        //                        Title = regTitle.Replace(item.Element(XName.Get("title")).Value.Trim(), ""),
+        //        //                        Link = item.Element(XName.Get("link")).Value.Replace("\"", ""),
+        //        //                        PubDate = regex.Match(item.ToString()).ToString()
+        //        //                        //PubDate = item.Element(XName.Get("pubDate")).Value
 
-        //                            };
+        //        //                    };
 
-        //            foreach (var result in itemQuery)
-        //            {
+        //        //    foreach (var result in itemQuery)
+        //        //    {
 
 
 
-        //                //查数据库中是否已有相同标题，没有再追加！
-        //                if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
-        //                {
-        //                    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
-        //                    lv.Tag = it;
-        //                    listView1.Items.Add(lv);
+        //        //        //查数据库中是否已有相同标题，没有再追加！
+        //        //        if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
+        //        //        {
+        //        //            RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //            ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
+        //        //            lv.Tag = it;
+        //        //            listView1.Items.Add(lv);
 
-        //                    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    mf.rssTap.Update(rssRow);
-        //                }
+        //        //            YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //            mf.rssTap.Update(rssRow);
+        //        //        }
 
-        //            }
-        //        }
+        //        //    }
+        //        //}
         //        #endregion
 
         //        #region FT中文
         //        //加入全文采集规则 http://www.ftchinese.com/story/001053357?full=y
-        //        if (cn.Name.Contains("ftchinese"))
-        //        {
+        //        //if (cn.Name.Contains("ftchinese"))
+        //        //{
 
-        //            XElement rssData = XElement.Load(cn.Link);
+        //        //    XElement rssData = XElement.Load(cn.Link);
 
-        //            //取出新闻标题，转成RssItem对象，并暂存到列表控件中
-        //            var itemQuery = from item in rssData.Descendants(XName.Get("item"))
-        //                            select new
-        //                            {
-        //                                Title = item.Element(XName.Get("title")).Value.Trim(),
-        //                                Link = item.Element(XName.Get("link")).Value,
-        //                                PubDate = item.Element(XName.Get("pubDate")).Value
-        //                            };
-        //            foreach (var result in itemQuery)
-        //            {
+        //        //    //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+        //        //    var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+        //        //                    select new
+        //        //                    {
+        //        //                        Title = item.Element(XName.Get("title")).Value.Trim(),
+        //        //                        Link = item.Element(XName.Get("link")).Value,
+        //        //                        PubDate = item.Element(XName.Get("pubDate")).Value
+        //        //                    };
+        //        //    foreach (var result in itemQuery)
+        //        //    {
 
-        //                //查数据库中是否已有相同标题，没有再追加！
-        //                if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title + "?full=y"))))
-        //                {
-        //                    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), (result.Link + "?full=y"), Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
-        //                    lv.Tag = it;
-        //                    listView1.Items.Add(lv);
+        //        //        //查数据库中是否已有相同标题，没有再追加！
+        //        //        //if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title + "?full=y"))))
+        //        //        //{
+        //        //        //    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), (result.Link + "?full=y"), Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //        //    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
+        //        //        //    lv.Tag = it;
+        //        //        //    listView1.Items.Add(lv);
 
-        //                    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, (result.Link + "?full=y"), Convert.ToDateTime(result.PubDate), "未读", "");
-        //                    mf.rssTap.Update(rssRow);
-        //                }
+        //        //        //    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, (result.Link + "?full=y"), Convert.ToDateTime(result.PubDate), "未读", "");
+        //        //        //    mf.rssTap.Update(rssRow);
+        //        //        //}
 
-        //            }
-        //        }
+        //        //    }
+        //        //}
         //        #endregion
 
-        //        else
-        //        {
+        //        //else
+        //        //{
         //            #region 正常规则
-        //            try
-        //            {
-        //                //加载RSS新闻数据
-        //                XElement rssData = XElement.Load(cn.Link);
+        //            //try
+        //            //{
+        //            //    //加载RSS新闻数据
+        //            //    XElement rssData = XElement.Load(cn.Link);
 
-        //                //取出新闻标题，转成RssItem对象，并暂存到列表控件中
-        //                var itemQuery = from item in rssData.Descendants(XName.Get("item"))
-        //                                select new
-        //                                {
-        //                                    Title = item.Element(XName.Get("title")).Value.Trim(),
-        //                                    Link = item.Element(XName.Get("link")).Value,
-        //                                    PubDate = item.Element(XName.Get("pubDate")).Value
-        //                                };
+        //            //    //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+        //            //    var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+        //            //                    select new
+        //            //                    {
+        //            //                        Title = item.Element(XName.Get("title")).Value.Trim(),
+        //            //                        Link = item.Element(XName.Get("link")).Value,
+        //            //                        PubDate = item.Element(XName.Get("pubDate")).Value
+        //            //                    };
 
-        //                foreach (var result in itemQuery)
-        //                {
-        //                    //查数据库中是否已有相同标题，没有再追加！
-        //                    if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
-        //                    {
-        //                        RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-        //                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
-        //                        lv.Tag = it;
-        //                        listView1.Items.Add(lv);
+        //            //    foreach (var result in itemQuery)
+        //            //    {
+        //            //        //查数据库中是否已有相同标题，没有再追加！
+        //            //        if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
+        //            //        {
+        //            //            RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+        //            //            ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
+        //            //            lv.Tag = it;
+        //            //            listView1.Items.Add(lv);
 
-        //                        YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-        //                        mf.rssTap.Update(rssRow);
-        //                    }
+        //            //            YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
+        //            //            mf.rssTap.Update(rssRow);
+        //            //        }
 
-        //                }
+        //            //    }
 
 
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show(ex.ToString());
-        //            }
+        //            //}
+        //            //catch (Exception ex)
+        //            //{
+        //            //    MessageBox.Show(ex.ToString());
+        //            //}
         //            #endregion
         //        }
         //    }
-        //    else
-        //    {
-        //        delCaijiRule delcj = new delCaijiRule(CaijiRule);
-        //        this.BeginInvoke(delcj, e);
-        //    }
+        //    //else
+        //    //{
+        //    //    //delCaijiRule delcj = new delCaijiRule(CaijiRule);
+        //    //    //this.BeginInvoke(delcj, e);
+        //    //}
         //}
         #endregion
         //todo:采集评论
@@ -312,7 +312,7 @@ namespace YQSQLite
                     // RssItem rssitem = listBox1.SelectedItems[0] as RssItem;
                     RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
                     YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID);
-                    rssrow.IsRead = "待处理";
+                    rssrow.IsRead = "W";            //待处理 变为 W
                     rssrow.Content = htmlEditor1.HTML;
                     mf.NewsAdd(rssitem.RssItemID);
                     // listBox1.Items.Remove(rssitem);
@@ -328,7 +328,7 @@ namespace YQSQLite
             foreach (ListViewItem lv in listView1.Items)
             {
                 RssItem ri = lv.Tag as RssItem;
-                ri.IsRead = "待处理";
+                ri.IsRead = "W";
                 mf.NewsAdd(ri.RssItemID);
             }
             mf.rssTap.Update(mf.DS.RssItem);
@@ -351,7 +351,7 @@ namespace YQSQLite
             {
                 RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
                 YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID);
-                rssrow.IsRead = "已读";
+                rssrow.IsRead = "T";    //已读变为 T
                 listView1.SelectedItems[0].Remove();
                 mf.rssTap.Update(mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID));
             }
@@ -363,7 +363,7 @@ namespace YQSQLite
             {
                 RssItem ri = lv.Tag as RssItem;
                 YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(ri.RssItemID);
-                rssrow.IsRead = "已读";
+                rssrow.IsRead = "T";
             }
             mf.rssTap.Update(mf.DS.RssItem);
             listView1.Items.Clear();
@@ -394,7 +394,7 @@ namespace YQSQLite
             Uri u = new Uri(link);
 
             var q = from p in mf.DS.Rule.AsEnumerable()
-                    select new { url = p.UrlFlag };
+                    select new { url = p.Rule_Domain };
             var qall = from p in mf.DS.Rule.AsEnumerable()
                        select p;
             foreach (var site in q)

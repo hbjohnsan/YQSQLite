@@ -14,18 +14,6 @@ using System.Runtime.InteropServices;
 
 namespace YQSQLite
 {
-    public class cpcuse
-    {
-        public int Id { get; set; }
-        public string Rank { get; set; }
-        public string Term { get; set; }
-        public string KanWu { get; set; }
-        public DateTime UseTime { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public DateTime InTime { get; set; }
-
-    }
     public class caiji
     {
         public int ID { get; set; }
@@ -38,6 +26,18 @@ namespace YQSQLite
         public string IsRead { get; set; }
         public string Link { get; set; }
         public DateTime CjTime { get; set; }
+    }
+    public class cpcuse
+    {
+        public int Id { get; set; }
+        public string Rank { get; set; }
+        public string Term { get; set; }
+        public string KanWu { get; set; }
+        public DateTime UseTime { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public DateTime InTime { get; set; }
+
     }
     public class upsend
     {
@@ -66,14 +66,14 @@ namespace YQSQLite
     public class rules
     {
         public string SiteName { get; set; }
-        public string UrlFlag { get; set; }
+        public string Rule_Domain { get; set; }
         public string ContFlag { get; set; }
         public string RemoveFlag { get; set; }
         public rules() { }
         public rules(string sitename, string urlflag, string contflag, string removeflag)
         {
             this.SiteName = sitename;
-            this.UrlFlag = urlflag;
+            this.Rule_Domain = urlflag;
             this.ContFlag = contflag;
             this.RemoveFlag = removeflag;
         }
@@ -81,19 +81,26 @@ namespace YQSQLite
     public class RssItem
     {
         public int RssItemID { get; set; }
-        public string ChannelCode { get; set; }
-        public string Site { get; set; }
+        public string ChannelCode { get; set; }  
         public string Title { get; set; }
         public string Link { get; set; }
         public DateTime PubDate { get; set; }
         public string IsRead { get; set; }
         public string Content { get; set; }
         public RssItem() { }
-        public RssItem(int rssitemid,string channelcode,string site, string title, string link, DateTime pubdate, string isread, string content)
+        public RssItem(string channelcode,string title, string link, DateTime pubdate, string isread, string content)
+        {
+            this.ChannelCode = channelcode;
+            this.Title = title;
+            this.Link = link;
+            this.PubDate = pubdate;
+            this.IsRead = isread;
+            this.Content = content;
+        }
+        public RssItem(int rssitemid, string channelcode, string title, string link, DateTime pubdate, string isread, string content)
         {
             this.RssItemID = rssitemid;
-            this.ChannelCode = channelcode;
-            this.Site = site;
+            this.ChannelCode = channelcode;         
             this.Title = title;
             this.Link = link;
             this.PubDate = pubdate;
@@ -102,22 +109,22 @@ namespace YQSQLite
         }
 
     }
-
     public class NavUrl
     {
 
         public int ID { get; set; }
         public string Name { get; set; }
+        public string Nav_Domain { get; set; }
         public int PID { get; set; }
         public string Code { get; set; }
         public int level { get; set; }
         public int Leaf { get; set; }
         public string Link { get; set; }
         public int Image { get; set; }
-        
+
         public int NoReadCount { get; set; }
         public int ItemCount { get; set; }
-        
+
 
     }
     //系统配置类
@@ -149,22 +156,6 @@ namespace YQSQLite
     }
 
 
-    //用于多线程传参类
-    public class clNode : TreeNode
-    {
-        public string ParentTx { get; set; }
-        public string Link { get; set; }
-        public string cnText { get; set; }
-        public clNode() { }
-        public clNode(string parenttx, string link, string text)
-        {
-            this.ParentTx = parenttx;         
-            this.Link = link;
-            this.cnText = text;
-        }
-
-
-    }
 
 
     public class caijiComparer : IEqualityComparer<caiji>

@@ -55,7 +55,7 @@ namespace YQSQLite
             txtTitle.Text = row.Title;
             labLink.Text = row.Link;
             labUpTime.Text = row.PubDate.ToString();
-            rabSourc.Text = row.Site;
+            //rabSourc.Text = row.Site;
             htmlEditor1.HTML = row.Content;
             webBrowser1.Navigate(row.Link);
         }
