@@ -65,14 +65,23 @@ namespace YQSQLite
     }
     public class rules
     {
-        public string SiteName { get; set; }
+        public int RuleID { get; set; }
+        public string Rule_Code { get; set; }
         public string Rule_Domain { get; set; }
         public string ContFlag { get; set; }
         public string RemoveFlag { get; set; }
         public rules() { }
-        public rules(string sitename, string urlflag, string contflag, string removeflag)
+        public rules(string rule_code, string urlflag, string contflag, string removeflag)
         {
-            this.SiteName = sitename;
+            this.Rule_Code = rule_code;
+            this.Rule_Domain = urlflag;
+            this.ContFlag = contflag;
+            this.RemoveFlag = removeflag;
+        }
+        public rules(int ruleid,string rule_code, string urlflag, string contflag, string removeflag)
+        {
+            this.RuleID = ruleid;
+            this.Rule_Code = rule_code;
             this.Rule_Domain = urlflag;
             this.ContFlag = contflag;
             this.RemoveFlag = removeflag;
@@ -121,7 +130,6 @@ namespace YQSQLite
         public int Leaf { get; set; }
         public string Link { get; set; }
         public int Image { get; set; }
-
         public int NoReadCount { get; set; }
         public int ItemCount { get; set; }
 
