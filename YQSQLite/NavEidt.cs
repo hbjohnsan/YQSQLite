@@ -12,7 +12,7 @@ namespace YQSQLite
     public partial class NavEidt : Form
     {
         private MainFrm mf;
-        private DialogResult dr;
+        //private DialogResult dr;
 
         public NavEidt()
         {
