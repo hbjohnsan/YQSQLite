@@ -11,6 +11,9 @@ using System.Collections;
 using System.Drawing;
 using System.Threading;
 using System.Text.RegularExpressions;
+using HtmlAgilityPack;
+using ScrapySharp.Extensions;
+
 
 namespace YQSQLite
 {
@@ -40,38 +43,26 @@ namespace YQSQLite
         #region 鼠标事件
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            //取消 点击事件传递。所有数据在本窗口中处理。
-            //mf.NodeClick(sender, e);
-            //1、判断点击的项是分类项，还是有采集地址的具体项，可以用Leaf项判断。2、如果是分类项直接从库中显示已采所有数据。如果是采集项则进行下一步的更新采集。
+            //1、判断点击的项是分类项，还是有采集地址的具体项，可以用Leaf项判断。
+            //2、如果是分类项直接从库中显示已采所有数据,如果是采集项则进行下一步的更新采集。
             NavUrl navurl = e.Node.Tag as NavUrl;
+            //先要清空筛选窗体中listview中的项
             mf.SelectFrmListviewClear();
+
             if (navurl.Leaf == 0)//根据Leaf可以判断出是否是分类项。是否用数据库中提取
             {
-                //先要清空筛选窗体中listview中的项
 
-                var q = from p in mf.DS.RssItem.AsEnumerable()
-                        where p.ChannelCode.StartsWith(navurl.Code)
-                        orderby p.PubDate descending, p.Title
-                        select p;
-                foreach (var item in q)
-                {
-                    RssItem rsit = new RssItem();
-                    rsit.RssItemID = item.RssItemID;
-                    rsit.ChannelCode = item.ChannelCode;
-                    //  rsit.Site = item.Site;
-                    rsit.Title = item.Title;
-                    rsit.Link = item.Link;
-                    rsit.PubDate = item.PubDate;
-                    rsit.IsRead = item.IsRead;
-                    rsit.Content = item.Content;
-                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.ChannelCode });
-                    lv.Tag = rsit;
-                    mf.SelectFrmListViewReload(lv);
-                }
+                ReloadSelectFrmListView(navurl);
 
             }
             else//有采集RSS的地址，去采集
             {
+                //查看一下，数据库里不是不有数据，有的话先显示到列表里。
+                if ((from p in mf.DS.RssItem.AsEnumerable() where p.ChannelCode == navurl.Code select p.RssItemID).Count() > 0)
+                {
+                    ReloadSelectFrmListView(navurl);
+                }
+
                 //试用多线程
                 Thread t = new Thread(new ThreadStart(delegate
                 {
@@ -80,9 +71,38 @@ namespace YQSQLite
                 t.IsBackground = true;
                 t.Start();
             }
-            RequestRss();
-            //mf.rssTap.Update(mf.DS.RssItem);
+
         }
+
+        #region 重新加载SelectFrmListView
+        /// <summary>
+        /// 重新加载SelectFrmListView
+        /// </summary>
+        /// <param name="navurl"></param>
+        private void ReloadSelectFrmListView(NavUrl navurl)
+        {
+            var q = from p in mf.DS.RssItem.AsEnumerable()
+                    where p.ChannelCode.StartsWith(navurl.Code)
+                    orderby p.PubDate descending, p.Title
+                    select p;
+            foreach (var item in q)
+            {
+                RssItem rsit = new RssItem();
+                rsit.RssItemID = item.RssItemID;
+                rsit.ChannelCode = item.ChannelCode;
+                //  rsit.Site = item.Site;
+                rsit.Title = item.Title;
+                rsit.Link = item.Link;
+                rsit.PubDate = item.PubDate;
+                rsit.IsRead = item.IsRead;
+                rsit.Content = item.Content;
+                ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.ChannelCode });
+                lv.Tag = rsit;
+                mf.SelectFrmListViewReload(lv);
+            }
+        }
+        #endregion
+
         //去采集下载Rss新闻源列表
         private void DownLoadRssItem(NavUrl navurl)
         {
@@ -103,22 +123,10 @@ namespace YQSQLite
 
                 foreach (var result in itemQuery)
                 {
-                    ////查数据库中是否已有相同标题，没有再追加！
-                    //if (!(mf.DS.RssItem.Contains(mf.DS.RssItem.FindByTitle(result.Title))))
-                    //{
-                    //    RssItem it = new RssItem(cn.ParentTx, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-                    //    ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), cn.ParentTx });
-                    //    lv.Tag = it;
-                    //    listView1.Items.Add(lv);
-
-                    //    YQDataSet.RssItemRow rssRow = mf.DS.RssItem.AddRssItemRow(cn.ParentTx, result.Title, result.Link, Convert.ToDateTime(result.PubDate), "未读", "");
-                    //    mf.rssTap.Update(rssRow);
-                    //}
-
 
                     //通过Link查找DataSet中是否有相同的网址
                     //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
-                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title==result.Title) select p).ToList().Count;
+                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;
                     //取得最大ID值+1; 
                     int maxId;
 
@@ -131,29 +139,25 @@ namespace YQSQLite
                         maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
                     }
 
-
-
                     if (f == 0)
                     {
-                        RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                        //此方法并为实现多线程的即时采用。
+                       // string content = GetSiteContent(result.Link);
+                        RssItem it = new RssItem(mf.DS,maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                        it.Start();
                         ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), navurl.Code });
                         lv.Tag = it;
                         mf.SelectFrmListViewReload(lv);
-                        //需要更新RSS统计
-                        //用多线程实现统计信息条数
-
-                      //  mf.CountNum_RssItem2NavUrl();
-
-
-                        //方法一：直接到库，但了更新DataSet中的表。
-                        // mf.rssTap.InsertQuery(navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
                         //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                        mf.DS.RssItem.AddRssItemRow(it.RssItemID,it.ChannelCode,it.Title,it.Link,it.PubDate,it.IsRead,it.Content);
+
+                        //需要更新RSS统计
+                        UpdataNodeText(navurl);
                     }
 
                 }
                 //最后再写入数据，否则太频繁。
-              
+
             }
             catch (Exception ex)
             {
@@ -161,23 +165,100 @@ namespace YQSQLite
             }
             #endregion
         }
-        #endregion
-
-        #region 刷新重采集
-        public void RequestRss()
+        //采集方法
+        private string GetSiteContent(string link)
         {
-            NavUrl nu = treeView1.SelectedNode.Tag as NavUrl;
-            //先采集回Rss列表，通过link比较DataSet中RssItem中是否有相同的Link数据。如果有去重，如果没有→采集→到库→更新表，显示到筛选表中。
-            //
-
-            //试用多线程
-            Thread t = new Thread(new ThreadStart(delegate
+            string reContent = "";
+            Uri u = new Uri(link);
+            
+            var q = from p in mf.DS.Rule.AsEnumerable()
+                    select new { url = p.Rule_Domain };
+            var qall = from p in mf.DS.Rule.AsEnumerable()
+                       select p;
+            foreach (var site in q)
             {
-
-            }));
-            t.IsBackground = true;
-            t.Start();
+                if (u.Host.Contains(site.url))
+                {
+                    foreach (var item in qall)
+                    {
+                        if (item.ContFlag != "")
+                        {
+                            string[] delflag = item.RemoveFlag.Split(new char[] { ',' });
+                            reContent = CastCont(link, item.ContFlag, delflag);
+                        }
+                        else
+                        {
+                            reContent = CastCont(link, item.ContFlag);
+                        }
+                    }
+                }
+            }
+            return reContent;
         }
+
+        //截取正文内容部分方法的重构，
+        private string CastCont(string link, string FlagCont)
+        {
+            string reContent="";
+            #region 使用HttpHelper取得源码
+            HttpHelper http = new HttpHelper();
+            HttpItem item = new HttpItem()
+            {
+                URL = link
+            };
+            HttpResult result = http.GetHtml(item);
+            string html = result.Html;
+            #endregion
+            #region 使用HtmlAgilityPack解析源码
+            HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
+            htmlDocument.LoadHtml(html);
+            var Nodes = htmlDocument.DocumentNode;
+            #endregion
+            //初始化
+            // rtbCode.Text = html;
+            var reCont = Nodes.CssSelect(FlagCont);
+            foreach (var doc in reCont)
+            {
+                // htmlEditor1.HTML = doc.InnerHtml;
+                // rtbText.Text = doc.InnerText;
+                reContent = doc.InnerText;
+            }
+            return reContent;
+        }
+        private string CastCont(string link, string FlagCont, string[] DelFlag)
+        {
+            string reContent = "";
+            #region 使用HttpHelper取得源码
+            HttpHelper http = new HttpHelper();
+            HttpItem item = new HttpItem()
+            {
+                URL = link
+            };
+            HttpResult result = http.GetHtml(item);
+            string html = result.Html;
+            #endregion
+            #region 使用HtmlAgilityPack解析源码
+            HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
+            htmlDocument.LoadHtml(html);
+            var Nodes = htmlDocument.DocumentNode;
+            #endregion
+            //初始化
+            //rtbCode.Text = html;
+            var reCont = Nodes.CssSelect(FlagCont);
+            foreach (var doc in reCont)
+            {
+                for (int i = 0; i < DelFlag.Length; i++)
+                {
+                    foreach (var Del in reCont.CssSelect(DelFlag[i]).ToArray())
+                        Del.Remove();
+                }
+                //htmlEditor1.HTML = doc.InnerHtml;
+                //rtbText.Text = doc.InnerText;
+                reContent += doc.InnerText;
+            }
+            return reContent;
+        }
+
         #endregion
 
         #region 右键菜单
@@ -229,7 +310,6 @@ namespace YQSQLite
             List<TreeNode> LT = GetTreeNodes(NavUrls);
             foreach (TreeNode tn in LT)
             {
-
                 treeView1.Nodes.Add(tn);
             }
 
@@ -282,6 +362,36 @@ namespace YQSQLite
 
         #endregion
 
+        #region 异步扫行选中的Node的text值 用于显示已有多少条数据和有多少条未读
+
+        public void UpdataNodeText(NavUrl nv)
+        {
+            this.Invoke(new ThreadStart(delegate
+            {
+
+                YQDataSet.NavUrlRow nur = mf.DS.NavUrl.FindByID(nv.ID);
+                nur.NoReadCount++;
+                nur.ItemCount++;
+
+                treeView1.SelectedNode.Text = nv.Name + "(" + nur.NoReadCount + "/" + nur.ItemCount + ")";
+
+                //更新node的父显示
+                NavUrl pnu = treeView1.SelectedNode.Parent.Tag as NavUrl;
+                YQDataSet.NavUrlRow pnur = mf.DS.NavUrl.FindByID(pnu.ID);
+                pnur.NoReadCount++;
+                pnur.ItemCount++;
+                treeView1.SelectedNode.Parent.Text = pnur.Name + "(" + pnur.NoReadCount + "/" + pnur.ItemCount + ")";
+
+                //再一级的你目录
+                NavUrl Gpnu = treeView1.SelectedNode.Parent.Parent.Tag as NavUrl;
+                YQDataSet.NavUrlRow Gpnur = mf.DS.NavUrl.FindByID(Gpnu.ID);
+                Gpnur.NoReadCount++;
+                Gpnur.ItemCount++;
+                treeView1.SelectedNode.Parent.Parent.Text = pnur.Name + "(" + Gpnur.NoReadCount + "/" + Gpnur.ItemCount + ")";
+            }));
+        }
+
+        #endregion
     }
 
 

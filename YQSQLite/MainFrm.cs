@@ -52,6 +52,10 @@ namespace YQSQLite
         public CookieContainer cc = new CookieContainer();
         //检测系统是否注册
         public bool ZC = false;
+
+       
+
+
         #endregion
         public MainFrm()
         {
@@ -82,11 +86,7 @@ namespace YQSQLite
             th.IsBackground = true;
             th.Start();
 
-            //LoginFrm lgfrm = new LoginFrm();
-            //if (lgfrm.ShowDialog() != DialogResult.OK)//表示当f1的DialogResult等于Ok时主程序才开始运行，所以在Form1中登录成功时要将Dialogresult设为OK
-            //{
-            //    Application.Exit();
-            //}
+           
         }
 
         #region 窗体加载
@@ -190,20 +190,10 @@ namespace YQSQLite
                                   select s).Count();
             }
             //todo:DataSet中统计比较后，还更新数据。采集时要实时更新项。
-            navurlTap.Update(DS.NavUrl);
+           
         }
 
-        //导航列表点击事件
-        //public void NodeClick(object sender, TreeNodeMouseClickEventArgs e)
-        //{
-        //    if (selectFm == null || selectFm.IsDisposed)
-        //    {
-        //        selectFm = new SelectFrm(this);
-        //        selectFm.Show(dockPanel);
-        //    }
-        //    selectFm.Activate();
-        //    selectFm.NavNodeClik(sender, e);
-        //}
+       
         //SelectFrom窗体的数据重载
         public void SelectFrmListViewReload(ListViewItem li)
         {

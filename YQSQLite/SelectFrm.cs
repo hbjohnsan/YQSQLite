@@ -280,7 +280,7 @@ namespace YQSQLite
         #endregion
         //todo:采集评论
 
-        #region 采集信息事件
+        #region 控制键
         //加入
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -598,10 +598,17 @@ namespace YQSQLite
         #region 导步更新ListView
         public void ReloadLiatView(ListViewItem it)
         {
-            this.Invoke(new ThreadStart(delegate
+            this.Invoke((new ThreadStart(delegate
             {
+               RssItem ri= it.Tag as RssItem;
+               if (ri.IsRead=="T")
+               {
+                   it.BackColor = Color.Beige;
+               }
                 listView1.Items.Add(it);
-            }));
+            })));
+           
+           
             
         }
         #endregion
