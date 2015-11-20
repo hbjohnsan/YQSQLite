@@ -95,103 +95,6 @@ namespace YQSQLite
     }
     public class RssItem
     {
-        public Thread th;
-        public void Start()
-        {
-            th = new Thread(new ThreadStart(delegate {
-                GetCountent();
-            }));
-            th.IsBackground = true;
-            th.Start();
-        }
-
-        private void GetCountent()
-        {
-            
-            Uri u = new Uri(this.Link);
-            var q = from p in  DS.Rule.AsEnumerable()
-                    select new { url = p.Rule_Domain };
-            var qall = from p in DS.Rule.AsEnumerable()
-                       select p;
-            foreach (var site in q)
-            {
-                if (u.Host.Contains(site.url))
-                {
-                    foreach (var item in qall)
-                    {
-                        if (item.ContFlag != "")
-                        {
-                            string[] delflag = item.RemoveFlag.Split(new char[] { ',' });
-                            CastCont(this.Link, item.ContFlag, delflag);
-                        }
-                        else
-                        {
-                            CastCont(this.Link, item.ContFlag);
-                        }
-                    }
-                }
-            }
-        }
-        //截取正文内容部分方法的重构，
-        private void CastCont(string link, string FlagCont)
-        {
-            
-            #region 使用HttpHelper取得源码
-            HttpHelper http = new HttpHelper();
-            HttpItem item = new HttpItem()
-            {
-                URL = link
-            };
-            HttpResult result = http.GetHtml(item);
-            string html = result.Html;
-            #endregion
-            #region 使用HtmlAgilityPack解析源码
-            HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            var Nodes = htmlDocument.DocumentNode;
-            #endregion
-            
-            var reCont = Nodes.CssSelect(FlagCont);
-            foreach (var doc in reCont)
-            {
-              
-                this.Content = doc.InnerText;
-            }
-            
-        }
-        private void CastCont(string link, string FlagCont, string[] DelFlag)
-        {
-            #region 使用HttpHelper取得源码
-            HttpHelper http = new HttpHelper();
-            HttpItem item = new HttpItem()
-            {
-                URL = link
-            };
-            HttpResult result = http.GetHtml(item);
-            string html = result.Html;
-            #endregion
-            #region 使用HtmlAgilityPack解析源码
-            HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            var Nodes = htmlDocument.DocumentNode;
-            #endregion
-         
-            var reCont = Nodes.CssSelect(FlagCont);
-            foreach (var doc in reCont)
-            {
-                for (int i = 0; i < DelFlag.Length; i++)
-                {
-                    foreach (var Del in reCont.CssSelect(DelFlag[i]).ToArray())
-                        Del.Remove();
-                }
-               
-                this.Content= doc.InnerText;
-            }
-           
-        }
-
-        //public UpdataListView ulv;
-        private YQDataSet DS;
         public int RssItemID { get; set; }
         public string ChannelCode { get; set; }
         public string Title { get; set; }
@@ -199,11 +102,10 @@ namespace YQSQLite
         public DateTime PubDate { get; set; }
         public string IsRead { get; set; }
         public string Content { get; set; }
-        public RssItem() { }
- 
-        public RssItem(YQDataSet ds, string channelcode, string title, string link, DateTime pubdate, string isread, string content)
+        public RssItem() { } 
+        public RssItem( string channelcode, string title, string link, DateTime pubdate, string isread, string content)
         {
-            this.DS = ds;
+           
             this.ChannelCode = channelcode;
             this.Title = title;
             this.Link = link;
@@ -211,9 +113,9 @@ namespace YQSQLite
             this.IsRead = isread;
             this.Content = content;
         }
-        public RssItem(YQDataSet ds, int rssitemid, string channelcode, string title, string link, DateTime pubdate, string isread, string content)
+        public RssItem( int rssitemid, string channelcode, string title, string link, DateTime pubdate, string isread, string content)
         {
-            this.DS = ds;
+            
             this.RssItemID = rssitemid;
             this.ChannelCode = channelcode;
             this.Title = title;

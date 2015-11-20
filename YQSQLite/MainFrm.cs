@@ -13,6 +13,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Net;
 using System.Threading;
+using System.Transactions;
+using System.Data.SQLite;
+
 
 namespace YQSQLite
 {
@@ -49,11 +52,12 @@ namespace YQSQLite
         public YQDataSetTableAdapters.RuleTableAdapter ruleTap;
         public YQDataSetTableAdapters.NavUrlTableAdapter navurlTap;
 
+
         public CookieContainer cc = new CookieContainer();
         //检测系统是否注册
         public bool ZC = false;
 
-       
+
 
 
         #endregion
@@ -70,6 +74,7 @@ namespace YQSQLite
             ruleTap = new YQDataSetTableAdapters.RuleTableAdapter();
             navurlTap = new YQDataSetTableAdapters.NavUrlTableAdapter();
 
+
             cpcTap.Fill(DS.cpcuse);
             rssTap.Fill(DS.RssItem);
             upsendTap.Fill(DS.upsend);
@@ -77,16 +82,12 @@ namespace YQSQLite
             serverTap.Fill(DS.server);
             ruleTap.Fill(DS.Rule);
             navurlTap.Fill(DS.NavUrl);
-            #endregion
-            //用多线程实现统计信息条数
-            Thread th = new Thread(new ThreadStart(delegate
-            {
-                CountNum_RssItem2NavUrl();
-            }));
-            th.IsBackground = true;
-            th.Start();
 
-           
+
+
+
+
+            #endregion
         }
 
         #region 窗体加载
@@ -108,15 +109,17 @@ namespace YQSQLite
             hassendfm.Show(waitsendFm.Pane, DockAlignment.Bottom, 0.5);
             #endregion
 
+            CountNum_RssItem2NavUrl();
+
             Thread ts = new Thread(new ThreadStart(delegate
             {
                 GetConfig();
             }));
             ts.Start();
-            
+
             //Thread t = new Thread(new ThreadStart(delegate
             //{
-                Reg();
+            Reg();
             //}));
             //t.Start();
 
@@ -170,30 +173,32 @@ namespace YQSQLite
                 MessageBox.Show("不好意思，请已经超出试用次数！请注册后再使用！");
                 Application.Exit();
             }
-        } 
+        }
         #endregion
 
         #region 中间调用方法
-        //统计RssItem表中的数量，更新NavUrl中的ItemCount和NoReadCount数量
         public void CountNum_RssItem2NavUrl()
         {
-            var navs = from p in DS.NavUrl.AsEnumerable()
-                       select p;
-
-            foreach (var nv in navs)
+            this.Invoke(new ThreadStart(delegate
             {
-                nv.ItemCount = (from q in DS.RssItem.AsEnumerable()
-                                where q.ChannelCode.StartsWith(nv.Code)
-                                select q).Count();
-                nv.NoReadCount = (from s in DS.RssItem.AsEnumerable()
-                                  where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
-                                  select s).Count();
-            }
-            //todo:DataSet中统计比较后，还更新数据。采集时要实时更新项。
-           
+                var navs = from p in DS.NavUrl.AsEnumerable()
+                           select p;
+
+                foreach (var nv in navs)
+                {
+                    nv.ItemCount = (from q in DS.RssItem.AsEnumerable()
+                                    where q.ChannelCode.StartsWith(nv.Code)
+                                    select q).Count();
+                    nv.NoReadCount = (from s in DS.RssItem.AsEnumerable()
+                                      where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
+                                      select s).Count();
+                }
+                // navurlTap.Update(DS.NavUrl);
+
+            }));
         }
 
-       
+
         //SelectFrom窗体的数据重载
         public void SelectFrmListViewReload(ListViewItem li)
         {
@@ -514,18 +519,49 @@ namespace YQSQLite
         }
         #endregion
 
-        //主窗体关闭时再更新所有数据？？？
-      
+
+
+        //检测，dataset中的表是否有变动。有变动再提交。
+        #region 失去窗体焦点时，更新数据到库
+        private void ischangeTable()
+        {
+            /* todo:sqlite没有提供批量插入的机制，需要通过事务处理 更新所有数据
+             * http://www.cnblogs.com/hbjohnsan/p/4169612.html
+             */
+            string datasource = System.Configuration.ConfigurationSettings.AppSettings[0].ToString();
+            using (SQLiteConnection conn = new SQLiteConnection(datasource))
+            {
+                conn.Open();
+                using (System.Data.SQLite.SQLiteTransaction trans = conn.BeginTransaction())
+                {
+                    using (SQLiteCommand cmd = new SQLiteCommand(conn))
+                    {
+                        cmd.Transaction = trans;
+                        try
+                        {
+                            cmd.CommandText = "INSERT OR REPLACE INTO "++"  SELECT "+DS.RssItem.RssItemIDColumn+"  FROM t2, t1 WHERE t2.key = t1.key;";//比较内存中的表。差值存到库？？
+                            cmd.ExecuteNonQuery();
+
+                            trans.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            trans.Rollback();
+
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+       
 
         private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            cpcTap.Update(DS.cpcuse);
-            rssTap.Update(DS.RssItem);
-            upsendTap.Update(DS.upsend);
-            sendtoTap.Update(DS.sendto);
-            serverTap.Update(DS.server);
-            ruleTap.Update(DS.Rule);
-            navurlTap.Update(DS.NavUrl);
+            
         }
+
+
     }
 }

@@ -352,7 +352,7 @@ namespace YQSQLite
             subm.Focus();
             //subm.SetAttribute("onclick", "javascript:return true;");
 
-            //todo：验证码变了，也要变
+            
             //ie.InstallTrace();
             //string js = "function CheckData(){return true;}";
             //ie.InstallScript(js);
@@ -361,7 +361,7 @@ namespace YQSQLite
            // MessageBox.Show(str.ToString());
 
             //此处用图象识别功能吧！
-            //todo:web登录信息保存了xml以后更改
+            
             //string code = webBrowser1.Document.Cookie;
 
             //if (!string.IsNullOrEmpty(code))
