@@ -51,6 +51,7 @@ namespace YQSQLite
         public YQDataSetTableAdapters.serverTableAdapter serverTap;
         public YQDataSetTableAdapters.RuleTableAdapter ruleTap;
         public YQDataSetTableAdapters.NavUrlTableAdapter navurlTap;
+    
 
 
         public CookieContainer cc = new CookieContainer();
@@ -73,7 +74,9 @@ namespace YQSQLite
             serverTap = new YQDataSetTableAdapters.serverTableAdapter();
             ruleTap = new YQDataSetTableAdapters.RuleTableAdapter();
             navurlTap = new YQDataSetTableAdapters.NavUrlTableAdapter();
-
+           
+            
+            
 
             cpcTap.Fill(DS.cpcuse);
             rssTap.Fill(DS.RssItem);
@@ -523,25 +526,33 @@ namespace YQSQLite
 
         //检测，dataset中的表是否有变动。有变动再提交。
         #region 失去窗体焦点时，更新数据到库
-        private void ischangeTable()
+        public void SaveToDB(DataTable dt)
         {
+
             /* todo:sqlite没有提供批量插入的机制，需要通过事务处理 更新所有数据
              * http://www.cnblogs.com/hbjohnsan/p/4169612.html
+             * Eorr 数据库加了锁，执行不了自己的代码。
              */
-            string datasource = System.Configuration.ConfigurationSettings.AppSettings[0].ToString();
-            using (SQLiteConnection conn = new SQLiteConnection(datasource))
+            string connStr = @"data source=E:\YQSQLite\YQSQLite\Data\YQ.db";
+            using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
                 conn.Open();
                 using (System.Data.SQLite.SQLiteTransaction trans = conn.BeginTransaction())
                 {
-                    using (SQLiteCommand cmd = new SQLiteCommand(conn))
+                    using (System.Data.SQLite.SQLiteCommand cmd = new SQLiteCommand(conn))
                     {
                         cmd.Transaction = trans;
                         try
                         {
-                            cmd.CommandText = "INSERT OR REPLACE INTO "++"  SELECT "+DS.RssItem.RssItemIDColumn+"  FROM t2, t1 WHERE t2.key = t1.key;";//比较内存中的表。差值存到库？？
-                            cmd.ExecuteNonQuery();
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                cmd.CommandText = @"insert or ignore into RssItem values ('"+Int32.Parse(dr[0].ToString()) +"','"
+                                    +dr[1].ToString()+"','"+dr[2].ToString()+"','"
+                                    +dr[3].ToString()+"','"+Convert.ToDateTime(dr[4].ToString())+"','"
+                                    +dr[5].ToString()+"','"+dr[6].ToString()+"')";
+                                cmd.ExecuteNonQuery();
 
+                            }
                             trans.Commit();
                         }
                         catch (Exception ex)
@@ -553,15 +564,19 @@ namespace YQSQLite
                     }
                 }
             }
-        }
-        #endregion
-       
-
-        private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
-        {
+            
+           
+           
             
         }
 
+        private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
 
     }
+        #endregion
+
 }
+

@@ -44,7 +44,7 @@ namespace YQSQLite
         #region 鼠标事件
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-          
+
             //先要清空筛选窗体中listview中的项
             mf.SelectFrmListviewClear();
             //1、判断点击的项是分类项，还是有采集地址的具体项，可以用Leaf项判断。
@@ -67,6 +67,8 @@ namespace YQSQLite
                 default:
                     break;
             }
+
+
         }
         #endregion
 
@@ -196,16 +198,22 @@ namespace YQSQLite
                 MessageBox.Show(ex.ToString());
             }
             //统计RssItem表中的数量，更新NavUrl中的ItemCount和NoReadCount数量
-        
+
             //需要更新RSS统计
             Thread th = new Thread(new ThreadStart(delegate
-            { 
+            {
                 mf.CountNum_RssItem2NavUrl();
-          
+
                 UpdataNodeText(navurl);
+
+
                 //连点数据出错，
-                // mf.rssTap.Update(mf.DS.RssItem);
-               
+                //mf.rssTap.Update(mf.DS.RssItem);
+                //mf.DS.AcceptChanges();
+                //mf.DS.GetChanges();
+
+                mf.SaveToDB(mf.DS.RssItem);
+
             }));
             th.IsBackground = true;
             th.Start();
