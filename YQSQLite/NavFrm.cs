@@ -91,7 +91,7 @@ namespace YQSQLite
                 //  rsit.Site = item.Site;
                 rsit.Title = item.Title;
                 rsit.Link = item.Link;
-                rsit.PubDate =Convert.ToDateTime(item.PubDate);
+                rsit.PubDate = item.PubDate;
                 rsit.IsRead = item.IsRead;
                 rsit.Content = item.Content;
                 ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), rsit.ChannelCode });
@@ -189,7 +189,7 @@ namespace YQSQLite
                         lv.Tag = it;
                         mf.SelectFrmListViewReload(lv);
                         //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString(), it.IsRead, it.Content);
+                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate, it.IsRead, it.Content);
                     }
                 }
             }
@@ -212,7 +212,8 @@ namespace YQSQLite
                 //mf.DS.AcceptChanges();
                 //mf.DS.GetChanges();
 
-                mf.SaveToDB(mf.DS.RssItem);
+               mf.SaveToDB(mf.DS.RssItem);
+                //mf.SaveToDB_help(mf.DS.RssItem);
 
             }));
             th.IsBackground = true;

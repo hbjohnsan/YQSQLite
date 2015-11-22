@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 using Microsoft.Win32;
@@ -9,6 +13,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Net;
 using System.Threading;
+using System.Transactions;
 using System.Data.SQLite;
 
 
@@ -527,9 +532,7 @@ namespace YQSQLite
             /* todo:sqlite没有提供批量插入的机制，需要通过事务处理 更新所有数据
              * http://www.cnblogs.com/hbjohnsan/p/4169612.html
              * Eorr 数据库加了锁，执行不了自己的代码。
-             * 
              */
-
             string connStr = @"data source=E:\YQSQLite\YQSQLite\Data\YQ.db";
             using (SQLiteConnection conn = new SQLiteConnection(connStr))
             {
@@ -543,14 +546,10 @@ namespace YQSQLite
                         {
                             foreach (DataRow dr in dt.Rows)
                             {
-                                cmd.CommandText = @"insert or ignore into RssItem values (" + Int32.Parse(dr[0].ToString()) + ",'"
-                                    + dr[1].ToString() + "','" + dr[2].ToString() + "','"
-                                    + dr[3].ToString() + "','" + dr[4].ToString() + "','"
-                                    + dr[5].ToString() + "','" + dr[6].ToString() + "')";
-
-                                //改进一下，减少两个字段 没有了主键，将都会插入
-                                //cmd.CommandText = @"insert or ignore into RssItem(ChannelCode,Title,Link,PubDate,IsRead) values ('"+dr[1].ToString()+"','"+dr[2].ToString()+"','"
-                                //    + dr[3].ToString() + "','" + dr[4].ToString().Trim() + "','"+dr[5].ToString()+"')";
+                                cmd.CommandText = @"insert or ignore into RssItem values ('"+Int32.Parse(dr[0].ToString()) +"','"
+                                    +dr[1].ToString()+"','"+dr[2].ToString()+"','"
+                                    +dr[3].ToString()+"','"+Convert.ToDateTime(dr[4].ToString())+"','"
+                                    +dr[5].ToString()+"','"+dr[6].ToString()+"')";
                                 cmd.ExecuteNonQuery();
 
                             }
@@ -565,12 +564,14 @@ namespace YQSQLite
                     }
                 }
             }
-
+            
            
            
             
         }
-        //该字符串未被识别为有效的 DateTime。 把数据库的datatime类型改为varchar类型，在程序中依然是DataTime类型
+
+        
+        
 
         private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
         {

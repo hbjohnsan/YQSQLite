@@ -39,7 +39,7 @@ namespace YQSQLite
                 RssItem rssit = new RssItem();
                 rssit.Title = it.Title;
              //   rssit.Site = it.Site;
-                rssit.PubDate =Convert.ToDateTime(it.PubDate);
+                rssit.PubDate = it.PubDate;
                 rssit.Link = it.Link;
                 rssit.Content = it.Content;
                 rssit.IsRead = it.IsRead;
@@ -56,7 +56,7 @@ namespace YQSQLite
             RssItem rsit = new RssItem();
            // rsit.Site = row.Site;
             rsit.Title = row.Title;
-            rsit.PubDate =Convert.ToDateTime(row.PubDate);
+            rsit.PubDate = row.PubDate;
             rsit.Link = row.Link;
             rsit.IsRead = row.Link;
             rsit.Content = row.Content;

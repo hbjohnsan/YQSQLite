@@ -2,8 +2,5 @@
     
     
     public partial class YQDataSet {
-        partial class RssItemDataTable
-        {
-        }
     }
 }

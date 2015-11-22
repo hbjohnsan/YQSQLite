@@ -75,5 +75,4 @@ E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\BaiduYunDownload\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.NavEidt.resources
 E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.NavEidt.resources
-E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.csprojResolveAssemblyReference.cache
 E:\YQSQLite\YQSQLite\obj\x86\Debug\YQSQLite.csproj.GenerateResource.Cache
