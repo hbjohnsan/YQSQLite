@@ -91,10 +91,10 @@ namespace YQSQLite
                 //  rsit.Site = item.Site;
                 rsit.Title = item.Title;
                 rsit.Link = item.Link;
-                rsit.PubDate = item.PubDate;
+                rsit.PubDate =Convert.ToDateTime(item.PubDate);
                 rsit.IsRead = item.IsRead;
                 rsit.Content = item.Content;
-                ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("MM-dd HH:mm:ss"), rsit.ChannelCode });
+                ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), rsit.ChannelCode });
                 lv.Tag = rsit;
                 mf.SelectFrmListViewReload(lv);
             }
@@ -185,11 +185,11 @@ namespace YQSQLite
                     {
                         RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
 
-                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("MM-dd HH:mm:ss"), navurl.Code });
+                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
                         lv.Tag = it;
                         mf.SelectFrmListViewReload(lv);
                         //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate, it.IsRead, it.Content);
+                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString(), it.IsRead, it.Content);
                     }
                 }
             }

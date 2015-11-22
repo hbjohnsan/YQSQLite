@@ -2,14 +2,15 @@
 <xs:schema id="YQDataSet" targetNamespace="http://tempuri.org/YQDataSet.xsd" xmlns:mstns="http://tempuri.org/YQDataSet.xsd" xmlns="http://tempuri.org/YQDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="YQConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="YQConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.YQSQLite.Properties.Settings.GlobalReference.Default.YQConnectionString" Provider="System.Data.SQLite.EF6" />
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="YQConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="YQConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.YQSQLite.Properties.Settings.GlobalReference.Default.YQConnectionString1" Provider="System.Data.SQLite.EF6" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="cpcuseTableAdapter" GeneratorDataComponentClassName="cpcuseTableAdapter" Name="cpcuse" UserDataComponentName="cpcuseTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.cpcuse" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="YQConnectionString (Settings)" DbObjectName="main.cpcuse" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [main].[sqlite_default_schema].[cpcuse] WHERE (([Id] = @Original_Id) AND ([Rank] = @Original_Rank) AND ([Term] = @Original_Term) AND ((@IsNull_KanWu = 1 AND [KanWu] IS NULL) OR ([KanWu] = @Original_KanWu)) AND ((@IsNull_UseTime = 1 AND [UseTime] IS NULL) OR ([UseTime] = @Original_UseTime)) AND ([Title] = @Original_Title) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)) AND ([InTime] = @Original_InTime))</CommandText>
@@ -89,7 +90,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="upsendTableAdapter" GeneratorDataComponentClassName="upsendTableAdapter" Name="upsend" UserDataComponentName="upsendTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.upsend" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="YQConnectionString (Settings)" DbObjectName="main.upsend" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [main].[sqlite_default_schema].[upsend] WHERE (([Site] = @Original_Site) AND ([Title] = @Original_Title) AND ([UpTime] = @Original_UpTime) AND ([Link] = @Original_Link) AND ([Content] = @Original_Content) AND ([EmailSend] = @Original_EmailSend) AND ([WebSend] = @Original_WebSend) AND ([ContKind] = @Original_ContKind) AND ([WillSend] = @Original_WillSend))</CommandText>
@@ -170,7 +171,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sendtoTableAdapter" GeneratorDataComponentClassName="sendtoTableAdapter" Name="sendto" UserDataComponentName="sendtoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.sendto" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="YQConnectionString (Settings)" DbObjectName="main.sendto" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [main].[sqlite_default_schema].[sendto] WHERE (([Id] = @Original_Id) AND ((@IsNull_RankName = 1 AND [RankName] IS NULL) OR ([RankName] = @Original_RankName)) AND ((@IsNull_Rank = 1 AND [Rank] IS NULL) OR ([Rank] = @Original_Rank)) AND ((@IsNull_Kind = 1 AND [Kind] IS NULL) OR ([Kind] = @Original_Kind)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_ReTitle = 1 AND [ReTitle] IS NULL) OR ([ReTitle] = @Original_ReTitle)) AND ((@IsNull_addlink = 1 AND [addlink] IS NULL) OR ([addlink] = @Original_addlink)))</CommandText>
@@ -251,7 +252,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="serverTableAdapter" GeneratorDataComponentClassName="serverTableAdapter" Name="server" UserDataComponentName="serverTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.server" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="YQConnectionString (Settings)" DbObjectName="main.server" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>INSERT INTO [main].[sqlite_default_schema].[server] ([smtp], [user], [pwd], [showname]) VALUES (@smtp, @user, @pwd, @showname)</CommandText>
@@ -279,92 +280,9 @@
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RssItemTableAdapter" GeneratorDataComponentClassName="RssItemTableAdapter" Name="RssItem" UserDataComponentName="RssItemTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.RssItem" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <DeleteCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [main].[sqlite_default_schema].[RssItem] WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ChannelCode" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Title" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Link" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PubDate" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_PubDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IsRead" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Content" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </DeleteCommand>
-                <InsertCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [main].[sqlite_default_schema].[RssItem] ([RssItemID], [ChannelCode], [Title], [Link], [PubDate], [IsRead], [Content]) VALUES (@RssItemID, @ChannelCode, @Title, @Link, @PubDate, @IsRead, @Content)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@PubDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </InsertCommand>
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT [RssItemID], [ChannelCode], [Title], [Link], [PubDate], [IsRead], [Content] FROM [RssItem]</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-                <UpdateCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [main].[sqlite_default_schema].[RssItem] SET [RssItemID] = @RssItemID, [ChannelCode] = @ChannelCode, [Title] = @Title, [Link] = @Link, [PubDate] = @PubDate, [IsRead] = @IsRead, [Content] = @Content WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@PubDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ChannelCode" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Title" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Link" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PubDate" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_PubDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IsRead" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Content" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="true" SourceVersion="Original" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Original" />
-                    </Parameters>
-                  </DbCommand>
-                </UpdateCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="RssItemID" DataSetColumn="RssItemID" />
-              <Mapping SourceColumn="ChannelCode" DataSetColumn="ChannelCode" />
-              <Mapping SourceColumn="Title" DataSetColumn="Title" />
-              <Mapping SourceColumn="Link" DataSetColumn="Link" />
-              <Mapping SourceColumn="PubDate" DataSetColumn="PubDate" />
-              <Mapping SourceColumn="IsRead" DataSetColumn="IsRead" />
-              <Mapping SourceColumn="Content" DataSetColumn="Content" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RuleTableAdapter" GeneratorDataComponentClassName="RuleTableAdapter" Name="Rule" UserDataComponentName="RuleTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.Rule" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="YQConnectionString (Settings)" DbObjectName="main.Rule" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [main].[sqlite_default_schema].[Rule] WHERE (([RuleID] = @Original_RuleID) AND ((@IsNull_Rule_Code = 1 AND [Rule_Code] IS NULL) OR ([Rule_Code] = @Original_Rule_Code)) AND ([Rule_Domain] = @Original_Rule_Domain) AND ((@IsNull_ContFlag = 1 AND [ContFlag] IS NULL) OR ([ContFlag] = @Original_ContFlag)) AND ((@IsNull_RemoveFlag = 1 AND [RemoveFlag] IS NULL) OR ([RemoveFlag] = @Original_RemoveFlag)))</CommandText>
@@ -429,7 +347,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NavUrlTableAdapter" GeneratorDataComponentClassName="NavUrlTableAdapter" Name="NavUrl" UserDataComponentName="NavUrlTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.NavUrl" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="YQConnectionString (Settings)" DbObjectName="main.NavUrl" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [main].[sqlite_default_schema].[NavUrl] WHERE (([ID] = @Original_ID) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Nav_Domain = 1 AND [Nav_Domain] IS NULL) OR ([Nav_Domain] = @Original_Nav_Domain)) AND ((@IsNull_PID = 1 AND [PID] IS NULL) OR ([PID] = @Original_PID)) AND ((@IsNull_Code = 1 AND [Code] IS NULL) OR ([Code] = @Original_Code)) AND ((@IsNull_level = 1 AND [level] IS NULL) OR ([level] = @Original_level)) AND ((@IsNull_Leaf = 1 AND [Leaf] IS NULL) OR ([Leaf] = @Original_Leaf)) AND ((@IsNull_Link = 1 AND [Link] IS NULL) OR ([Link] = @Original_Link)) AND ((@IsNull_Image = 1 AND [Image] IS NULL) OR ([Image] = @Original_Image)) AND ((@IsNull_NoReadCount = 1 AND [NoReadCount] IS NULL) OR ([NoReadCount] = @Original_NoReadCount)) AND ((@IsNull_ItemCount = 1 AND [ItemCount] IS NULL) OR ([ItemCount] = @Original_ItemCount)))</CommandText>
@@ -536,6 +454,87 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RssItemTableAdapter" GeneratorDataComponentClassName="RssItemTableAdapter" Name="RssItem" UserDataComponentName="RssItemTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="YQConnectionString1 (Settings)" DbObjectName="main.RssItem" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [main].[sqlite_default_schema].[RssItem] WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ([Link] = @Original_Link) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ChannelCode" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Title" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PubDate" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PubDate" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IsRead" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Content" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [main].[sqlite_default_schema].[RssItem] ([RssItemID], [ChannelCode], [Title], [Link], [PubDate], [IsRead], [Content]) VALUES (@RssItemID, @ChannelCode, @Title, @Link, @PubDate, @IsRead, @Content)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PubDate" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [RssItemID], [ChannelCode], [Title], [Link], [PubDate], [IsRead], [Content] FROM [RssItem]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [main].[sqlite_default_schema].[RssItem] SET [RssItemID] = @RssItemID, [ChannelCode] = @ChannelCode, [Title] = @Title, [Link] = @Link, [PubDate] = @PubDate, [IsRead] = @IsRead, [Content] = @Content WHERE (([RssItemID] = @Original_RssItemID) AND ((@IsNull_ChannelCode = 1 AND [ChannelCode] IS NULL) OR ([ChannelCode] = @Original_ChannelCode)) AND ((@IsNull_Title = 1 AND [Title] IS NULL) OR ([Title] = @Original_Title)) AND ([Link] = @Original_Link) AND ((@IsNull_PubDate = 1 AND [PubDate] IS NULL) OR ([PubDate] = @Original_PubDate)) AND ((@IsNull_IsRead = 1 AND [IsRead] IS NULL) OR ([IsRead] = @Original_IsRead)) AND ((@IsNull_Content = 1 AND [Content] IS NULL) OR ([Content] = @Original_Content)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@PubDate" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int64" Direction="Input" ParameterName="@Original_RssItemID" Precision="0" ProviderType="Int64" Scale="0" Size="0" SourceColumn="RssItemID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ChannelCode" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_ChannelCode" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="ChannelCode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Title" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Title" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="Title" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Link" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Link" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_PubDate" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_PubDate" Precision="0" ProviderType="AnsiString" Scale="0" Size="0" SourceColumn="PubDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_IsRead" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@Original_IsRead" Precision="0" ProviderType="AnsiStringFixedLength" Scale="0" Size="0" SourceColumn="IsRead" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Content" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Content" Precision="0" ProviderType="String" Scale="0" Size="0" SourceColumn="Content" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RssItemID" DataSetColumn="RssItemID" />
+              <Mapping SourceColumn="ChannelCode" DataSetColumn="ChannelCode" />
+              <Mapping SourceColumn="Title" DataSetColumn="Title" />
+              <Mapping SourceColumn="Link" DataSetColumn="Link" />
+              <Mapping SourceColumn="PubDate" DataSetColumn="PubDate" />
+              <Mapping SourceColumn="IsRead" DataSetColumn="IsRead" />
+              <Mapping SourceColumn="Content" DataSetColumn="Content" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -544,7 +543,7 @@
   <xs:element name="YQDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="YQDataSet" msprop:Generator_UserDSName="YQDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="cpcuse" msprop:Generator_TableClassName="cpcuseDataTable" msprop:Generator_TableVarName="tablecpcuse" msprop:Generator_TablePropName="cpcuse" msprop:Generator_RowDeletingName="cpcuseRowDeleting" msprop:Generator_UserTableName="cpcuse" msprop:Generator_RowChangingName="cpcuseRowChanging" msprop:Generator_RowEvHandlerName="cpcuseRowChangeEventHandler" msprop:Generator_RowDeletedName="cpcuseRowDeleted" msprop:Generator_RowEvArgName="cpcuseRowChangeEvent" msprop:Generator_RowChangedName="cpcuseRowChanged" msprop:Generator_RowClassName="cpcuseRow">
+        <xs:element name="cpcuse" msprop:Generator_TableClassName="cpcuseDataTable" msprop:Generator_TableVarName="tablecpcuse" msprop:Generator_RowChangedName="cpcuseRowChanged" msprop:Generator_TablePropName="cpcuse" msprop:Generator_RowDeletingName="cpcuseRowDeleting" msprop:Generator_RowChangingName="cpcuseRowChanging" msprop:Generator_RowEvHandlerName="cpcuseRowChangeEventHandler" msprop:Generator_RowDeletedName="cpcuseRowDeleted" msprop:Generator_RowClassName="cpcuseRow" msprop:Generator_UserTableName="cpcuse" msprop:Generator_RowEvArgName="cpcuseRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
@@ -588,7 +587,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="upsend" msprop:Generator_TableClassName="upsendDataTable" msprop:Generator_TableVarName="tableupsend" msprop:Generator_TablePropName="upsend" msprop:Generator_RowDeletingName="upsendRowDeleting" msprop:Generator_UserTableName="upsend" msprop:Generator_RowChangingName="upsendRowChanging" msprop:Generator_RowEvHandlerName="upsendRowChangeEventHandler" msprop:Generator_RowDeletedName="upsendRowDeleted" msprop:Generator_RowEvArgName="upsendRowChangeEvent" msprop:Generator_RowChangedName="upsendRowChanged" msprop:Generator_RowClassName="upsendRow">
+        <xs:element name="upsend" msprop:Generator_TableClassName="upsendDataTable" msprop:Generator_TableVarName="tableupsend" msprop:Generator_RowChangedName="upsendRowChanged" msprop:Generator_TablePropName="upsend" msprop:Generator_RowDeletingName="upsendRowDeleting" msprop:Generator_RowChangingName="upsendRowChanging" msprop:Generator_RowEvHandlerName="upsendRowChangeEventHandler" msprop:Generator_RowDeletedName="upsendRowDeleted" msprop:Generator_RowClassName="upsendRow" msprop:Generator_UserTableName="upsend" msprop:Generator_RowEvArgName="upsendRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Site" msprop:Generator_ColumnVarNameInTable="columnSite" msprop:Generator_ColumnPropNameInRow="Site" msprop:Generator_ColumnPropNameInTable="SiteColumn" msprop:Generator_UserColumnName="Site">
@@ -651,7 +650,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sendto" msprop:Generator_TableClassName="sendtoDataTable" msprop:Generator_TableVarName="tablesendto" msprop:Generator_TablePropName="sendto" msprop:Generator_RowDeletingName="sendtoRowDeleting" msprop:Generator_UserTableName="sendto" msprop:Generator_RowChangingName="sendtoRowChanging" msprop:Generator_RowEvHandlerName="sendtoRowChangeEventHandler" msprop:Generator_RowDeletedName="sendtoRowDeleted" msprop:Generator_RowEvArgName="sendtoRowChangeEvent" msprop:Generator_RowChangedName="sendtoRowChanged" msprop:Generator_RowClassName="sendtoRow">
+        <xs:element name="sendto" msprop:Generator_TableClassName="sendtoDataTable" msprop:Generator_TableVarName="tablesendto" msprop:Generator_RowChangedName="sendtoRowChanged" msprop:Generator_TablePropName="sendto" msprop:Generator_RowDeletingName="sendtoRowDeleting" msprop:Generator_RowChangingName="sendtoRowChanging" msprop:Generator_RowEvHandlerName="sendtoRowChangeEventHandler" msprop:Generator_RowDeletedName="sendtoRowDeleted" msprop:Generator_RowClassName="sendtoRow" msprop:Generator_UserTableName="sendto" msprop:Generator_RowEvArgName="sendtoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:long" />
@@ -700,7 +699,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="server" msprop:Generator_TableClassName="serverDataTable" msprop:Generator_TableVarName="tableserver" msprop:Generator_TablePropName="server" msprop:Generator_RowDeletingName="serverRowDeleting" msprop:Generator_UserTableName="server" msprop:Generator_RowChangingName="serverRowChanging" msprop:Generator_RowEvHandlerName="serverRowChangeEventHandler" msprop:Generator_RowDeletedName="serverRowDeleted" msprop:Generator_RowEvArgName="serverRowChangeEvent" msprop:Generator_RowChangedName="serverRowChanged" msprop:Generator_RowClassName="serverRow">
+        <xs:element name="server" msprop:Generator_TableClassName="serverDataTable" msprop:Generator_TableVarName="tableserver" msprop:Generator_RowChangedName="serverRowChanged" msprop:Generator_TablePropName="server" msprop:Generator_RowDeletingName="serverRowDeleting" msprop:Generator_RowChangingName="serverRowChanging" msprop:Generator_RowEvHandlerName="serverRowChangeEventHandler" msprop:Generator_RowDeletedName="serverRowDeleted" msprop:Generator_RowClassName="serverRow" msprop:Generator_UserTableName="server" msprop:Generator_RowEvArgName="serverRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="smtp" msprop:Generator_ColumnVarNameInTable="columnsmtp" msprop:Generator_ColumnPropNameInRow="smtp" msprop:Generator_ColumnPropNameInTable="smtpColumn" msprop:Generator_UserColumnName="smtp">
@@ -734,50 +733,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RssItem" msprop:Generator_TableClassName="RssItemDataTable" msprop:Generator_TableVarName="tableRssItem" msprop:Generator_TablePropName="RssItem" msprop:Generator_RowDeletingName="RssItemRowDeleting" msprop:Generator_UserTableName="RssItem" msprop:Generator_RowChangingName="RssItemRowChanging" msprop:Generator_RowEvHandlerName="RssItemRowChangeEventHandler" msprop:Generator_RowDeletedName="RssItemRowDeleted" msprop:Generator_RowEvArgName="RssItemRowChangeEvent" msprop:Generator_RowChangedName="RssItemRowChanged" msprop:Generator_RowClassName="RssItemRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="RssItemID" msprop:Generator_ColumnVarNameInTable="columnRssItemID" msprop:Generator_ColumnPropNameInRow="RssItemID" msprop:Generator_ColumnPropNameInTable="RssItemIDColumn" msprop:Generator_UserColumnName="RssItemID" type="xs:int" />
-              <xs:element name="ChannelCode" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="ChannelCode" msprop:Generator_ColumnVarNameInTable="columnChannelCode" msprop:Generator_ColumnPropNameInTable="ChannelCodeColumn" msprop:Generator_UserColumnName="ChannelCode" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="6" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Link" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Link" msprop:Generator_ColumnVarNameInTable="columnLink" msprop:Generator_ColumnPropNameInTable="LinkColumn" msprop:Generator_UserColumnName="Link">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PubDate" msprop:Generator_ColumnVarNameInTable="columnPubDate" msprop:Generator_ColumnPropNameInRow="PubDate" msprop:Generator_ColumnPropNameInTable="PubDateColumn" msprop:Generator_UserColumnName="PubDate" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="IsRead" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="IsRead" msprop:Generator_ColumnVarNameInTable="columnIsRead" msprop:Generator_ColumnPropNameInTable="IsReadColumn" msprop:Generator_UserColumnName="IsRead" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="1" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Content" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Content" msprop:Generator_ColumnVarNameInTable="columnContent" msprop:Generator_ColumnPropNameInTable="ContentColumn" msprop:Generator_UserColumnName="Content" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Rule" msprop:Generator_TableClassName="RuleDataTable" msprop:Generator_TableVarName="tableRule" msprop:Generator_TablePropName="Rule" msprop:Generator_RowDeletingName="RuleRowDeleting" msprop:Generator_UserTableName="Rule" msprop:Generator_RowChangingName="RuleRowChanging" msprop:Generator_RowEvHandlerName="RuleRowChangeEventHandler" msprop:Generator_RowDeletedName="RuleRowDeleted" msprop:Generator_RowEvArgName="RuleRowChangeEvent" msprop:Generator_RowChangedName="RuleRowChanged" msprop:Generator_RowClassName="RuleRow">
+        <xs:element name="Rule" msprop:Generator_TableClassName="RuleDataTable" msprop:Generator_TableVarName="tableRule" msprop:Generator_RowChangedName="RuleRowChanged" msprop:Generator_TablePropName="Rule" msprop:Generator_RowDeletingName="RuleRowDeleting" msprop:Generator_RowChangingName="RuleRowChanging" msprop:Generator_RowEvHandlerName="RuleRowChangeEventHandler" msprop:Generator_RowDeletedName="RuleRowDeleted" msprop:Generator_RowClassName="RuleRow" msprop:Generator_UserTableName="Rule" msprop:Generator_RowEvArgName="RuleRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="RuleID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnRuleID" msprop:Generator_ColumnPropNameInRow="RuleID" msprop:Generator_ColumnPropNameInTable="RuleIDColumn" msprop:Generator_UserColumnName="RuleID" type="xs:int" />
@@ -812,7 +768,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NavUrl" msprop:Generator_TableClassName="NavUrlDataTable" msprop:Generator_TableVarName="tableNavUrl" msprop:Generator_TablePropName="NavUrl" msprop:Generator_RowDeletingName="NavUrlRowDeleting" msprop:Generator_UserTableName="NavUrl" msprop:Generator_RowChangingName="NavUrlRowChanging" msprop:Generator_RowEvHandlerName="NavUrlRowChangeEventHandler" msprop:Generator_RowDeletedName="NavUrlRowDeleted" msprop:Generator_RowEvArgName="NavUrlRowChangeEvent" msprop:Generator_RowChangedName="NavUrlRowChanged" msprop:Generator_RowClassName="NavUrlRow">
+        <xs:element name="NavUrl" msprop:Generator_TableClassName="NavUrlDataTable" msprop:Generator_TableVarName="tableNavUrl" msprop:Generator_RowChangedName="NavUrlRowChanged" msprop:Generator_TablePropName="NavUrl" msprop:Generator_RowDeletingName="NavUrlRowDeleting" msprop:Generator_RowChangingName="NavUrlRowChanging" msprop:Generator_RowEvHandlerName="NavUrlRowChangeEventHandler" msprop:Generator_RowDeletedName="NavUrlRowDeleted" msprop:Generator_RowClassName="NavUrlRow" msprop:Generator_UserTableName="NavUrl" msprop:Generator_RowEvArgName="NavUrlRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -853,6 +809,55 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="RssItem" msprop:Generator_TableClassName="RssItemDataTable" msprop:Generator_TableVarName="tableRssItem" msprop:Generator_TablePropName="RssItem" msprop:Generator_RowDeletingName="RssItemRowDeleting" msprop:Generator_RowChangingName="RssItemRowChanging" msprop:Generator_RowEvHandlerName="RssItemRowChangeEventHandler" msprop:Generator_RowDeletedName="RssItemRowDeleted" msprop:Generator_UserTableName="RssItem" msprop:Generator_RowChangedName="RssItemRowChanged" msprop:Generator_RowEvArgName="RssItemRowChangeEvent" msprop:Generator_RowClassName="RssItemRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RssItemID" msprop:Generator_ColumnVarNameInTable="columnRssItemID" msprop:Generator_ColumnPropNameInRow="RssItemID" msprop:Generator_ColumnPropNameInTable="RssItemIDColumn" msprop:Generator_UserColumnName="RssItemID" type="xs:int" />
+              <xs:element name="ChannelCode" msprop:Generator_ColumnVarNameInTable="columnChannelCode" msprop:Generator_ColumnPropNameInRow="ChannelCode" msprop:Generator_ColumnPropNameInTable="ChannelCodeColumn" msprop:Generator_UserColumnName="ChannelCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Title" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Link" msprop:Generator_ColumnVarNameInTable="columnLink" msprop:Generator_ColumnPropNameInRow="Link" msprop:Generator_ColumnPropNameInTable="LinkColumn" msprop:Generator_UserColumnName="Link">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PubDate" msprop:Generator_ColumnVarNameInTable="columnPubDate" msprop:Generator_ColumnPropNameInRow="PubDate" msprop:Generator_ColumnPropNameInTable="PubDateColumn" msprop:Generator_UserColumnName="PubDate" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsRead" msprop:Generator_ColumnVarNameInTable="columnIsRead" msprop:Generator_ColumnPropNameInRow="IsRead" msprop:Generator_ColumnPropNameInTable="IsReadColumn" msprop:Generator_UserColumnName="IsRead" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Content" msprop:Generator_ColumnVarNameInTable="columnContent" msprop:Generator_ColumnPropNameInRow="Content" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInTable="ContentColumn" msprop:Generator_UserColumnName="Content" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -867,10 +872,6 @@
       <xs:selector xpath=".//mstns:sendto" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
-    <xs:unique name="RssItem_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:RssItem" />
-      <xs:field xpath="mstns:RssItemID" />
-    </xs:unique>
     <xs:unique name="Rule_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Rule" />
       <xs:field xpath="mstns:RuleID" />
@@ -878,6 +879,10 @@
     <xs:unique name="NavUrl_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:NavUrl" />
       <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="RssItem_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RssItem" />
+      <xs:field xpath="mstns:RssItemID" />
     </xs:unique>
   </xs:element>
 </xs:schema>

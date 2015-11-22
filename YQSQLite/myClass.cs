@@ -12,6 +12,7 @@ using System.Threading;
 using HtmlAgilityPack;
 using ScrapySharp.Extensions;
 using System.Linq;
+using System.Data.SQLite;
 
 
 
@@ -19,7 +20,7 @@ using System.Linq;
 
 namespace YQSQLite
 {
-    public delegate void UpdataListView(ListViewItem lv);
+   
     public class caiji
     {
         public int ID { get; set; }
@@ -143,6 +144,7 @@ namespace YQSQLite
 
 
     }
+
     //系统配置类
     [Serializable()]
     public class configYQ
@@ -171,7 +173,46 @@ namespace YQSQLite
 
     }
 
+    public static class SQLiteHelper
+    {
+        private static string connStr = System.Configuration.ConfigurationSettings.AppSettings["YQConnectionString"]..ToString();
+        public static int TransExecuteNonQuery(DataTable dt, string commandText, SQLiteParameter[] commandParameters)
+        {
+            //加入了详细的任务列表
+            using (SQLiteConnection conn = new SQLiteConnection(connStr))
+            {
+                int result = 0;
+                conn.Open();
+                using (System.Data.SQLite.SQLiteTransaction trans = conn.BeginTransaction())
+                {
+                    using (SQLiteCommand cmd = new SQLiteCommand(conn))
+                    {
+                        cmd.Transaction = trans;
+                        cmd.CommandText = commandText;
+                        cmd.Parameters.AddRange(commandParameters);
 
+                        try
+                        {
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                result = cmd.ExecuteNonQuery();
+                            }
+
+
+                            trans.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            trans.Rollback();
+
+                        }
+                    }
+                }
+                return result;
+            }
+        }
+    }
 
 
     public class caijiComparer : IEqualityComparer<caiji>
