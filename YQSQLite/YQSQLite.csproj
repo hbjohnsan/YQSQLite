@@ -80,6 +80,7 @@
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -104,6 +105,7 @@
     <Compile Include="AboutFrm.Designer.cs">
       <DependentUpon>AboutFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BLL.cs" />
     <Compile Include="BrowserFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +118,7 @@
     <Compile Include="ConfigFrm.Designer.cs">
       <DependentUpon>ConfigFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAL.cs" />
     <Compile Include="DataFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +201,7 @@
     <Compile Include="SendFrm.Designer.cs">
       <DependentUpon>SendFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SQLiteHelper.cs" />
     <Compile Include="TotalFrm.cs">
       <SubType>Form</SubType>
     </Compile>

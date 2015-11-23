@@ -529,7 +529,7 @@ namespace YQSQLite
         public void SaveToDB(DataTable dt)
         {
 
-            /* todo:sqlite没有提供批量插入的机制，需要通过事务处理 更新所有数据
+            /* sqlite没有提供批量插入的机制，需要通过事务处理 更新所有数据
              * http://www.cnblogs.com/hbjohnsan/p/4169612.html
              * Eorr 数据库加了锁，执行不了自己的代码。
              */
