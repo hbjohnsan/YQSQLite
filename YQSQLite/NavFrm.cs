@@ -2,19 +2,13 @@
 using WeifenLuo.WinFormsUI.Docking;
 using System.Xml.Linq;
 using System.Windows.Forms;
-using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using System.Text;
-using System.Collections;
-using System.Drawing;
 using System.Threading;
-using System.Text.RegularExpressions;
-using HtmlAgilityPack;
 using ScrapySharp.Extensions;
-using System.Threading.Tasks;
 using System.ServiceModel.Syndication;
+
 
 
 namespace YQSQLite
@@ -139,7 +133,7 @@ namespace YQSQLite
                 case "08"://外网
                     break;
                 default:
-                    
+
                     break;
             }
             UpAndSaveItem(navurl);
@@ -201,7 +195,7 @@ namespace YQSQLite
             }
             //统计RssItem表中的数量，更新NavUrl中的ItemCount和NoReadCount数量
 
-           
+
         }
         //更新显示，并保存数据
         private void UpAndSaveItem(NavUrl navurl)
@@ -232,15 +226,20 @@ namespace YQSQLite
         public void DownloadRSS(NavUrl navurl)
         {
 
-            var feed = new Rss20FeedFormatter();
-            
-            using (var xreader=XmlReader.Create(navurl.Link))
+            #region 使用HttpHelper取得源码
+            HttpHelper http = new HttpHelper();
+            HttpItem hitem = new HttpItem()
             {
-                feed.ReadFrom(xreader);
-            }
-            foreach (var it in feed.Feed.Items )
+                URL = navurl.Link
+            };
+            HttpResult result = http.GetHtml(hitem);
+            string html = result.Html;
+            #endregion
+            SyndicationFeed sf = SyndicationFeed.Load(XmlReader.Create(html));
+
+            foreach (SyndicationItem it in sf.Items)
             {
-                
+
                 //取得最大ID值+1;
                 int maxId;
                 if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
@@ -252,20 +251,20 @@ namespace YQSQLite
                     maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
                 }
                 //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
-               
-                    //通过Link查找DataSet中是否有相同的网址
-                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == it.Links[0].Uri.ToString() || p.Title == it.Title.Text.Trim()) select p).ToList().Count;
-                    if (f == 0)
-                    {
-                        RssItem item = new RssItem(maxId, navurl.Code, it.Title.Text.Trim(), it.Links[0].Uri.ToString(), Convert.ToDateTime(it.PublishDate.ToString("yyyy-MM-dd HH:mm:ss")), "F", "");
 
-                        ListViewItem lv = new ListViewItem(new string[] { item.Title, item.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
-                        lv.Tag = item;
-                        mf.SelectFrmListViewReload(lv);
-                        //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(item.RssItemID, item.ChannelCode, item.Title, item.Link, item.PubDate, item.IsRead, item.Content);
-                    }
-             
+                //通过Link查找DataSet中是否有相同的网址
+                int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == it.Links[0].Uri.ToString() || p.Title == it.Title.Text.Trim()) select p).ToList().Count;
+                if (f == 0)
+                {
+                    RssItem item = new RssItem(maxId, navurl.Code, it.Title.Text.Trim(), it.Links[0].Uri.ToString(), Convert.ToDateTime(it.PublishDate.ToString("yyyy-MM-dd HH:mm:ss")), "F", "");
+
+                    ListViewItem lv = new ListViewItem(new string[] { item.Title, item.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
+                    lv.Tag = item;
+                    mf.SelectFrmListViewReload(lv);
+                    //方法二：在DataSet中添加行，然后一次提交到库
+                    mf.DS.RssItem.AddRssItemRow(item.RssItemID, item.ChannelCode, item.Title, item.Link, item.PubDate, item.IsRead, item.Content);
+                }
+
             }
         }
 

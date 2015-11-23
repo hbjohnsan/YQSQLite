@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel.Syndication;
 using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+using System.Net;
+
 
 namespace YQSQLite
 {
@@ -13,6 +17,8 @@ namespace YQSQLite
         //通用解析RSS方法
         protected void ShowRSS(string rssURI)
         {
+          
+            
             SyndicationFeed sf = SyndicationFeed.Load(XmlReader.Create(rssURI));
 
             //textBox1.Text += "title:" + sf.Title.Text + "\r\n";
@@ -36,6 +42,21 @@ namespace YQSQLite
                 //Application.DoEvents();
             }
 
+            
+
+        }
+
+        /// <summary>
+        /// 反序列化
+        /// </summary>
+        public static T Deserialize<T>(string xmlContent)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(T));
+            using (StringReader strReader = new StringReader(xmlContent))
+            {
+                XmlReader xmlReader = XmlReader.Create(strReader);
+                return (T)xs.Deserialize(xmlReader);
+            }
         }
     }
 }
