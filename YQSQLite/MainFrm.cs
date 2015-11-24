@@ -196,7 +196,11 @@ namespace YQSQLite
                                       where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
                                       select s).Count();
                 }
-                // navurlTap.Update(DS.NavUrl);
+
+              DataTable dt= DS.NavUrl.GetChanges();
+
+
+              DS.AcceptChanges();
 
             }));
         }
@@ -522,11 +526,9 @@ namespace YQSQLite
         }
         #endregion
 
-
-
         //检测，dataset中的表是否有变动。有变动再提交。
-        #region 失去窗体焦点时，更新数据到库
-        public void SaveToDB(DataTable dt)
+        #region 更新数据到库
+        public void SaveRssItemToDB(DataTable dt)
         {
 
             /* sqlite没有提供批量插入的机制，需要通过事务处理 更新所有数据
@@ -564,13 +566,49 @@ namespace YQSQLite
                     }
                 }
             }
-            
-           
-           
-            
+                        
         }
 
-        
+        public void SaveNavUrlToDB(DataTable dt)
+        {
+
+            /* sqlite没有提供批量插入的机制，需要通过事务处理 更新所有数据
+             * http://www.cnblogs.com/hbjohnsan/p/4169612.html
+             * Eorr 数据库加了锁，执行不了自己的代码。
+             */
+            string connStr = @"data source=E:\YQSQLite\YQSQLite\Data\YQ.db";
+            using (SQLiteConnection conn = new SQLiteConnection(connStr))
+            {
+                conn.Open();
+                using (System.Data.SQLite.SQLiteTransaction trans = conn.BeginTransaction())
+                {
+                    using (System.Data.SQLite.SQLiteCommand cmd = new SQLiteCommand(conn))
+                    {
+                        cmd.Transaction = trans;
+                        try
+                        {
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                cmd.CommandText = @"updata NavUrl values ('" + Int32.Parse(dr[0].ToString()) + "','"
+                                    + dr[1].ToString() + "','" + dr[2].ToString() + "','"
+                                    + dr[3].ToString() + "','" + Convert.ToDateTime(dr[4].ToString()) + "','"
+                                    + dr[5].ToString() + "','" + dr[6].ToString() + "')";
+                                cmd.ExecuteNonQuery();
+
+                            }
+                            trans.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            trans.Rollback();
+
+                        }
+                    }
+                }
+            }
+
+        }
         
 
         private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)

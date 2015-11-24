@@ -113,8 +113,8 @@ namespace YQSQLite
                             DownloadRSS(navurl);
                             break;
                         default://正常内容rss2.0
-                            //Nomal_GetRssXml(navurl);
-                            DownloadRSS(navurl);
+                            Nomal_GetRssXml(navurl);
+                            //DownloadRSS(navurl);
                             break;
                     }
                     break;
@@ -196,8 +196,10 @@ namespace YQSQLite
             //统计RssItem表中的数量，更新NavUrl中的ItemCount和NoReadCount数量
 
 
-        }
-        //更新显示，并保存数据
+        } 
+        #endregion
+       
+        #region 更新显示，并保存RssItem数据
         private void UpAndSaveItem(NavUrl navurl)
         {
             //需要更新RSS统计
@@ -207,18 +209,32 @@ namespace YQSQLite
 
                 UpdataNodeText(navurl);
 
-
-                //连点数据出错，
-                //mf.rssTap.Update(mf.DS.RssItem);
-                //mf.DS.AcceptChanges();
-                //mf.DS.GetChanges();
-
-                mf.SaveToDB(mf.DS.RssItem);
+                mf.SaveRssItemToDB(mf.DS.RssItem);
                 //mf.SaveToDB_help(mf.DS.RssItem);
 
             }));
             th.IsBackground = true;
             th.Start();
+        } 
+        #endregion
+
+        #region 计算并更新NavUrl表中的数据量
+        private void ColUpNavUrl()
+        {
+            var navs = from p in mf.DS.NavUrl.AsEnumerable()
+                       select p;
+
+            foreach (var nv in navs)
+            {
+                nv.ItemCount = (from q in mf.DS.RssItem.AsEnumerable()
+                                where q.ChannelCode.StartsWith(nv.Code)
+                                select q).Count();
+                nv.NoReadCount = (from s in mf.DS.RssItem.AsEnumerable()
+                                  where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
+                                  select s).Count();
+            }
+        
+
         }
         #endregion
 
@@ -267,10 +283,9 @@ namespace YQSQLite
 
             }
         }
-
         #endregion
 
-        //采集方法
+        #region 采集方法
         private string GetSiteContent(string link)
         {
             string reContent = "";
@@ -363,7 +378,8 @@ namespace YQSQLite
             }
             return reContent;
         }
-
+        
+        #endregion
 
 
         #region 右键菜单

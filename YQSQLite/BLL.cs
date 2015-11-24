@@ -7,19 +7,21 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using System.Net;
+using Chilkat;
 
 
 namespace YQSQLite
 {
     public class BLL
     {
-
+        Chilkat.Rss sa=new Rss();
+      
         //通用解析RSS方法
         protected void ShowRSS(string rssURI)
         {
-          
-            
             SyndicationFeed sf = SyndicationFeed.Load(XmlReader.Create(rssURI));
+            
+            
 
             //textBox1.Text += "title:" + sf.Title.Text + "\r\n";
             //if (sf.Links.Count > 0)
