@@ -137,7 +137,15 @@ namespace YQSQLite
                     break;
             }
             UpAndSaveItem(navurl);
-
+            //更新总数
+            ColUpNavUrl();
+            //更新该行
+            mf.navurlTap.Update((mf.DS.NavUrl.FindByID(navurl.ID)));
+            //更新父行
+            mf.navurlTap.Update(mf.DS.NavUrl.FindByID(navurl.PID));
+            //更新父ID的父ID
+            int gID=(mf.DS.NavUrl.FindByID(navurl.PID)).PID;
+            mf.navurlTap.Update(mf.DS.NavUrl.FindByID(gID));
 
         }
         #endregion
@@ -205,7 +213,7 @@ namespace YQSQLite
             //需要更新RSS统计
             Thread th = new Thread(new ThreadStart(delegate
             {
-                mf.CountNum_RssItem2NavUrl();
+                ColUpNavUrl();
 
                 UpdataNodeText(navurl);
 

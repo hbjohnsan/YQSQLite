@@ -112,7 +112,6 @@ namespace YQSQLite
             hassendfm.Show(waitsendFm.Pane, DockAlignment.Bottom, 0.5);
             #endregion
 
-            CountNum_RssItem2NavUrl();
 
             Thread ts = new Thread(new ThreadStart(delegate
             {
@@ -180,30 +179,7 @@ namespace YQSQLite
         #endregion
 
         #region 中间调用方法
-        public void CountNum_RssItem2NavUrl()
-        {
-            this.Invoke(new ThreadStart(delegate
-            {
-                var navs = from p in DS.NavUrl.AsEnumerable()
-                           select p;
-
-                foreach (var nv in navs)
-                {
-                    nv.ItemCount = (from q in DS.RssItem.AsEnumerable()
-                                    where q.ChannelCode.StartsWith(nv.Code)
-                                    select q).Count();
-                    nv.NoReadCount = (from s in DS.RssItem.AsEnumerable()
-                                      where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
-                                      select s).Count();
-                }
-
-              DataTable dt= DS.NavUrl.GetChanges();
-
-
-              DS.AcceptChanges();
-
-            }));
-        }
+       
 
 
         //SelectFrom窗体的数据重载
