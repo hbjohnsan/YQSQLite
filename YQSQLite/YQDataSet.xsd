@@ -839,7 +839,7 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="level" msprop:Generator_ColumnVarNameInTable="columnlevel" msprop:Generator_ColumnPropNameInRow="level" msprop:Generator_ColumnPropNameInTable="levelColumn" msprop:Generator_UserColumnName="level" type="xs:long" minOccurs="0" />
-              <xs:element name="Leaf" msprop:Generator_ColumnVarNameInTable="columnLeaf" msprop:Generator_ColumnPropNameInRow="Leaf" msprop:Generator_ColumnPropNameInTable="LeafColumn" msprop:Generator_UserColumnName="Leaf" type="xs:long" minOccurs="0" />
+              <xs:element name="Leaf" msprop:Generator_ColumnVarNameInTable="columnLeaf" msprop:Generator_ColumnPropNameInRow="Leaf" msprop:Generator_ColumnPropNameInTable="LeafColumn" msprop:Generator_UserColumnName="Leaf" type="xs:int" minOccurs="0" />
               <xs:element name="Link" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Link" msprop:Generator_ColumnVarNameInTable="columnLink" msprop:Generator_ColumnPropNameInTable="LinkColumn" msprop:Generator_UserColumnName="Link" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -848,8 +848,8 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Image" msprop:Generator_ColumnVarNameInTable="columnImage" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_UserColumnName="Image" type="xs:long" minOccurs="0" />
-              <xs:element name="NoReadCount" msprop:Generator_ColumnVarNameInTable="columnNoReadCount" msprop:Generator_ColumnPropNameInRow="NoReadCount" msprop:Generator_ColumnPropNameInTable="NoReadCountColumn" msprop:Generator_UserColumnName="NoReadCount" type="xs:int" minOccurs="0" />
-              <xs:element name="ItemCount" msprop:Generator_ColumnVarNameInTable="columnItemCount" msprop:Generator_ColumnPropNameInRow="ItemCount" msprop:Generator_ColumnPropNameInTable="ItemCountColumn" msprop:Generator_UserColumnName="ItemCount" type="xs:int" minOccurs="0" />
+              <xs:element name="NoReadCount" msprop:Generator_ColumnVarNameInTable="columnNoReadCount" msprop:Generator_ColumnPropNameInRow="NoReadCount" msprop:Generator_ColumnPropNameInTable="NoReadCountColumn" msprop:Generator_UserColumnName="NoReadCount" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="ItemCount" msprop:Generator_ColumnVarNameInTable="columnItemCount" msprop:Generator_ColumnPropNameInRow="ItemCount" msprop:Generator_ColumnPropNameInTable="ItemCountColumn" msprop:Generator_UserColumnName="ItemCount" type="xs:int" default="0" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

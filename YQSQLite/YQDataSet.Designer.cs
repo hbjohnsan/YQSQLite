@@ -2738,7 +2738,7 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NavUrlRow AddNavUrlRow(string Name, string Nav_Domain, int PID, string Code, long level, long Leaf, string Link, long Image, int NoReadCount, int ItemCount) {
+            public NavUrlRow AddNavUrlRow(string Name, string Nav_Domain, int PID, string Code, long level, int Leaf, string Link, long Image, int NoReadCount, int ItemCount) {
                 NavUrlRow rowNavUrlRow = ((NavUrlRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2809,7 +2809,7 @@ namespace YQSQLite {
                 base.Columns.Add(this.columnCode);
                 this.columnlevel = new global::System.Data.DataColumn("level", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlevel);
-                this.columnLeaf = new global::System.Data.DataColumn("Leaf", typeof(long), null, global::System.Data.MappingType.Element);
+                this.columnLeaf = new global::System.Data.DataColumn("Leaf", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLeaf);
                 this.columnLink = new global::System.Data.DataColumn("Link", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLink);
@@ -2830,6 +2830,8 @@ namespace YQSQLite {
                 this.columnNav_Domain.MaxLength = 50;
                 this.columnCode.MaxLength = 20;
                 this.columnLink.MaxLength = 200;
+                this.columnNoReadCount.DefaultValue = ((int)(0));
+                this.columnItemCount.DefaultValue = ((int)(0));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3933,10 +3935,10 @@ namespace YQSQLite {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long Leaf {
+            public int Leaf {
                 get {
                     try {
-                        return ((long)(this[this.tableNavUrl.LeafColumn]));
+                        return ((int)(this[this.tableNavUrl.LeafColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“NavUrl”中列“Leaf”的值为 DBNull。", e);

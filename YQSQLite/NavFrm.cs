@@ -8,6 +8,7 @@ using System.Xml;
 using System.Threading;
 using ScrapySharp.Extensions;
 using System.ServiceModel.Syndication;
+using System.Text.RegularExpressions;
 
 
 
@@ -102,15 +103,19 @@ namespace YQSQLite
             /*
              * 采集分有RSS采集，等8类。Rss采集只是其中一类。
              * Rss采集中《新华网》采规则又有不同，需要单独取出。
-             * 
+             * 标记一下，是不是有新的项采了进来。如果没有就不用统计和更新。！！！
+             * 采集到的东西，如果时间太长了。大于1周前的内容，干脆就过虑掉。！！！
              */
             switch (navurl.Code.Substring(0, 2))//取出大项分类01－08，
             {
                 case "01"://此项为Rss采集
                     switch (navurl.Code.Substring(0, 4))//判断特殊规则，如新华网
                     {
-                        case "0108"://新闻网、百度新闻订阅
-                            DownloadRSS(navurl);
+                        case "0108"://新闻网
+                            DownRss_XinHa(navurl);
+                            break;
+                        case "0110": //百度新闻订阅
+
                             break;
                         default://正常内容rss2.0
                             Nomal_GetRssXml(navurl);
@@ -137,7 +142,7 @@ namespace YQSQLite
                     break;
             }
             UpAndSaveItem(navurl);
-            //更新总数
+            //更新总数  不要在这里作了。容易出错
             ColUpNavUrl();
             //更新该行
             mf.navurlTap.Update((mf.DS.NavUrl.FindByID(navurl.ID)));
@@ -148,8 +153,81 @@ namespace YQSQLite
             mf.navurlTap.Update(mf.DS.NavUrl.FindByID(gID));
 
         }
-        #endregion
+        //新华网新闻源的下载规则
+        private void DownRss_XinHa(NavUrl navurl)
+        {
+            try
+            {
+                //加载RSS新闻数据
+                XElement rssData = XElement.Load(navurl.Link);
+                //取出新闻标题，转成RssItem对象，并暂存到列表控件中
 
+                //看来只能用正规截取了！
+                //<link>http://news.xinhuanet.com/shuhua/2013-11/16/c_125712954.htm</link> 
+                //Sat,16-Nov-2013 11:33:12 GMT 
+                //<description>
+                Regex regex = new Regex(@"(?<=<\/link>)(.*?)(?=<description>)");
+                //想到的办法：一是通过xelement对象，正规取得；二是在源码中加入pubDate标签。
+                //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+                #region test
+                //var i = rssData.Descendants(XName.Get("item")).First();
+                //MessageBox.Show(i.ToString());//保留了xelement格式。
+                //去除标题的a标签。
+                Regex regTitle = new Regex(@"</?.+?>");
+                //去除连接中的双引号                       
+                //string s="\"http://news.xinhuanet.com/edu/2013-10/11/c_125515383.htm\"";
+                //MessageBox.Show(s.Replace("\"", ""));
+                #endregion
+                var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+                                select new
+                                {
+                                    Title = regTitle.Replace(item.Element(XName.Get("title")).Value.Trim(), ""),
+                                    Link = item.Element(XName.Get("link")).Value.Replace("\"", ""),
+                                    PubDate = regex.Match(item.ToString()).ToString()
+                                    //PubDate = item.Element(XName.Get("pubDate")).Value
+
+                                };
+
+
+             
+                //用于标记本次新采集了多少条。
+
+                foreach (var result in itemQuery)
+                {
+
+                    //通过Link查找DataSet中是否有相同的网址
+                    //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
+                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;
+                    //取得最大ID值+1; 
+                    int maxId;
+                    if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
+                    {
+                        maxId = 1;
+                    }
+                    else
+                    {
+                        maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
+                    }
+
+                    if (f == 0)
+                    {
+                        RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+
+                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
+                        lv.Tag = it;
+                        mf.SelectFrmListViewReload(lv);
+                        //方法二：在DataSet中添加行，然后一次提交到库
+                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate, it.IsRead, it.Content);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        
+        }
+        #endregion
 
         #region 正常规则
         private void Nomal_GetRssXml(NavUrl navurl)
@@ -201,10 +279,12 @@ namespace YQSQLite
             {
                 MessageBox.Show(ex.ToString());
             }
-            //统计RssItem表中的数量，更新NavUrl中的ItemCount和NoReadCount数量
-
-
+      
         } 
+        #endregion
+
+        #region 新华网新闻列表的采集规则
+
         #endregion
        
         #region 更新显示，并保存RssItem数据
@@ -244,54 +324,7 @@ namespace YQSQLite
         
 
         }
-        #endregion
-
-        #region 采用新方法采集RSS源 --这个方法部分网站能行。
-        public void DownloadRSS(NavUrl navurl)
-        {
-
-            #region 使用HttpHelper取得源码
-            HttpHelper http = new HttpHelper();
-            HttpItem hitem = new HttpItem()
-            {
-                URL = navurl.Link
-            };
-            HttpResult result = http.GetHtml(hitem);
-            string html = result.Html;
-            #endregion
-            SyndicationFeed sf = SyndicationFeed.Load(XmlReader.Create(html));
-
-            foreach (SyndicationItem it in sf.Items)
-            {
-
-                //取得最大ID值+1;
-                int maxId;
-                if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
-                {
-                    maxId = 1;
-                }
-                else
-                {
-                    maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
-                }
-                //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
-
-                //通过Link查找DataSet中是否有相同的网址
-                int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == it.Links[0].Uri.ToString() || p.Title == it.Title.Text.Trim()) select p).ToList().Count;
-                if (f == 0)
-                {
-                    RssItem item = new RssItem(maxId, navurl.Code, it.Title.Text.Trim(), it.Links[0].Uri.ToString(), Convert.ToDateTime(it.PublishDate.ToString("yyyy-MM-dd HH:mm:ss")), "F", "");
-
-                    ListViewItem lv = new ListViewItem(new string[] { item.Title, item.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
-                    lv.Tag = item;
-                    mf.SelectFrmListViewReload(lv);
-                    //方法二：在DataSet中添加行，然后一次提交到库
-                    mf.DS.RssItem.AddRssItemRow(item.RssItemID, item.ChannelCode, item.Title, item.Link, item.PubDate, item.IsRead, item.Content);
-                }
-
-            }
-        }
-        #endregion
+        #endregion       
 
         #region 采集方法
         private string GetSiteContent(string link)

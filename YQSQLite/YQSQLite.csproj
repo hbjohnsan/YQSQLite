@@ -56,10 +56,6 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="ChilkatDotNet4, Version=9.5.0.54, Culture=neutral, PublicKeyToken=eb5fc1fc52ef09bd, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ChilkatDotNet4.dll</HintPath>
-    </Reference>
     <Reference Include="FSharp.Core">
       <HintPath>..\packages\ScrapySharp.2.2.61\lib\net40\FSharp.Core.dll</HintPath>
     </Reference>
@@ -109,7 +105,6 @@
     <Compile Include="AboutFrm.Designer.cs">
       <DependentUpon>AboutFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BLL.cs" />
     <Compile Include="BrowserFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +117,6 @@
     <Compile Include="ConfigFrm.Designer.cs">
       <DependentUpon>ConfigFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAL.cs" />
     <Compile Include="DataFrm.cs">
       <SubType>Form</SubType>
     </Compile>
