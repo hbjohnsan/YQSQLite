@@ -48,10 +48,10 @@ namespace YQSQLite
             NavUrl navurl = e.Node.Tag as NavUrl;
             switch (navurl.Leaf)
             {
-                case 0:     //是分类项，从DS中显示内容
+                case "F":     //是分类项，从DS中显示内容
                     ReloadSelectFrmListView(navurl);
                     break;
-                case 1:    //是有RSS地址的项
+                case "T":    //是有RSS地址的项
                     if ((from p in mf.DS.RssItem.AsEnumerable() where p.ChannelCode == navurl.Code select p.RssItemID).Count() > 0)
                     {
                         //如果库中有部分内容，则显示
@@ -143,13 +143,13 @@ namespace YQSQLite
             }
             UpAndSaveItem(navurl);
             //更新总数  不要在这里作了。容易出错
-            ColUpNavUrl();
+            //   ColUpNavUrl();
             //更新该行
             mf.navurlTap.Update((mf.DS.NavUrl.FindByID(navurl.ID)));
             //更新父行
             mf.navurlTap.Update(mf.DS.NavUrl.FindByID(navurl.PID));
             //更新父ID的父ID
-            int gID=(mf.DS.NavUrl.FindByID(navurl.PID)).PID;
+            int gID = (mf.DS.NavUrl.FindByID(navurl.PID)).PID;
             mf.navurlTap.Update(mf.DS.NavUrl.FindByID(gID));
 
         }
@@ -189,7 +189,7 @@ namespace YQSQLite
                                 };
 
 
-             
+
                 //用于标记本次新采集了多少条。
 
                 foreach (var result in itemQuery)
@@ -225,7 +225,7 @@ namespace YQSQLite
             {
                 MessageBox.Show(ex.ToString());
             }
-        
+
         }
         #endregion
 
@@ -265,13 +265,17 @@ namespace YQSQLite
 
                     if (f == 0)
                     {
-                        RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                        //这里过渡日期
+                        if (Convert.ToDateTime(result.PubDate) > (DateTime.Now.AddDays(-7)))
+                        {
+                            RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
 
-                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
-                        lv.Tag = it;
-                        mf.SelectFrmListViewReload(lv);
-                        //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate, it.IsRead, it.Content);
+                            ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
+                            lv.Tag = it;
+                            mf.SelectFrmListViewReload(lv);
+                            //方法二：在DataSet中添加行，然后一次提交到库
+                            mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate, it.IsRead, it.Content);
+                        }
                     }
                 }
             }
@@ -279,14 +283,14 @@ namespace YQSQLite
             {
                 MessageBox.Show(ex.ToString());
             }
-      
-        } 
+
+        }
         #endregion
 
         #region 新华网新闻列表的采集规则
 
         #endregion
-       
+
         #region 更新显示，并保存RssItem数据
         private void UpAndSaveItem(NavUrl navurl)
         {
@@ -303,7 +307,7 @@ namespace YQSQLite
             }));
             th.IsBackground = true;
             th.Start();
-        } 
+        }
         #endregion
 
         #region 计算并更新NavUrl表中的数据量
@@ -321,10 +325,10 @@ namespace YQSQLite
                                   where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
                                   select s).Count();
             }
-        
+
 
         }
-        #endregion       
+        #endregion
 
         #region 采集方法
         private string GetSiteContent(string link)
@@ -419,7 +423,7 @@ namespace YQSQLite
             }
             return reContent;
         }
-        
+
         #endregion
 
 
@@ -460,8 +464,8 @@ namespace YQSQLite
                 nu.Nav_Domain = kind.Nav_Domain;
                 nu.PID = (int)kind.PID;
                 nu.Code = kind.Code;
-                nu.level = (int)kind.level;
-                nu.Leaf = (int)kind.Leaf;
+                nu.Level = (int)kind.level;
+                nu.Leaf = kind.Leaf;
                 nu.Link = kind.Link;
                 nu.Image = (int)kind.Image;
                 nu.ItemCount = (int)kind.ItemCount;
@@ -486,7 +490,7 @@ namespace YQSQLite
 
             foreach (NavUrl u in NavUrls)
             {
-                if (u.PID == 0 && u.level == 0)
+                if (u.PID == 0 && u.Level == 1)
                 {
                     TreeNode tn = new TreeNode();
                     //实现了信息条目的显示。
@@ -535,14 +539,22 @@ namespace YQSQLite
                 treeView1.SelectedNode.Text = nv.Name + "(" + nur.NoReadCount + "/" + nur.ItemCount + ")";
 
                 //更新node的父显示
-                NavUrl pnu = treeView1.SelectedNode.Parent.Tag as NavUrl;
-                YQDataSet.NavUrlRow pnur = mf.DS.NavUrl.FindByID(pnu.ID);
-                treeView1.SelectedNode.Parent.Text = pnur.Name + "(" + pnur.NoReadCount + "/" + pnur.ItemCount + ")";
+                if (treeView1.SelectedNode.Parent != null)
+                {
+                    NavUrl pnu = treeView1.SelectedNode.Parent.Tag as NavUrl;
+                    YQDataSet.NavUrlRow pnur = mf.DS.NavUrl.FindByID(pnu.ID);
+                    treeView1.SelectedNode.Parent.Text = pnur.Name + "(" + pnur.NoReadCount + "/" + pnur.ItemCount + ")";
+                }
+
 
                 //再一级的父目录
-                NavUrl Gpnu = treeView1.SelectedNode.Parent.Parent.Tag as NavUrl;
-                YQDataSet.NavUrlRow Gpnur = mf.DS.NavUrl.FindByID(Gpnu.ID);
-                treeView1.SelectedNode.Parent.Parent.Text = pnur.Name + "(" + Gpnur.NoReadCount + "/" + Gpnur.ItemCount + ")";
+                if (treeView1.SelectedNode.Parent.Parent != null)
+                {
+
+                    NavUrl Gpnu = treeView1.SelectedNode.Parent.Parent.Tag as NavUrl;
+                    YQDataSet.NavUrlRow Gpnur = mf.DS.NavUrl.FindByID(Gpnu.ID);
+                    treeView1.SelectedNode.Parent.Parent.Text = Gpnu.Name + "(" + Gpnur.NoReadCount + "/" + Gpnur.ItemCount + ")";
+                }
                 #endregion
 
                 #region 通过Code值，搜索treeview节点更改。

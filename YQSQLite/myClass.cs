@@ -130,8 +130,8 @@ namespace YQSQLite
         public string Nav_Domain { get; set; }
         public int PID { get; set; }
         public string Code { get; set; }
-        public int level { get; set; }
-        public int Leaf { get; set; }
+        public int Level { get; set; }
+        public string Leaf { get;set;}
         public string Link { get; set; }
         public int Image { get; set; }
         public int NoReadCount { get; set; }

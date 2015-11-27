@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace YQSQLite
 {
@@ -27,6 +28,8 @@ namespace YQSQLite
 
         private void NavEidt_Load(object sender, EventArgs e)
         {
+            // TODO: 这行代码将数据加载到表“yQDataSet.NavUrl”中。您可以根据需要移动或删除它。
+            //   this.navUrlTableAdapter.Fill(this.yQDataSet.NavUrl);
             LoadTreeView();
 
 
@@ -45,10 +48,11 @@ namespace YQSQLite
                 NavUrl nu = new NavUrl();
                 nu.ID = (int)kind.ID;
                 nu.Name = kind.Name;
+                nu.Nav_Domain = kind.Nav_Domain;
                 nu.PID = (int)kind.PID;
                 nu.Code = kind.Code;
-                nu.level = (int)kind.level;
-                nu.Leaf = (int)kind.Leaf;
+                nu.Level = (int)kind.level;
+                nu.Leaf = kind.Leaf;
                 nu.Link = kind.Link;
                 nu.Image = (int)kind.Image;
                 NavUrls.Add(nu);
@@ -68,7 +72,7 @@ namespace YQSQLite
 
             foreach (NavUrl u in NavUrls)
             {
-                if (u.PID == 0 && u.level == 0)
+                if (u.PID == 0 && u.Level == 1)
                 {
                     TreeNode tn = new TreeNode();
                     tn.Text = u.Name;
@@ -100,65 +104,54 @@ namespace YQSQLite
             }
 
 
-        } 
+        }
         #endregion
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            rabSun.Enabled = true;
-            txtFNodeText.Text = e.Node.Text;
             NavUrl nu = e.Node.Tag as NavUrl;
+            labMyID.Text = nu.ID.ToString();
+            txtFNodeText.Text = nu.Name;
+            //域名
+            txtDomain.Text = nu.Nav_Domain;
             txtFatherID.Text = nu.PID.ToString();
             txtThisCode.Text = nu.Code;
-            nudThislevel.Value = nu.level;
+            nudLevel.Value = (int)nu.Level;
+            txtLeaf.Text = nu.Leaf;
+            txtThisUrl.Text = nu.Link;
 
-            //判断层级
-            switch (nu.level)
+            lvImageList.Items[nu.Image].Selected = true;
+            foreach (ListViewItem item in lvImageList.Items)
             {
-                case 0://顶层
-                    //让子叶不能添加子节点。只有三级节点。
-                    rabYes.Checked = rabSun.Checked = true;
-                    //自动化判断新增中的级深。
-                    nudNewlevel.Value = nu.level + 1;
-                    labID.Text = txtID.Text = nu.ID.ToString();
-                    ShowCode(nu.Code, nu.level);
-                    break;
-                case 1://中间
-                    //让子叶不能添加子节点。只有三级节点。
-                    rabYes.Checked = rabSun.Checked = true;
-                    //自动化判断新增中的级深。
-                    nudNewlevel.Value = nu.level + 1;
-                    labID.Text = txtID.Text = nu.ID.ToString();
-                    ShowCode(nu.Code, nu.level);
-                    break;
-
-                case 2://底层
-                    rabNo.Checked = rabSame.Checked = true;
-                    //让子叶不能添加子节点。只有三级节点。
-                    txtID.Text = nu.PID.ToString();
-                    //让三级不能加子级。
-                    rabSun.Enabled = false;
-                   
-                    break;
-                default:
-                    
-                    break;
-
+                if (item.Selected == true)
+                {
+                    item.BackColor = Color.Blue;
+                }
+                else
+                {
+                    item.BackColor = Color.White;
+                }
             }
 
-            txtThisUrl.Text = nu.Link;
-            //记录ID值
-
-            //标签，按键开关
-            btnEdit.Enabled = txtThisCode.ReadOnly = txtThisUrl.ReadOnly = nudThislevel.ReadOnly = txtFatherID.ReadOnly = true;
 
 
+
+        }
+        //全禁
+        private void AllDis()
+        {
+            txtFNodeText.ReadOnly = btnEdit.Enabled = txtThisCode.ReadOnly = txtThisUrl.ReadOnly = txtLeaf.ReadOnly = txtFatherID.ReadOnly = true;
+            btnSave.Enabled = false;
+        }
+        private void AllEna()
+        {
+            nudLevel.ReadOnly = txtDomain.ReadOnly = txtFNodeText.ReadOnly = btnEdit.Enabled = txtThisCode.ReadOnly = txtThisUrl.ReadOnly = txtLeaf.ReadOnly = txtFatherID.ReadOnly = false;
 
         }
         //自动计算Code值。
         private void ShowCode(string code, int level)
         {
-            
+
             switch (code.Length)
             {
                 case 2://2位是顶层
@@ -172,11 +165,11 @@ namespace YQSQLite
                     }
                     if (num.Max() < 9)//小于9的，只有一位；
                     {
-                        txtNewCode.Text = "0" + (num.Max() + 1).ToString();
+                        //txtNewCode.Text = "0" + (num.Max() + 1).ToString();
                     }
                     else
                     {
-                        txtNewCode.Text = (num.Max() + 1).ToString();
+                        // txtNewCode.Text = (num.Max() + 1).ToString();
                     }
 
                     break;
@@ -188,15 +181,15 @@ namespace YQSQLite
                     List<int> num4 = new List<int>();
                     foreach (var c in Qcode4)
                     {
-                        num4.Add(Int32.Parse(c.Code.Substring(2,2)));
+                        num4.Add(Int32.Parse(c.Code.Substring(2, 2)));
                     }
                     if (num4.Max() < 9)
                     {
-                        txtNewCode.Text = code.Substring(0, 2) + "0" + (num4.Max() + 1).ToString();
+                        //        txtNewCode.Text = code.Substring(0, 2) + "0" + (num4.Max() + 1).ToString();
                     }
                     else
                     {
-                        txtNewCode.Text = code.Substring(0, 2) + (num4.Max() + 1).ToString();
+                        //        txtNewCode.Text = code.Substring(0, 2) + (num4.Max() + 1).ToString();
                     }
                     break;
                 case 6://底层
@@ -214,20 +207,23 @@ namespace YQSQLite
         //编辑
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            btnSave.Enabled = true;
+            AllEna();
             //标签，按键开关
-            btnEdit.Enabled = txtThisCode.ReadOnly = txtThisUrl.ReadOnly = nudThislevel.ReadOnly = txtFatherID.ReadOnly = false;
+
         }
         //保存
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(labelxx.Text);
+            int id = int.Parse(labMyID.Text);
             YQDataSet.NavUrlRow nur = mf.DS.NavUrl.FindByID(id);
             nur.Name = txtFNodeText.Text.Trim();
-            nur.PID = Int32.Parse(txtID.Text);
+            nur.PID = Int32.Parse(txtFatherID.Text);
             nur.Code = txtThisCode.Text.Trim();
-            nur.level = (int)nudThislevel.Value;
-            nur.Leaf = rabYes.Checked ? 0 : 1;
+            nur.level = (int)nudLevel.Value;
+            nur.Leaf = txtLeaf.Text;
             nur.Link = txtThisUrl.Text.Trim();
+            nur.Image = lvImageList.SelectedItems[0].Index;
             mf.navurlTap.Update(nur);
             //重新加载本窗口中treeview
             LoadTreeView();
@@ -243,11 +239,11 @@ namespace YQSQLite
             //注意MF中NavUrl表的重新填充，及NavFrm中的数据绑定--dialogResult.OK后数据重新从库中绑定了。
             //新建一个具体的对象，然后把该对象行，加入到内存表中就OK了，最后可到库一下。转了很长时间的的圈子一下明白了。呵呵~
             YQDataSet.NavUrlRow nr = mf.DS.NavUrl.NewNavUrlRow();
-            nr.Name = txtNodeName.Text.Trim();
-            nr.Code = txtNewCode.Text.Trim();
-            nr.level = (int)nudNewlevel.Value;
-            nr.Leaf = rabNewYes.Checked ? 0 : 1;
-            nr.Link = txtNewUrl.Text.Trim();
+            nr.Name = txtFNodeText.Text.Trim();
+            nr.Code = txtThisCode.Text.Trim();
+            nr.level = (int)nudLevel.Value;
+            nr.Leaf = txtLeaf.Text;
+            nr.Link = txtThisUrl.Text.Trim();
 
             if (lvImageList.SelectedItems.Count > 0)
             {
@@ -260,20 +256,12 @@ namespace YQSQLite
 
 
 
-            if (rabSun.Checked == true)
-            {
-                nr.PID = int.Parse(labelxx.Text);
-            }
-            if (rabSame.Checked == true)
-            {
-
-            }
             //加入到内在中的表
-            mf.DS.NavUrl.AddNavUrlRow(nr);
-            //到数据库。
-            mf.navurlTap.Update(mf.DS.NavUrl);
-            txtNodeName.Text = txtNewCode.Text = txtNewUrl.Text = "";
-            LoadTreeView();
+            //mf.DS.NavUrl.AddNavUrlRow(nr);
+            ////到数据库。
+            //mf.navurlTap.Update(mf.DS.NavUrl);
+            //txtFNodeText.Text = txtThisCode.Text = txtThisUrl.Text = "";
+            //LoadTreeView();
 
         }
 
@@ -285,22 +273,7 @@ namespace YQSQLite
 
         }
 
-        private void rabSame_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rabSame.Checked == true)
-            {
-                txtID.Text = txtFatherID.Text;
-                nudNewlevel.Value = nudThislevel.Value;
-            }
-        }
 
-        private void rabSun_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rabSun.Checked == true)
-            {
-                txtID.Text = labID.Text;
-            }
-        }
 
     }
 }
