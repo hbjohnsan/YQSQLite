@@ -162,8 +162,8 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.编辑tsm = new System.Windows.Forms.ToolStripMenuItem();
-            this.加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -512,8 +512,8 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.编辑tsm,
-            this.加载ToolStripMenuItem});
+            this.toolStripMenuItem1,
+            this.编辑tsm});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
             // 
@@ -523,13 +523,6 @@
             this.编辑tsm.Size = new System.Drawing.Size(152, 22);
             this.编辑tsm.Text = "编辑";
             this.编辑tsm.Click += new System.EventHandler(this.编辑tsm_Click);
-            // 
-            // 加载ToolStripMenuItem
-            // 
-            this.加载ToolStripMenuItem.Name = "加载ToolStripMenuItem";
-            this.加载ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.加载ToolStripMenuItem.Text = "加载";
-            this.加载ToolStripMenuItem.Click += new System.EventHandler(this.加载ToolStripMenuItem_Click);
             // 
             // imageList1
             // 
@@ -554,6 +547,14 @@
             this.imageList1.Images.SetKeyName(16, "rm.ico");
             this.imageList1.Images.SetKeyName(17, "ft.ico");
             this.imageList1.Images.SetKeyName(18, "refresh.bmp");
+            this.imageList1.Images.SetKeyName(19, "baidu.ico");
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "新增";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // NavFrm
             // 
@@ -573,9 +574,9 @@
         #endregion
 
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 编辑tsm;
-        private System.Windows.Forms.ToolStripMenuItem 加载ToolStripMenuItem;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

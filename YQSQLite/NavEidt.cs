@@ -133,76 +133,20 @@ namespace YQSQLite
                 }
             }
 
-
-
-
         }
         //全禁
         private void AllDis()
         {
-            txtFNodeText.ReadOnly = btnEdit.Enabled = txtThisCode.ReadOnly = txtThisUrl.ReadOnly = txtLeaf.ReadOnly = txtFatherID.ReadOnly = true;
+         txtDomain.ReadOnly= nudLevel.ReadOnly=  txtFNodeText.ReadOnly =  txtThisCode.ReadOnly = txtThisUrl.ReadOnly = txtLeaf.ReadOnly = txtFatherID.ReadOnly = true;
+            
             btnSave.Enabled = false;
         }
         private void AllEna()
         {
-            nudLevel.ReadOnly = txtDomain.ReadOnly = txtFNodeText.ReadOnly = btnEdit.Enabled = txtThisCode.ReadOnly = txtThisUrl.ReadOnly = txtLeaf.ReadOnly = txtFatherID.ReadOnly = false;
+            nudLevel.ReadOnly = txtDomain.ReadOnly = txtFNodeText.ReadOnly =  txtThisCode.ReadOnly = txtThisUrl.ReadOnly = txtLeaf.ReadOnly = txtFatherID.ReadOnly = false;
 
         }
-        //自动计算Code值。
-        private void ShowCode(string code, int level)
-        {
 
-            switch (code.Length)
-            {
-                case 2://2位是顶层
-                    var Qcode = from p in mf.DS.NavUrl
-                                where p.level == level
-                                select p;
-                    List<int> num = new List<int>();
-                    foreach (var item in Qcode)
-                    {
-                        num.Add(Int32.Parse(item.Code));
-                    }
-                    if (num.Max() < 9)//小于9的，只有一位；
-                    {
-                        //txtNewCode.Text = "0" + (num.Max() + 1).ToString();
-                    }
-                    else
-                    {
-                        // txtNewCode.Text = (num.Max() + 1).ToString();
-                    }
-
-                    break;
-                case 4://4位中间层
-                    string mCode = code.Substring(0, 2);
-                    var Qcode4 = from p in mf.DS.NavUrl
-                                 where p.Code.StartsWith(mCode) && p.level == level //StartsWith这里使用这个，不是是.Contains
-                                 select p;
-                    List<int> num4 = new List<int>();
-                    foreach (var c in Qcode4)
-                    {
-                        num4.Add(Int32.Parse(c.Code.Substring(2, 2)));
-                    }
-                    if (num4.Max() < 9)
-                    {
-                        //        txtNewCode.Text = code.Substring(0, 2) + "0" + (num4.Max() + 1).ToString();
-                    }
-                    else
-                    {
-                        //        txtNewCode.Text = code.Substring(0, 2) + (num4.Max() + 1).ToString();
-                    }
-                    break;
-                case 6://底层
-
-                    break;
-                default:
-                    break;
-            }
-            var q = from p in mf.DS.NavUrl.AsEnumerable()
-                    where p.Code.Contains(code)//Like语句。
-                    select p;
-
-        }
 
         //编辑
         private void btnEdit_Click(object sender, EventArgs e)
@@ -227,50 +171,32 @@ namespace YQSQLite
             mf.navurlTap.Update(nur);
             //重新加载本窗口中treeview
             LoadTreeView();
+           
+            AllDis();
         }
         //删除
         private void btnDel_Click(object sender, EventArgs e)
         {
-
-        }
-        //新增
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            //注意MF中NavUrl表的重新填充，及NavFrm中的数据绑定--dialogResult.OK后数据重新从库中绑定了。
-            //新建一个具体的对象，然后把该对象行，加入到内存表中就OK了，最后可到库一下。转了很长时间的的圈子一下明白了。呵呵~
-            YQDataSet.NavUrlRow nr = mf.DS.NavUrl.NewNavUrlRow();
-            nr.Name = txtFNodeText.Text.Trim();
-            nr.Code = txtThisCode.Text.Trim();
-            nr.level = (int)nudLevel.Value;
-            nr.Leaf = txtLeaf.Text;
-            nr.Link = txtThisUrl.Text.Trim();
-
-            if (lvImageList.SelectedItems.Count > 0)
+            //需要删除ItemRss中的数据
+            int id = int.Parse(labMyID.Text);
+            YQDataSet.NavUrlRow nur = mf.DS.NavUrl.FindByID(id);
+            var q = from p in mf.DS.RssItem.AsEnumerable()
+                    where p.ChannelCode.StartsWith(nur.Code)
+                    select p;
+            foreach (var item in q)
             {
-                nr.Image = lvImageList.SelectedItems[0].Index;
+                item.Delete();
             }
-            else
-            {
-                nr.Image = 0;
-            }
-
-
-
-            //加入到内在中的表
-            //mf.DS.NavUrl.AddNavUrlRow(nr);
-            ////到数据库。
-            //mf.navurlTap.Update(mf.DS.NavUrl);
-            //txtFNodeText.Text = txtThisCode.Text = txtThisUrl.Text = "";
-            //LoadTreeView();
-
+            nur.Delete();
+            mf.navurlTap.Update(mf.DS.NavUrl);
+            mf.rssTap.Update(mf.DS.RssItem);
         }
+     
 
         private void btnOk_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Dispose();
-
-
         }
 
 

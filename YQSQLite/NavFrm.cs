@@ -438,12 +438,23 @@ namespace YQSQLite
             {
                 ReLoadTree();
             }
+
+        }
+        //新增
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            NavInsert NE = new NavInsert(mf);
+            NE.ShowDialog();
+            if (NE.DialogResult == DialogResult.OK)
+            {
+                mf.DS.NavUrl.Dispose();
+                mf.navurlTap.Fill(mf.DS.NavUrl);
+                ReLoadTree();
+            }
+
+
         }
 
-        private void 加载ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ReLoadTree();
-        }
 
         #endregion
 
@@ -572,6 +583,8 @@ namespace YQSQLite
             }));
         }
         #endregion
+
+
 
 
 

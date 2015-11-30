@@ -161,6 +161,12 @@
     <Compile Include="NavFrm.Designer.cs">
       <DependentUpon>NavFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NavInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NavInsert.Designer.cs">
+      <DependentUpon>NavInsert.cs</DependentUpon>
+    </Compile>
     <Compile Include="PassFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NavFrm.resx">
       <DependentUpon>NavFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NavInsert.resx">
+      <DependentUpon>NavInsert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PassFrm.resx">
       <DependentUpon>PassFrm.cs</DependentUpon>
