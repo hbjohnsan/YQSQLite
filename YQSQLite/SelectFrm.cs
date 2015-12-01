@@ -54,7 +54,7 @@ namespace YQSQLite
         #endregion
 
         #region Rss导航新闻列表事件
-       
+
         //定义委托
         //private delegate void delCaijiRule(clNode e);
 
@@ -278,7 +278,7 @@ namespace YQSQLite
         //    //}
         //}
         #endregion
-        
+
 
         #region 控制键
         //加入
@@ -287,19 +287,22 @@ namespace YQSQLite
             //if (listBox1.SelectedItems.Count > 0)
             if (listView1.SelectedItems.Count > 0)
             {
-                for (int i = 0; i < listView1.SelectedItems.Count; i++)
-                {
-                    // RssItem rssitem = listBox1.SelectedItems[0] as RssItem;
-                    RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-                    YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID);
-                    rssrow.IsRead = "W";            //待处理 变为 W
-                    rssrow.Content = htmlEditor1.HTML;
-                    mf.NewsAdd(rssitem.RssItemID);
-                    // listBox1.Items.Remove(rssitem);
-                    listView1.SelectedItems[0].Remove();
-                    mf.rssTap.Update(mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID));
-                    htmlEditor1.HTML = "";
-                }
+                RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
+                rssitem.IsRead = "W";            //待处理 变为 W
+                rssitem.Content = htmlEditor1.HTML;
+                mf.NewsAdd(rssitem);
+                //重点
+                YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID);
+                rir.IsRead = rssitem.IsRead;
+                rir.Content = rssitem.Content;
+                mf.rssTap.Update(rir);
+                //重点要解决
+
+                listView1.SelectedItems[0].Remove();
+                htmlEditor1.HTML = "";
+                //把数据重新加载一下，带入conent
+
+
             }
         }
         //全加
@@ -309,9 +312,9 @@ namespace YQSQLite
             {
                 RssItem ri = lv.Tag as RssItem;
                 ri.IsRead = "W";
-                mf.NewsAdd(ri.RssItemID);
+                mf.NewsAdd(ri);
             }
-            mf.rssTap.Update(mf.DS.RssItem);
+            mf.SaveRssItemToDB(mf.DS.RssItem);
             listView1.Items.Clear();
         }
         //移除
@@ -345,7 +348,7 @@ namespace YQSQLite
                 YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(ri.RssItemID);
                 rssrow.IsRead = "T";
             }
-            mf.rssTap.Update(mf.DS.RssItem);
+            mf.SaveRssItemToDB(mf.DS.RssItem);
             listView1.Items.Clear();
         }
 
@@ -354,25 +357,23 @@ namespace YQSQLite
         #region 新闻列表点击，得到正文
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //不做点一次，采集一次了。把内容一次全部采集到库
-
-            //if (listView1.SelectedItems.Count != 0)
-            //{
-            //    listView1.SelectedItems[0].BackColor = Color.Bisque;
-            //    RssItem it = listView1.SelectedItems[0].Tag as RssItem;
-            //    //初始化
-            //    rtbCode.Clear();
-            //    rtbText.Clear();
-            //    htmlEditor1.HTML = "";
-            //    DownContent(it.Link);
-            //}
+            //点一次，采集一次了，不能一次都到库，一是网络环境问题，二是数据冗余问题。
+            if (listView1.SelectedItems.Count != 0)
+            {
+                listView1.SelectedItems[0].BackColor = Color.Bisque;
+                RssItem it = listView1.SelectedItems[0].Tag as RssItem;
+                //初始化
+                rtbCode.Clear();
+                rtbText.Clear();
+                htmlEditor1.HTML = "";
+                DownContent(it.Link);
+            }
         }
         //定义不同网站，不同的正文定义，和排除部分源码标记
         private void DownContent(string link)
         {
 
             Uri u = new Uri(link);
-
             var q = from p in mf.DS.Rule.AsEnumerable()
                     select new { url = p.Rule_Domain };
             var qall = from p in mf.DS.Rule.AsEnumerable()
@@ -457,6 +458,7 @@ namespace YQSQLite
         }
         #endregion
 
+        #region 右键功能
         private void 浏览器打开ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count > 0)
@@ -475,9 +477,10 @@ namespace YQSQLite
 
                 //System.Diagnostics.Process.Start("IExplore.exe", "http://www.baidu.com");
                 //需要指定IExplore.exe，不然将使用系统默认浏览器打开，比如可能是Firefox
-                System.Diagnostics.Process.Start(rssitem.Link);
+                System.Diagnostics.Process.Start("IExplore.exe", rssitem.Link);
             }
         }
+        #endregion
 
         public void listClear()
         {
@@ -600,16 +603,16 @@ namespace YQSQLite
         {
             this.Invoke((new ThreadStart(delegate
             {
-               RssItem ri= it.Tag as RssItem;
-               if (ri.IsRead=="T")
-               {
-                   it.BackColor = Color.Beige;
-               }
+                RssItem ri = it.Tag as RssItem;
+                if (ri.IsRead == "T")
+                {
+                    it.BackColor = Color.Beige;
+                }
                 listView1.Items.Add(it);
             })));
-           
-           
-            
+
+
+
         }
         #endregion
     }

@@ -25,21 +25,21 @@ namespace YQSQLite
 
         private void WaitEdit_Load(object sender, EventArgs e)
         {
-            ReLoad();       
+            ReLoad();
         }
 
         public void ReLoad()
         {
             listView1.Items.Clear();
             var q = from p in mf.DS.RssItem.AsEnumerable()
-                    where p.IsRead == "待处理"
+                    where p.IsRead == "W"
                     select p;
             foreach (var it in q)
             {
                 RssItem rssit = new RssItem();
                 rssit.Title = it.Title;
-             //   rssit.Site = it.Site;
-                rssit.PubDate = it.PubDate;
+                rssit.ChannelCode = it.ChannelCode;
+                rssit.PubDate = Convert.ToDateTime(it.PubDate);
                 rssit.Link = it.Link;
                 rssit.Content = it.Content;
                 rssit.IsRead = it.IsRead;
@@ -50,19 +50,10 @@ namespace YQSQLite
         }
 
         //加入Rss新闻为预处理
-        public void AddRssItem(int itemID)
+        public void AddRssItem(RssItem item)
         {
-            YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(itemID);
-            RssItem rsit = new RssItem();
-           // rsit.Site = row.Site;
-            rsit.Title = row.Title;
-            rsit.PubDate = row.PubDate;
-            rsit.Link = row.Link;
-            rsit.IsRead = row.Link;
-            rsit.Content = row.Content;
-           
-            ListViewItem lv = new ListViewItem(rsit.Title);
-            lv.Tag = rsit;
+            ListViewItem lv = new ListViewItem(item.Title);
+            lv.Tag = item;
             listView1.Items.Add(lv);
         }
         //移除
@@ -72,7 +63,7 @@ namespace YQSQLite
             {
                 RssItem rssit = listView1.SelectedItems[0].Tag as RssItem;
                 YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(rssit.RssItemID);
-                row.IsRead = "不处理";
+                row.IsRead = "T";
                 mf.rssTap.Update(row);
                 listView1.SelectedItems[0].Remove();
             }
@@ -84,25 +75,24 @@ namespace YQSQLite
             {
                 RssItem it = lv.Tag as RssItem;
                 YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(it.RssItemID);
-                row.IsRead = "不处理";
+                row.IsRead = "T";
             }
-            mf.rssTap.Update(mf.DS.RssItem);
+            mf.SaveRssItemToDB(mf.DS.RssItem);
             listView1.Items.Clear();
         }
 
-        
 
-        private void listView1_Click(object sender, EventArgs e)
-        {
-            if (listView1.SelectedItems.Count != 0)
-            {
-                RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-                mf.RssToEditFm(rssitem.RssItemID);
-            }
-        }
+        
         public void listClear()
         {
             listView1.Items.Clear();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
+            mf.RssToEditFm(rssitem);
+
         }
     }
 }

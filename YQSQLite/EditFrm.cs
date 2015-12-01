@@ -42,22 +42,21 @@ namespace YQSQLite
         /// 接收到待处理窗体方法
         /// </summary>
         /// <param name="rssit"></param>
-        public void EditRssItem(int itemID)
+        public void EditRssItem(RssItem it)
         {
-            RssitemID = itemID;
-            htmlEditor1.HTML = "";
+            RssitemID = it.RssItemID;
             btnRemove.Enabled = true;
             btnAdd.Text = "待报";
             rabSourc.Checked = true;
 
             //需使用多线程代理类
-            YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(itemID);
-            txtTitle.Text = row.Title;
-            labLink.Text = row.Link;
-            labUpTime.Text = row.PubDate.ToString();
-            //rabSourc.Text = row.Site;
-            htmlEditor1.HTML = row.Content;
-            webBrowser1.Navigate(row.Link);
+           
+            txtTitle.Text =it.Title;
+            labLink.Text = it.Link;
+            labUpTime.Text = it.PubDate.ToString("yyyy-MM-dd HH:mm:ss");
+            rabSourc.Text = it.ChannelCode;
+            htmlEditor1.HTML = it.Content;
+            webBrowser1.Navigate(it.Link);
         }
 
         #endregion

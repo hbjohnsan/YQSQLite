@@ -151,7 +151,7 @@
             this.筛选ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.shaixuan_s;
             this.筛选ToolStripMenuItem1.Name = "筛选ToolStripMenuItem1";
             this.筛选ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.筛选ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.筛选ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.筛选ToolStripMenuItem1.Text = "筛选";
             this.筛选ToolStripMenuItem1.Click += new System.EventHandler(this.筛选ToolStripMenuItem1_Click);
             // 
@@ -160,7 +160,7 @@
             this.编辑ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.edit_file_icon_s;
             this.编辑ToolStripMenuItem1.Name = "编辑ToolStripMenuItem1";
             this.编辑ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.编辑ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.编辑ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.编辑ToolStripMenuItem1.Text = "编辑";
             this.编辑ToolStripMenuItem1.Click += new System.EventHandler(this.编辑ToolStripMenuItem1_Click);
             // 
@@ -169,7 +169,7 @@
             this.上报ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.Send_s;
             this.上报ToolStripMenuItem1.Name = "上报ToolStripMenuItem1";
             this.上报ToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.上报ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.上报ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.上报ToolStripMenuItem1.Text = "上报";
             this.上报ToolStripMenuItem1.Click += new System.EventHandler(this.上报ToolStripMenuItem1_Click);
             // 
@@ -178,7 +178,7 @@
             this.资料ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Documents_icon_s;
             this.资料ToolStripMenuItem.Name = "资料ToolStripMenuItem";
             this.资料ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.资料ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.资料ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.资料ToolStripMenuItem.Text = "资料";
             this.资料ToolStripMenuItem.Click += new System.EventHandler(this.资料ToolStripMenuItem_Click);
             // 
@@ -187,21 +187,21 @@
             this.统计ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.total_s;
             this.统计ToolStripMenuItem.Name = "统计ToolStripMenuItem";
             this.统计ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.统计ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.统计ToolStripMenuItem.Text = "统计";
             this.统计ToolStripMenuItem.Click += new System.EventHandler(this.统计ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(118, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // 工具栏ToolStripMenuItem
             // 
             this.工具栏ToolStripMenuItem.Checked = true;
             this.工具栏ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.工具栏ToolStripMenuItem.Name = "工具栏ToolStripMenuItem";
-            this.工具栏ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.工具栏ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.工具栏ToolStripMenuItem.Text = "工具栏";
             this.工具栏ToolStripMenuItem.Click += new System.EventHandler(this.工具栏ToolStripMenuItem_Click);
             // 
@@ -210,33 +210,33 @@
             this.状态栏ToolStripMenuItem.Checked = true;
             this.状态栏ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.状态栏ToolStripMenuItem.Name = "状态栏ToolStripMenuItem";
-            this.状态栏ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.状态栏ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.状态栏ToolStripMenuItem.Text = "状态栏";
             this.状态栏ToolStripMenuItem.Click += new System.EventHandler(this.状态栏ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(118, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
             // 
             // 导航ToolStripMenuItem
             // 
             this.导航ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.Compass_icon_s;
             this.导航ToolStripMenuItem.Name = "导航ToolStripMenuItem";
-            this.导航ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.导航ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.导航ToolStripMenuItem.Text = "导航";
             this.导航ToolStripMenuItem.Click += new System.EventHandler(this.导航ToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // 待处理ToolStripMenuItem
             // 
             this.待处理ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.wait_icon;
             this.待处理ToolStripMenuItem.Name = "待处理ToolStripMenuItem";
-            this.待处理ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.待处理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.待处理ToolStripMenuItem.Text = "待处理";
             this.待处理ToolStripMenuItem.Click += new System.EventHandler(this.待处理ToolStripMenuItem_Click);
             // 
@@ -244,7 +244,7 @@
             // 
             this.待报送ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.send_icon;
             this.待报送ToolStripMenuItem.Name = "待报送ToolStripMenuItem";
-            this.待报送ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.待报送ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.待报送ToolStripMenuItem.Text = "待报送";
             this.待报送ToolStripMenuItem.Click += new System.EventHandler(this.待报送ToolStripMenuItem_Click);
             // 
@@ -252,41 +252,41 @@
             // 
             this.已报送toolStripMenuItem.Image = global::YQSQLite.Properties.Resources.email_send_icon_s;
             this.已报送toolStripMenuItem.Name = "已报送toolStripMenuItem";
-            this.已报送toolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.已报送toolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.已报送toolStripMenuItem.Text = "已报送";
             this.已报送toolStripMenuItem.Click += new System.EventHandler(this.已报送toolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // 采集ToolStripMenuItem
             // 
             this.采集ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.collect_icon;
             this.采集ToolStripMenuItem.Name = "采集ToolStripMenuItem";
-            this.采集ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.采集ToolStripMenuItem.Text = "采集";
+            this.采集ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.采集ToolStripMenuItem.Text = "规则";
             this.采集ToolStripMenuItem.Click += new System.EventHandler(this.采集规则ToolStripMenuItem_Click);
             // 
             // 浏览器ToolStripMenuItem
             // 
             this.浏览器ToolStripMenuItem.Image = global::YQSQLite.Properties.Resources.IE_icon;
             this.浏览器ToolStripMenuItem.Name = "浏览器ToolStripMenuItem";
-            this.浏览器ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.浏览器ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.浏览器ToolStripMenuItem.Text = "浏览器";
             this.浏览器ToolStripMenuItem.Click += new System.EventHandler(this.浏览器ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(118, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // 退出ToolStripMenuItem1
             // 
             this.退出ToolStripMenuItem1.Image = global::YQSQLite.Properties.Resources.door_out_icon;
             this.退出ToolStripMenuItem1.Name = "退出ToolStripMenuItem1";
-            this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
+            this.退出ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.退出ToolStripMenuItem1.Text = "退出";
             this.退出ToolStripMenuItem1.Click += new System.EventHandler(this.退出ToolStripMenuItem1_Click);
             // 

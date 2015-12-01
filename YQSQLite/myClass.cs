@@ -68,22 +68,22 @@ namespace YQSQLite
     public class rules
     {
         public int RuleID { get; set; }
-        public string Rule_Code { get; set; }
+        public string Rule_site { get; set; }
         public string Rule_Domain { get; set; }
         public string ContFlag { get; set; }
         public string RemoveFlag { get; set; }
         public rules() { }
-        public rules(string rule_code, string urlflag, string contflag, string removeflag)
+        public rules(string rule_site, string urlflag, string contflag, string removeflag)
         {
-            this.Rule_Code = rule_code;
+            this.Rule_site = rule_site;
             this.Rule_Domain = urlflag;
             this.ContFlag = contflag;
             this.RemoveFlag = removeflag;
         }
-        public rules(int ruleid, string rule_code, string urlflag, string contflag, string removeflag)
+        public rules(int ruleid, string rule_site, string urlflag, string contflag, string removeflag)
         {
             this.RuleID = ruleid;
-            this.Rule_Code = rule_code;
+            this.Rule_site = rule_site;
             this.Rule_Domain = urlflag;
             this.ContFlag = contflag;
             this.RemoveFlag = removeflag;

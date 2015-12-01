@@ -193,9 +193,9 @@ namespace YQSQLite
         }
 
         //新闻列表选择加入待处理窗体
-        public void NewsAdd(int Rssitemid)
+        public void NewsAdd(RssItem rs)
         {
-            waiteditFm.AddRssItem(Rssitemid);
+            waiteditFm.AddRssItem(rs);
         }
         //待处理窗体移除新闻
         public void RemoveAll()
@@ -209,7 +209,7 @@ namespace YQSQLite
         }
 
         //到编辑窗体编辑“待处理” 项
-        public void RssToEditFm(int rssitemid)
+        public void RssToEditFm(RssItem its)
         {
             //判断打开窗口
             if (editFm == null || editFm.IsDisposed)
@@ -218,7 +218,7 @@ namespace YQSQLite
                 editFm.Show(dockPanel);
             }
             editFm.Activate();
-            editFm.EditRssItem(rssitemid);
+            editFm.EditRssItem(its);
         }
 
         //待处理窗体重新加载

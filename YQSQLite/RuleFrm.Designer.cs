@@ -48,6 +48,9 @@
             this.domain = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.order = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contRemove = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label5 = new System.Windows.Forms.Label();
+            this.labID = new System.Windows.Forms.Label();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -87,11 +90,13 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(174, 417);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(214, 357);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labID);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.txtRemove);
             this.panel1.Controls.Add(this.txtContFlag);
@@ -102,14 +107,14 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 232);
+            this.panel1.Location = new System.Drawing.Point(3, 199);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(168, 182);
+            this.panel1.Size = new System.Drawing.Size(208, 155);
             this.panel1.TabIndex = 4;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(39, 97);
+            this.btnAdd.Location = new System.Drawing.Point(39, 108);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -121,43 +126,43 @@
             // 
             this.txtRemove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRemove.Location = new System.Drawing.Point(48, 79);
+            this.txtRemove.Location = new System.Drawing.Point(48, 90);
             this.txtRemove.Name = "txtRemove";
-            this.txtRemove.Size = new System.Drawing.Size(111, 21);
+            this.txtRemove.Size = new System.Drawing.Size(151, 21);
             this.txtRemove.TabIndex = 8;
-            this.txtRemove.Text = "请用\'，\'隔开去除规则！";
+            this.txtRemove.Text = "请用半角\',\'隔开去除规则！";
             // 
             // txtContFlag
             // 
             this.txtContFlag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContFlag.Location = new System.Drawing.Point(48, 54);
+            this.txtContFlag.Location = new System.Drawing.Point(48, 65);
             this.txtContFlag.Name = "txtContFlag";
-            this.txtContFlag.Size = new System.Drawing.Size(111, 21);
+            this.txtContFlag.Size = new System.Drawing.Size(151, 21);
             this.txtContFlag.TabIndex = 9;
             // 
             // txtUrlFlag
             // 
             this.txtUrlFlag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUrlFlag.Location = new System.Drawing.Point(48, 29);
+            this.txtUrlFlag.Location = new System.Drawing.Point(48, 40);
             this.txtUrlFlag.Name = "txtUrlFlag";
-            this.txtUrlFlag.Size = new System.Drawing.Size(111, 21);
+            this.txtUrlFlag.Size = new System.Drawing.Size(151, 21);
             this.txtUrlFlag.TabIndex = 10;
             // 
             // txtSiteName
             // 
             this.txtSiteName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSiteName.Location = new System.Drawing.Point(48, 4);
+            this.txtSiteName.Location = new System.Drawing.Point(48, 15);
             this.txtSiteName.Name = "txtSiteName";
-            this.txtSiteName.Size = new System.Drawing.Size(111, 21);
+            this.txtSiteName.Size = new System.Drawing.Size(151, 21);
             this.txtSiteName.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 82);
+            this.label4.Location = new System.Drawing.Point(5, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 4;
@@ -166,7 +171,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 57);
+            this.label3.Location = new System.Drawing.Point(5, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 3;
@@ -175,7 +180,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 32);
+            this.label2.Location = new System.Drawing.Point(5, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 6;
@@ -184,7 +189,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 7);
+            this.label1.Location = new System.Drawing.Point(5, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 5;
@@ -193,6 +198,7 @@
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ID,
             this.site,
             this.domain,
             this.order,
@@ -202,7 +208,7 @@
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(168, 223);
+            this.listView1.Size = new System.Drawing.Size(208, 190);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -228,11 +234,34 @@
             this.contRemove.Text = "正文排除";
             this.contRemove.Width = 94;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 12);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "ID:";
+            // 
+            // labID
+            // 
+            this.labID.AutoSize = true;
+            this.labID.Location = new System.Drawing.Point(38, 0);
+            this.labID.Name = "labID";
+            this.labID.Size = new System.Drawing.Size(41, 12);
+            this.labID.TabIndex = 14;
+            this.labID.Text = "label6";
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 30;
+            // 
             // RuleFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(174, 417);
+            this.ClientSize = new System.Drawing.Size(214, 357);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -268,5 +297,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labID;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ColumnHeader ID;
     }
 }

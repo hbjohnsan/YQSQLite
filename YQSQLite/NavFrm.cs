@@ -76,7 +76,7 @@ namespace YQSQLite
         private void ReloadSelectFrmListView(NavUrl navurl)
         {
             var q = from p in mf.DS.RssItem.AsEnumerable()
-                    where p.ChannelCode.StartsWith(navurl.Code)
+                    where p.ChannelCode.StartsWith(navurl.Code) && p.IsRead=="F"
                     orderby p.PubDate descending, p.Title
                     select p;
             foreach (var item in q)
@@ -87,7 +87,7 @@ namespace YQSQLite
                 //  rsit.Site = item.Site;
                 rsit.Title = item.Title;
                 rsit.Link = item.Link;
-                rsit.PubDate = item.PubDate;
+                rsit.PubDate = Convert.ToDateTime(item.PubDate);
                 rsit.IsRead = item.IsRead;
                 rsit.Content = item.Content;
                 ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), rsit.ChannelCode });
@@ -114,10 +114,8 @@ namespace YQSQLite
                         case "0108"://新闻网
                             DownRss_XinHa(navurl);
                             break;
-                        case "0110": //百度新闻订阅
-
-                            break;
-                        default://正常内容rss2.0
+                     
+                        default://正常内容rss2.0 //百度新闻订阅中包含CDATA，不管是哪种DOM解析，cdata都是透明的，也就是完全可以当做cdata不存在来解析，
                             Nomal_GetRssXml(navurl);
                             //DownloadRSS(navurl);
                             break;
@@ -153,7 +151,9 @@ namespace YQSQLite
             mf.navurlTap.Update(mf.DS.NavUrl.FindByID(gID));
 
         }
-        //新华网新闻源的下载规则
+        #endregion
+
+        #region 新华网新闻列表的采集规则       
         private void DownRss_XinHa(NavUrl navurl)
         {
             try
@@ -217,7 +217,7 @@ namespace YQSQLite
                         lv.Tag = it;
                         mf.SelectFrmListViewReload(lv);
                         //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate, it.IsRead, it.Content);
+                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString(), it.IsRead, it.Content);
                     }
                 }
             }
@@ -248,6 +248,8 @@ namespace YQSQLite
 
                 foreach (var result in itemQuery)
                 {
+                    //为百度源CDATA标签设置过滤
+
 
                     //通过Link查找DataSet中是否有相同的网址
                     //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
@@ -274,7 +276,7 @@ namespace YQSQLite
                             lv.Tag = it;
                             mf.SelectFrmListViewReload(lv);
                             //方法二：在DataSet中添加行，然后一次提交到库
-                            mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate, it.IsRead, it.Content);
+                            mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString(), it.IsRead, it.Content);
                         }
                     }
                 }
@@ -287,9 +289,6 @@ namespace YQSQLite
         }
         #endregion
 
-        #region 新华网新闻列表的采集规则
-
-        #endregion
 
         #region 更新显示，并保存RssItem数据
         private void UpAndSaveItem(NavUrl navurl)
@@ -436,6 +435,8 @@ namespace YQSQLite
             NE.ShowDialog();
             if (NE.DialogResult == DialogResult.OK)
             {
+                mf.DS.NavUrl.Dispose();
+                mf.navurlTap.Fill(mf.DS.NavUrl);
                 ReLoadTree();
             }
 

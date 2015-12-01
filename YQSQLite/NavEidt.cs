@@ -165,7 +165,7 @@ namespace YQSQLite
             nur.PID = Int32.Parse(txtFatherID.Text);
             nur.Code = txtThisCode.Text.Trim();
             nur.level = (int)nudLevel.Value;
-            nur.Leaf = txtLeaf.Text;
+            nur.Leaf = txtLeaf.Text.Trim();
             nur.Link = txtThisUrl.Text.Trim();
             nur.Image = lvImageList.SelectedItems[0].Index;
             mf.navurlTap.Update(nur);
