@@ -48,8 +48,6 @@ namespace YQSQLite
         private void SelectFrm_Load(object sender, EventArgs e)
         {
 
-            // listBox1.DisplayMember = "title";
-
         }
         #endregion
 
@@ -605,21 +603,34 @@ namespace YQSQLite
         #endregion
 
         #region 导步更新ListView
-        public void ReloadLiatView(ListViewItem it)
+        public void ReLoadSelectFrmListView(string code)
         {
             this.Invoke((new ThreadStart(delegate
             {
-                RssItem ri = it.Tag as RssItem;
-                if (ri.IsRead == "T")
+                listView1.Items.Clear();
+                var q = from p in mf.DS.RssItem.AsEnumerable()
+                        where p.ChannelCode.StartsWith(code) && p.IsRead == "F"
+                        orderby p.PubDate descending, p.Title
+                        select p;
+                foreach (var item in q)
                 {
-                    it.BackColor = Color.Beige;
+                    RssItem rsit = new RssItem();
+                    rsit.RssItemID = item.RssItemID;
+                    rsit.SiteName = item.SiteName;
+                    rsit.ChannelCode = item.ChannelCode;
+                    rsit.Title = item.Title;
+                    rsit.Link = item.Link;
+                    rsit.PubDate = Convert.ToDateTime(item.PubDate);
+                    rsit.IsRead = item.IsRead;
+                    rsit.Content = item.Content;
+                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), rsit.SiteName });
+                    lv.Tag = rsit;
+                   
                 }
-                listView1.Items.Add(it);
             })));
-
-
-
         }
         #endregion
+
+     
     }
 }

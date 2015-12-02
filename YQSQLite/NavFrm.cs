@@ -46,57 +46,28 @@ namespace YQSQLite
             //1、判断点击的项是分类项，还是有采集地址的具体项，可以用Leaf项判断。
             //2、如果是分类项直接从库中显示已采所有数据,如果是采集项则进行下一步的更新采集。
             NavUrl navurl = e.Node.Tag as NavUrl;
-            switch (navurl.Leaf)
+            switch (navurl.Level)
             {
-                case "F":     //是分类项，从DS中显示内容
-                    ReloadSelectFrmListView(navurl);
+                case 1: //是分类项，从DS中显示内容
+                    mf.SelectFrmListViewReload(navurl.Code);
                     break;
-                case "T":    //是有RSS地址的项
-                    if ((from p in mf.DS.RssItem.AsEnumerable() where p.ChannelCode == navurl.Code select p.RssItemID).Count() > 0)
-                    {
-                        //如果库中有部分内容，则显示
-                        ReloadSelectFrmListView(navurl);
-                    }
-                    //去采集
+                case 2:
+                    mf.SelectFrmListViewReload(navurl.Code);
+                    break;
+                default://第3级，是有RSS地址的项
+                     //去采集
                     DownLoadRssItem(navurl);
-                    break;
-                default:
+                    //显示已有多少条数据和有多少条未读 更新node值到库
+                    UpdataNodeText(e.Node);
+                    //更新筛选窗体中listview列表
+                    mf.SelectFrmListViewReload(navurl.Code);
                     break;
             }
-
 
         }
         #endregion
 
-        #region 重新加载SelectFrmListView
-        /// <summary>
-        /// 重新加载SelectFrmListView
-        /// </summary>
-        /// <param name="navurl"></param>
-        private void ReloadSelectFrmListView(NavUrl navurl)
-        {
-            var q = from p in mf.DS.RssItem.AsEnumerable()
-                    where p.ChannelCode.StartsWith(navurl.Code) && p.IsRead=="F"
-                    orderby p.PubDate descending, p.Title
-                    select p;
-            foreach (var item in q)
-            {
-                RssItem rsit = new RssItem();
-                rsit.RssItemID = item.RssItemID;
-                rsit.SiteName = item.SiteName;
-                rsit.ChannelCode = item.ChannelCode;
-               
-                rsit.Title = item.Title;
-                rsit.Link = item.Link;
-                rsit.PubDate = Convert.ToDateTime(item.PubDate);
-                rsit.IsRead = item.IsRead;
-                rsit.Content = item.Content;
-                ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), rsit.ChannelCode });
-                lv.Tag = rsit;
-                mf.SelectFrmListViewReload(lv);
-            }
-        }
-        #endregion
+       
 
         #region 去采集下载Rss新闻源列表
         private void DownLoadRssItem(NavUrl navurl)
@@ -115,7 +86,7 @@ namespace YQSQLite
                         case "0108"://新闻网
                             DownRss_XinHa(navurl);
                             break;
-                     
+
                         default://正常内容rss2.0 //百度新闻订阅中包含CDATA，不管是哪种DOM解析，cdata都是透明的，也就是完全可以当做cdata不存在来解析，
                             Nomal_GetRssXml(navurl);
                             //DownloadRSS(navurl);
@@ -136,28 +107,20 @@ namespace YQSQLite
                     break;
                 case "08"://外网
                     break;
-               
+
             }
-            //计算并更新NavUrl表中的数据量
-            ColUpNavUrl();
-            //显示已有多少条数据和有多少条未读
-            UpdataNodeText(navurl);
             //保存RssItem数据
             mf.SaveRssItemToDB(mf.DS.RssItem);
             //更新总数  不要在这里作了。容易出错
-            //   ColUpNavUrl();
-            //更新该行
-            mf.navurlTap.Update((mf.DS.NavUrl.FindByID(navurl.ID)));
-            //更新父行
-            mf.navurlTap.Update(mf.DS.NavUrl.FindByID(navurl.PID));
-            //更新父ID的父ID
-            int gID = (mf.DS.NavUrl.FindByID(navurl.PID)).PID;
-            mf.navurlTap.Update(mf.DS.NavUrl.FindByID(gID));
+
+
+
+
 
         }
         #endregion
 
-        #region 新华网新闻列表的采集规则       
+        #region 新华网新闻列表的采集规则
         private void DownRss_XinHa(NavUrl navurl)
         {
             try
@@ -201,16 +164,11 @@ namespace YQSQLite
 
                     //通过Link查找DataSet中是否有相同的网址
                     //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
-                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;              
+                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;
                     if (f == 0)
                     {
-                        RssItem it = new RssItem(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
-
-                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Name });
-                        lv.Tag = it;
-                        mf.SelectFrmListViewReload(lv);
                         //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(it.SiteName, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), it.IsRead, it.Content);
+                        mf.DS.RssItem.AddRssItemRow(navurl.Name, navurl.Code, result.Title.Trim(), result.Link,result.PubDate, "F", "");
                     }
                 }
             }
@@ -242,43 +200,33 @@ namespace YQSQLite
                 foreach (var result in itemQuery)
                 {
                     //为百度源CDATA标签设置过滤
-
-
                     //通过Link查找DataSet中是否有相同的网址
                     //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
                     int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;
-                    //取得最大ID值+1; 
-
+                  
                     /*在DataSet中设置了新境时自动增加ID值，AtuoIncremnet 为true;
                      *设置Link列为Unique唯一索引。通过该值查找对应的ItemRssm.
-                     */
-                    //int maxId;
-                    //if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
-                    //{
-                    //    maxId = 1;
-                    //}
-                    //else
-                    //{
-                    //    maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
-                    //}
+                     * //取得最大ID值+1; 
 
+                    int maxId;
+                    if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
+                    {
+                        maxId = 1;
+                    }
+                    else
+                    {
+                        maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
+                    }
+                    */
                     if (f == 0)
                     {
                         //这里过渡日期
                         if (Convert.ToDateTime(result.PubDate) > (DateTime.Now.AddDays(-7)))
                         {
-                            //先在DS中加入一行，                          
-                           
+                            //先在DS中加入一行，
                             mf.DS.RssItem.AddRssItemRow(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, result.PubDate, "F", "");
-                          
-                            //int newID=
-                            RssItem it = new RssItem(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                            //既然是新增的找ID困难，那么我们就只专心做上面的一件事，其它的：比如显示呀，多线程采集内容呀，下一步再说。现在测试
 
-                            ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Name });
-                            lv.Tag = it;
-                            mf.SelectFrmListViewReload(lv);
-                            //方法二：在DataSet中添加行，然后一次提交到库
-                            
                         }
                     }
                 }
@@ -291,27 +239,6 @@ namespace YQSQLite
         }
         #endregion
 
-        
-        #region 计算并更新NavUrl表中的数据量
-        private void ColUpNavUrl()
-        {
-            var navs = from p in mf.DS.NavUrl.AsEnumerable()
-                       select p;
-
-            foreach (var nv in navs)
-            {
-                nv.ItemCount = (from q in mf.DS.RssItem.AsEnumerable()
-                                where q.ChannelCode.StartsWith(nv.Code)
-                                select q).Count();
-                nv.NoReadCount = (from s in mf.DS.RssItem.AsEnumerable()
-                                  where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
-                                  select s).Count();
-            }
-
-
-        }
-        #endregion
-        
         #region 右键菜单
 
         //编辑导航
@@ -426,52 +353,51 @@ namespace YQSQLite
 
         #endregion
 
-        #region 异步扫行选中的Node的text值 用于显示已有多少条数据和有多少条未读
-        public void UpdataNodeText(NavUrl nv)
+        #region 异步扫行选中的Node的text值 用于显示已有多少条数据和有多少条未读 并更新到库
+        public void UpdataNodeText(TreeNode node)
         {
             this.Invoke(new ThreadStart(delegate
             {
+                //计算并更新NavUrl表中的数据量
+                ColUpNavUrl();
 
-                #region 简单的方法，通过查找父节点，来更改。
-                YQDataSet.NavUrlRow nur = mf.DS.NavUrl.FindByID(nv.ID);
-                treeView1.SelectedNode.Text = nv.Name + "(" + nur.NoReadCount + "/" + nur.ItemCount + ")";
-
-                //更新node的父显示
-                if (treeView1.SelectedNode.Parent != null)
-                {
-                    NavUrl pnu = treeView1.SelectedNode.Parent.Tag as NavUrl;
-                    YQDataSet.NavUrlRow pnur = mf.DS.NavUrl.FindByID(pnu.ID);
-                    treeView1.SelectedNode.Parent.Text = pnur.Name + "(" + pnur.NoReadCount + "/" + pnur.ItemCount + ")";
-                }
-
-
-                //再一级的父目录
-                if (treeView1.SelectedNode.Parent.Parent != null)
-                {
-
-                    NavUrl Gpnu = treeView1.SelectedNode.Parent.Parent.Tag as NavUrl;
-                    YQDataSet.NavUrlRow Gpnur = mf.DS.NavUrl.FindByID(Gpnu.ID);
-                    treeView1.SelectedNode.Parent.Parent.Text = Gpnu.Name + "(" + Gpnur.NoReadCount + "/" + Gpnur.ItemCount + ")";
-                }
+                #region 通过Node值，搜索treeview节点更改。
+                NavUrl nu = node.Tag as NavUrl;
+                //此处不用判断了，前面已经判断了本节点为第3级节点。
+                YQDataSet.NavUrlRow nr = mf.DS.NavUrl.FindByID(nu.ID);
+                node.Text = nr.Name + "(" + nr.NoReadCount + "/" + nr.ItemCount + ")";
+                //父级的
+                YQDataSet.NavUrlRow pnr = mf.DS.NavUrl.FindByID(nr.PID);
+                node.Parent.Text = pnr.Name + "(" + pnr.NoReadCount + "/" + pnr.ItemCount + ")";
+                //根的
+                YQDataSet.NavUrlRow ppnr = mf.DS.NavUrl.FindByID(pnr.PID);
+                node.Parent.Parent.Text = ppnr.Name + "(" + ppnr.NoReadCount + "/" + ppnr.ItemCount + ")";
                 #endregion
 
-                #region 通过Code值，搜索treeview节点更改。
-                //for (int i = 0; i < treeView1.Nodes.Count; i++)
-                //{
-                //    string sort2code = nv.Code.Substring(0, 2);
-                //    NavUrl nav = treeView1.Nodes[i].Tag as NavUrl;
-                //    if (treeView1.Nodes[i].Tag)
-                //    {
 
-                //    }
-                //}
-                //  Parallel.For(0, treeView1.Nodes.Count, (i) => { treeView1.Nodes[i].Tag});
-                #endregion
             }));
         }
         #endregion
 
+        #region 计算并更新NavUrl表中的数据量
+        private void ColUpNavUrl()
+        {
+            var navs = from p in mf.DS.NavUrl.AsEnumerable()
+                       select p;
 
+            foreach (var nv in navs)
+            {
+                nv.ItemCount = (from q in mf.DS.RssItem.AsEnumerable()
+                                where q.ChannelCode.StartsWith(nv.Code)
+                                select q).Count();
+                nv.NoReadCount = (from s in mf.DS.RssItem.AsEnumerable()
+                                  where (s.IsRead == "F" && s.ChannelCode.StartsWith(nv.Code))
+                                  select s).Count();
+            }
+
+
+        }
+        #endregion
 
 
 

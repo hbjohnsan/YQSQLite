@@ -183,9 +183,9 @@ namespace YQSQLite
 
 
         //SelectFrom窗体的数据重载
-        public void SelectFrmListViewReload(ListViewItem li)
+        public void SelectFrmListViewReload(string li)
         {
-            selectFm.ReloadLiatView(li);
+            selectFm.ReLoadSelectFrmListView(li);
         }
         public void SelectFrmListviewClear()
         {
