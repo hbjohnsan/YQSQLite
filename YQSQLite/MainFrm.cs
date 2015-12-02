@@ -51,7 +51,7 @@ namespace YQSQLite
         public YQDataSetTableAdapters.serverTableAdapter serverTap;
         public YQDataSetTableAdapters.RuleTableAdapter ruleTap;
         public YQDataSetTableAdapters.NavUrlTableAdapter navurlTap;
-    
+
 
 
         public CookieContainer cc = new CookieContainer();
@@ -74,9 +74,9 @@ namespace YQSQLite
             serverTap = new YQDataSetTableAdapters.serverTableAdapter();
             ruleTap = new YQDataSetTableAdapters.RuleTableAdapter();
             navurlTap = new YQDataSetTableAdapters.NavUrlTableAdapter();
-           
-            
-            
+
+
+
 
             cpcTap.Fill(DS.cpcuse);
             rssTap.Fill(DS.RssItem);
@@ -179,7 +179,7 @@ namespace YQSQLite
         #endregion
 
         #region 中间调用方法
-       
+
 
 
         //SelectFrom窗体的数据重载
@@ -524,10 +524,15 @@ namespace YQSQLite
                         {
                             foreach (DataRow dr in dt.Rows)
                             {
-                                cmd.CommandText = @"insert or ignore into RssItem values ('"+Int32.Parse(dr[0].ToString()) +"','"
-                                    +dr[1].ToString()+"','"+dr[2].ToString()+"','"
-                                    +dr[3].ToString()+"','"+Convert.ToDateTime(dr[4].ToString())+"','"
-                                    +dr[5].ToString()+"','"+dr[6].ToString()+"')";
+                                cmd.CommandText = @"insert or ignore into RssItem values ('" 
+                                    + Int32.Parse(dr[0].ToString()) + "','"
+                                    + dr[1].ToString() + "','"
+                                    + dr[2].ToString() + "','"
+                                    + dr[3].ToString() + "','"
+                                    + dr[4].ToString() + "','"
+                                    + Convert.ToDateTime(dr[5].ToString()) + "','"
+                                    + dr[6].ToString() + "','" 
+                                    + dr[7].ToString() + "')";
                                 cmd.ExecuteNonQuery();
 
                             }
@@ -542,7 +547,7 @@ namespace YQSQLite
                     }
                 }
             }
-                        
+
         }
 
         public void SaveNavUrlToDB(DataTable dt)
@@ -585,7 +590,7 @@ namespace YQSQLite
             }
 
         }
-        
+
 
         private void MainFrm_FormClosing(object sender, FormClosingEventArgs e)
         {

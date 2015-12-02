@@ -92,6 +92,7 @@ namespace YQSQLite
     public class RssItem
     {
         public int RssItemID { get; set; }
+        public string SiteName { get; set; }
         public string ChannelCode { get; set; }
         public string Title { get; set; }
         public string Link { get; set; }
@@ -99,9 +100,9 @@ namespace YQSQLite
         public string IsRead { get; set; }
         public string Content { get; set; }
         public RssItem() { } 
-        public RssItem( string channelcode, string title, string link, DateTime pubdate, string isread, string content)
+        public RssItem(string sitename, string channelcode, string title, string link, DateTime pubdate, string isread, string content)
         {
-           
+           this.SiteName=sitename;
             this.ChannelCode = channelcode;
             this.Title = title;
             this.Link = link;
@@ -109,11 +110,12 @@ namespace YQSQLite
             this.IsRead = isread;
             this.Content = content;
         }
-        public RssItem( int rssitemid, string channelcode, string title, string link, DateTime pubdate, string isread, string content)
+        public RssItem( int rssitemid, string sitename,string channel, string title, string link, DateTime pubdate, string isread, string content)
         {
             
             this.RssItemID = rssitemid;
-            this.ChannelCode = channelcode;
+            this.SiteName = sitename;
+            this.ChannelCode = channel;
             this.Title = title;
             this.Link = link;
             this.PubDate = pubdate;

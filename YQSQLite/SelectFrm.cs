@@ -288,19 +288,25 @@ namespace YQSQLite
             if (listView1.SelectedItems.Count > 0)
             {
                 RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
+                
+                //从库中查找数据：以link为唯一索引的ID值
+                int qID = (from p in mf.DS.RssItem.AsEnumerable()
+                         where p.Link == rssitem.Link
+                         select p.RssItemID).FirstOrDefault();
+
+                YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(qID);
                 rssitem.IsRead = "W";            //待处理 变为 W
                 rssitem.Content = htmlEditor1.HTML;
-                mf.NewsAdd(rssitem);
-                //重点
-                YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID);
-                rir.IsRead = rssitem.IsRead;
-                rir.Content = rssitem.Content;
-                mf.rssTap.Update(rir);
-                //重点要解决
+
+              
+
+                mf.NewsAdd(rssitem);//重点
+                mf.rssTap.Update(rir);//todo:不能更新，ID问题，且内容部分为空。
+               
 
                 listView1.SelectedItems[0].Remove();
                 htmlEditor1.HTML = "";
-                //把数据重新加载一下，带入conent
+               
 
 
             }

@@ -83,8 +83,9 @@ namespace YQSQLite
             {
                 RssItem rsit = new RssItem();
                 rsit.RssItemID = item.RssItemID;
+                rsit.SiteName = item.SiteName;
                 rsit.ChannelCode = item.ChannelCode;
-                //  rsit.Site = item.Site;
+               
                 rsit.Title = item.Title;
                 rsit.Link = item.Link;
                 rsit.PubDate = Convert.ToDateTime(item.PubDate);
@@ -135,11 +136,14 @@ namespace YQSQLite
                     break;
                 case "08"://外网
                     break;
-                default:
-
-                    break;
+               
             }
-            UpAndSaveItem(navurl);
+            //计算并更新NavUrl表中的数据量
+            ColUpNavUrl();
+            //显示已有多少条数据和有多少条未读
+            UpdataNodeText(navurl);
+            //保存RssItem数据
+            mf.SaveRssItemToDB(mf.DS.RssItem);
             //更新总数  不要在这里作了。容易出错
             //   ColUpNavUrl();
             //更新该行
@@ -197,27 +201,16 @@ namespace YQSQLite
 
                     //通过Link查找DataSet中是否有相同的网址
                     //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
-                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;
-                    //取得最大ID值+1; 
-                    int maxId;
-                    if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
-                    {
-                        maxId = 1;
-                    }
-                    else
-                    {
-                        maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
-                    }
-
+                    int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;              
                     if (f == 0)
                     {
-                        RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                        RssItem it = new RssItem(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
 
-                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
+                        ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Name });
                         lv.Tag = it;
                         mf.SelectFrmListViewReload(lv);
                         //方法二：在DataSet中添加行，然后一次提交到库
-                        mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString(), it.IsRead, it.Content);
+                        mf.DS.RssItem.AddRssItemRow(it.SiteName, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), it.IsRead, it.Content);
                     }
                 }
             }
@@ -255,28 +248,37 @@ namespace YQSQLite
                     //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
                     int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;
                     //取得最大ID值+1; 
-                    int maxId;
-                    if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
-                    {
-                        maxId = 1;
-                    }
-                    else
-                    {
-                        maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
-                    }
+
+                    /*在DataSet中设置了新境时自动增加ID值，AtuoIncremnet 为true;
+                     *设置Link列为Unique唯一索引。通过该值查找对应的ItemRssm.
+                     */
+                    //int maxId;
+                    //if ((from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Count() == 0)
+                    //{
+                    //    maxId = 1;
+                    //}
+                    //else
+                    //{
+                    //    maxId = (from rs in mf.DS.RssItem.AsEnumerable() select rs.RssItemID).Max() + 1;
+                    //}
 
                     if (f == 0)
                     {
                         //这里过渡日期
                         if (Convert.ToDateTime(result.PubDate) > (DateTime.Now.AddDays(-7)))
                         {
-                            RssItem it = new RssItem(maxId, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
+                            //先在DS中加入一行，                          
+                           
+                            mf.DS.RssItem.AddRssItemRow(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, result.PubDate, "F", "");
+                          
+                            //int newID=
+                            RssItem it = new RssItem(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
 
-                            ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Code });
+                            ListViewItem lv = new ListViewItem(new string[] { it.Title, it.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), navurl.Name });
                             lv.Tag = it;
                             mf.SelectFrmListViewReload(lv);
                             //方法二：在DataSet中添加行，然后一次提交到库
-                            mf.DS.RssItem.AddRssItemRow(it.RssItemID, it.ChannelCode, it.Title, it.Link, it.PubDate.ToString(), it.IsRead, it.Content);
+                            
                         }
                     }
                 }
@@ -289,26 +291,7 @@ namespace YQSQLite
         }
         #endregion
 
-
-        #region 更新显示，并保存RssItem数据
-        private void UpAndSaveItem(NavUrl navurl)
-        {
-            //需要更新RSS统计
-            Thread th = new Thread(new ThreadStart(delegate
-            {
-                ColUpNavUrl();
-
-                UpdataNodeText(navurl);
-
-                mf.SaveRssItemToDB(mf.DS.RssItem);
-                //mf.SaveToDB_help(mf.DS.RssItem);
-
-            }));
-            th.IsBackground = true;
-            th.Start();
-        }
-        #endregion
-
+        
         #region 计算并更新NavUrl表中的数据量
         private void ColUpNavUrl()
         {
@@ -328,104 +311,7 @@ namespace YQSQLite
 
         }
         #endregion
-
-        #region 采集方法
-        private string GetSiteContent(string link)
-        {
-            string reContent = "";
-            Uri u = new Uri(link);
-
-            var q = from p in mf.DS.Rule.AsEnumerable()
-                    select new { url = p.Rule_Domain };
-            var qall = from p in mf.DS.Rule.AsEnumerable()
-                       select p;
-            foreach (var site in q)
-            {
-                if (u.Host.Contains(site.url))
-                {
-                    foreach (var item in qall)
-                    {
-                        if (item.ContFlag != "")
-                        {
-                            string[] delflag = item.RemoveFlag.Split(new char[] { ',' });
-                            reContent = CastCont(link, item.ContFlag, delflag);
-                        }
-                        else
-                        {
-                            reContent = CastCont(link, item.ContFlag);
-                        }
-                    }
-                }
-            }
-            return reContent;
-        }
-
-        //截取正文内容部分方法的重构，
-        private string CastCont(string link, string FlagCont)
-        {
-            string reContent = "";
-            #region 使用HttpHelper取得源码
-            HttpHelper http = new HttpHelper();
-            HttpItem item = new HttpItem()
-            {
-                URL = link
-            };
-            HttpResult result = http.GetHtml(item);
-            string html = result.Html;
-            #endregion
-            #region 使用HtmlAgilityPack解析源码
-            HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            var Nodes = htmlDocument.DocumentNode;
-            #endregion
-            //初始化
-            // rtbCode.Text = html;
-            var reCont = Nodes.CssSelect(FlagCont);
-            foreach (var doc in reCont)
-            {
-                // htmlEditor1.HTML = doc.InnerHtml;
-                // rtbText.Text = doc.InnerText;
-                reContent = doc.InnerText;
-            }
-            return reContent;
-        }
-        private string CastCont(string link, string FlagCont, string[] DelFlag)
-        {
-            string reContent = "";
-            #region 使用HttpHelper取得源码
-            HttpHelper http = new HttpHelper();
-            HttpItem item = new HttpItem()
-            {
-                URL = link
-            };
-            HttpResult result = http.GetHtml(item);
-            string html = result.Html;
-            #endregion
-            #region 使用HtmlAgilityPack解析源码
-            HtmlAgilityPack.HtmlDocument htmlDocument = new HtmlAgilityPack.HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            var Nodes = htmlDocument.DocumentNode;
-            #endregion
-            //初始化
-            //rtbCode.Text = html;
-            var reCont = Nodes.CssSelect(FlagCont);
-            foreach (var doc in reCont)
-            {
-                for (int i = 0; i < DelFlag.Length; i++)
-                {
-                    foreach (var Del in reCont.CssSelect(DelFlag[i]).ToArray())
-                        Del.Remove();
-                }
-                //htmlEditor1.HTML = doc.InnerHtml;
-                //rtbText.Text = doc.InnerText;
-                reContent += doc.InnerText;
-            }
-            return reContent;
-        }
-
-        #endregion
-
-
+        
         #region 右键菜单
 
         //编辑导航
