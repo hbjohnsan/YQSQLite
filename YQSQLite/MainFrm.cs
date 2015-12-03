@@ -183,15 +183,11 @@ namespace YQSQLite
 
 
         //SelectFrom窗体的数据重载
-        public void SelectFrmListViewReload(ListViewItem li)
+        public void SelectFrmListViewReload(TreeNode tn)
         {
-            selectFm.ReloadLiatView(li);
+            selectFm.ReLoadSelectFrmListView(tn);
         }
-        public void SelectFrmListviewClear()
-        {
-            selectFm.listClear();
-        }
-
+     
         //新闻列表选择加入待处理窗体
         public void NewsAdd(RssItem rs)
         {
@@ -447,7 +443,7 @@ namespace YQSQLite
                 row.Delete();
             }
             rssTap.Update(DS.RssItem);
-            selectFm.listClear();
+           
             waiteditFm.listClear();
 
         }
