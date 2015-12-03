@@ -270,7 +270,7 @@ namespace YQSQLite
                             //先在DS中加入一行，                          
                            
                             mf.DS.RssItem.AddRssItemRow(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, result.PubDate, "F", "");
-                          
+                         
                             //int newID=
                             RssItem it = new RssItem(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, Convert.ToDateTime(result.PubDate), "F", "");
 
