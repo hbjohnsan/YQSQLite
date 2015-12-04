@@ -299,6 +299,9 @@ namespace YQSQLite
               
 
                 mf.NewsAdd(rssitem);//重点
+
+                rir.Content = rssitem.Content;
+                rir.IsRead = rssitem.IsRead;
                 mf.rssTap.Update(rir);//todo:不能更新，ID问题，且内容部分为空。
                
 

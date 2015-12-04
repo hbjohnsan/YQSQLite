@@ -3943,11 +3943,11 @@ namespace YQSQLite {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Link {
                 get {
-                    try {
-                        return ((string)(this[this.tableRssItem.LinkColumn]));
+                    if (this.IsLinkNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“RssItem”中列“Link”的值为 DBNull。", e);
+                    else {
+                        return ((string)(this[this.tableRssItem.LinkColumn]));
                     }
                 }
                 set {

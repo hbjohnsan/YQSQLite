@@ -70,6 +70,9 @@ namespace YQSQLite
                 case "01"://此项为Rss采集
                     switch (navurl.Code.Substring(0, 4))//判断特殊规则，如新华网
                     {
+                        //case "0102"://新浪网
+                        //    DownRss_Sina(navurl);
+                        //    break;
                         case "0108"://新闻网
                             DownRss_XinHa(navurl);
                             break;
@@ -112,9 +115,9 @@ namespace YQSQLite
             //{
             //    listRss[i].Start();
             //}
-            //如何更新到库？此时得到是个RssItem的集合。从集合到DS→DB？？？
+            //如何更新到库？此时得到是个RssItem的集合。从集合到DS→DB？？？如果直接去采集内容网络数据量太大，不方便处理。把这人问题放在SelcetFrm中处理吧。
 
-           mf.SaveRssItemToDB(mf.DS.RssItem);
+            mf.SaveRssItemToDB(mf.DS.RssItem);
             //更新总数  不要在这里作了。容易出错
 
         }
@@ -122,7 +125,7 @@ namespace YQSQLite
 
         //todo:采用多线程下正文内容。 这样方便定时更新
 
-        #region 新华网新闻列表的采集规则
+        #region 新华网RSS采集规则
         private void DownRss_XinHa(NavUrl navurl)
         {
             try
@@ -185,11 +188,11 @@ namespace YQSQLite
         #region 正常规则
         private void Nomal_GetRssXml(NavUrl navurl)
         {
-            
+
             try
             {
                 //加载RSS新闻数据
-                XElement rssData = XElement.Load(navurl.Link);              
+                XElement rssData = XElement.Load(navurl.Link);
                 var itemQuery = from item in rssData.Descendants(XName.Get("item"))
                                 select new
                                 {
@@ -212,7 +215,7 @@ namespace YQSQLite
                         //这里过渡日期
                         if (Convert.ToDateTime(result.PubDate) > (DateTime.Now.AddDays(-7)))
                         {
-                           
+
                             ////先在DS中加入一行，
                             mf.DS.RssItem.AddRssItemRow(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, result.PubDate, "F", "");
                             //既然是新增的找ID困难，那么我们就只专心做上面的一件事，其它的：比如显示呀，多线程采集内容呀，下一步再说。现在测试
@@ -225,7 +228,42 @@ namespace YQSQLite
             {
                 MessageBox.Show(ex.ToString());
             }
-           
+
+        }
+        #endregion
+
+        #region 网易RSS规则
+        private void DownRss_Sina(NavUrl navurl)
+        {
+            //加载RSS新闻数据
+            XElement rssData = XElement.Load(navurl.Link);
+            Regex regex = new Regex(@"(?<=[=]).*");
+            //http://go.rss.sina.com.cn/redirect.php?url=http://tech.sina.com.cn/it/2013-11-16/09198919884.shtml        
+
+            //取出新闻标题，转成RssItem对象，并暂存到列表控件中
+            var itemQuery = from item in rssData.Descendants(XName.Get("item"))
+                            select new
+                            {
+                                Title = item.Element(XName.Get("title")).Value.Trim(),
+                                Link = regex.Match(item.Element(XName.Get("link")).Value).ToString(),
+                                PubDate = item.Element(XName.Get("pubDate")).Value
+                            };
+            
+            foreach (var result in itemQuery)
+            {
+                //查询RssItem表中，与这个频道相同的项中，是否有相同的网址，如果有不采集  加上网站去重，用title
+                int f = (from p in mf.DS.RssItem.AsEnumerable() where (p.Link == result.Link || p.Title == result.Title) select p).ToList().Count;
+                if (f == 0)
+                {
+                    //这里过滤日期
+                    if (Convert.ToDateTime(result.PubDate) > (DateTime.Now.AddDays(-7)))
+                    {
+                        mf.DS.RssItem.AddRssItemRow(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, result.PubDate, "F", "");
+                    }
+                }
+            }
+
+
         }
         #endregion
 

@@ -101,6 +101,7 @@ namespace YQSQLite
             th = new Thread(new ThreadStart(delegate
             {
                 DownContent();
+               
                 //uplist(lvs);
             }));
             th.Start();
@@ -204,6 +205,8 @@ namespace YQSQLite
                 //htmlEditor1.HTML = doc.InnerHtml;
                 //rtbText.Text = doc.InnerText;
                 this.Content = doc.InnerText;
+                //YQDataSet.RssItemRow rir = mDs.RssItem.FindByRssItemID(this.RssItemID);
+                //rir.Content = this.Content;
             }
         }
         private void CastCont(string link, string FlagCont, string[] DelFlag)
@@ -235,6 +238,8 @@ namespace YQSQLite
                 //htmlEditor1.HTML = doc.InnerHtml;
                 //rtbText.Text = doc.InnerText;
                 this.Content = doc.InnerText;
+                //YQDataSet.RssItemRow rir = mDs.RssItem.FindByRssItemID(this.RssItemID);
+                //rir.Content = this.Content;
 
             }
         }
