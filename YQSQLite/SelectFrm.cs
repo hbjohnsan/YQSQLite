@@ -286,28 +286,28 @@ namespace YQSQLite
             if (listView1.SelectedItems.Count > 0)
             {
                 RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-                
+
                 //从库中查找数据：以link为唯一索引的ID值
                 int qID = (from p in mf.DS.RssItem.AsEnumerable()
-                         where p.Link == rssitem.Link
-                         select p.RssItemID).FirstOrDefault();
+                           where p.Link == rssitem.Link
+                           select p.RssItemID).FirstOrDefault();
 
                 YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(qID);
                 rssitem.IsRead = "W";            //待处理 变为 W
                 rssitem.Content = htmlEditor1.HTML;
 
-              
+
 
                 mf.NewsAdd(rssitem);//重点
 
                 rir.Content = rssitem.Content;
                 rir.IsRead = rssitem.IsRead;
                 mf.rssTap.Update(rir);//todo:不能更新，ID问题，且内容部分为空。
-               
+
 
                 listView1.SelectedItems[0].Remove();
                 htmlEditor1.HTML = "";
-               
+
 
 
             }
@@ -372,8 +372,17 @@ namespace YQSQLite
                 //初始化
                 rtbCode.Clear();
                 rtbText.Clear();
-                htmlEditor1.HTML = "";
-                DownContent(it.Link);
+                if (it.Content == "")
+                {
+                    // DownContent(it.Link);
+                }
+                else
+                {
+                    this.Invoke(new ThreadStart(delegate { htmlEditor1.HTML = it.Content; }));
+                   
+                }
+               
+               
             }
         }
         //定义不同网站，不同的正文定义，和排除部分源码标记
@@ -600,35 +609,57 @@ namespace YQSQLite
         #endregion
 
         #region 导步更新ListView
+        public void _UplistView(ListViewItem i)
+        {
+            this.Invoke(new ThreadStart(delegate
+            {
+                listView1.Items.Add(i);
+
+            }));
+        }
+
         public void ReLoadSelectFrmListView(TreeNode tn)
         {
             NavUrl nu = tn.Tag as NavUrl;
-            this.Invoke((new ThreadStart(delegate
+
+            List<RssItem> listRss = new List<RssItem>();
+
+            listView1.Items.Clear();
+            var q = from p in mf.DS.RssItem.AsEnumerable()
+                    where p.ChannelCode.StartsWith(nu.Code) && p.IsRead == "F"
+                    orderby p.PubDate descending, p.Title
+                    select p;
+            foreach (var i in q)
             {
-                listView1.Items.Clear();
-                var q = from p in mf.DS.RssItem.AsEnumerable()
-                        where p.ChannelCode.StartsWith(nu.Code) && p.IsRead == "F"
-                        orderby p.PubDate descending, p.Title
-                        select p;
-                foreach (var item in q)
+                RssItem ri = new RssItem(mf.DS, i.RssItemID, i.SiteName, i.ChannelCode, i.Title, i.Link, Convert.ToDateTime(i.PubDate)
+                , i.IsRead, i.Content);
+                ri.uplist = new UpdataListView(_UplistView);
+                listRss.Add(ri);
+            }
+            //todo:这里可否运行多线程的自动下载内容部分？然后改一下，listview表中项的背景显示。
+
+            //保存RssItem数据 由于更改了RssItem类，有strat（）方法，得到的RssItem对象。
+
+
+            //多线程启动了下载内容部分。
+            for (int i = 0; i < listRss.Count; i++)
+            {
+                if (listRss[i].Content == "")
                 {
-                    RssItem rsit = new RssItem();
-                    rsit.RssItemID = item.RssItemID;
-                    rsit.SiteName = item.SiteName;
-                    rsit.ChannelCode = item.ChannelCode;
-                    rsit.Title = item.Title;
-                    rsit.Link = item.Link;
-                    rsit.PubDate = Convert.ToDateTime(item.PubDate);
-                    rsit.IsRead = item.IsRead;
-                    rsit.Content = item.Content;
-                    ListViewItem lv = new ListViewItem(new string[] { rsit.Title, rsit.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), rsit.SiteName });
-                    lv.Tag = rsit;
-                    listView1.Items.Add(lv);
+                    listRss[i].Start();
                 }
-            })));
+                else
+                {
+                    DownContent(listRss[i].Link);    
+                }
+
+            }
+            //存盘吗？？？
+         //  mf.SaveRssItemToDB(mf.DS.RssItem);
+
         }
         #endregion
 
-     
+
     }
 }

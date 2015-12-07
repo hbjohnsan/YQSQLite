@@ -99,24 +99,7 @@ namespace YQSQLite
                     break;
 
             }
-            ////保存RssItem数据 由于更改了RssItem类，有strat（）方法，得到的RssItem对象。
-
-            //List<RssItem> listRss = new List<RssItem>();
-            //var q = from p in mf.DS.RssItem.AsEnumerable()
-            //        select p;
-            //foreach (var i in q)
-            //{
-            //    RssItem ri = new RssItem(mf.DS, i.RssItemID, i.SiteName, i.ChannelCode, i.Title, i.Link, Convert.ToDateTime(i.PubDate)
-            //    , i.IsRead, i.Content);
-            //    listRss.Add(ri);
-            //}
-            ////多线程启动了下载内容部分。
-            //for (int i = 0; i < listRss.Count; i++)
-            //{
-            //    listRss[i].Start();
-            //}
-            //如何更新到库？此时得到是个RssItem的集合。从集合到DS→DB？？？如果直接去采集内容网络数据量太大，不方便处理。把这人问题放在SelcetFrm中处理吧。
-
+           
             mf.SaveRssItemToDB(mf.DS.RssItem);
             //更新总数  不要在这里作了。容易出错
 
@@ -216,7 +199,7 @@ namespace YQSQLite
                         if (Convert.ToDateTime(result.PubDate) > (DateTime.Now.AddDays(-7)))
                         {
 
-                            ////先在DS中加入一行，
+                            //先在DS中加入一行，
                             mf.DS.RssItem.AddRssItemRow(navurl.Name, navurl.Code, result.Title.Trim(), result.Link, result.PubDate, "F", "");
                             //既然是新增的找ID困难，那么我们就只专心做上面的一件事，其它的：比如显示呀，多线程采集内容呀，下一步再说。现在测试
 

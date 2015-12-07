@@ -12,10 +12,11 @@ using System.Threading;
 using ScrapySharp.Extensions;
 using HtmlAgilityPack;
 using System.Linq;
+using System.Drawing;
 
 namespace YQSQLite
 {
-    // public delegate void UpdataListView(ListViewItem lv);
+    public delegate void UpdataListView(ListViewItem lv);
     public class caiji
     {
         public int ID { get; set; }
@@ -94,16 +95,20 @@ namespace YQSQLite
         //传参用的
         public YQDataSet mDs;
         public Thread th;
-        //public UpdataListView uplist;
+        public UpdataListView uplist;
         ListViewItem lvs = new ListViewItem();
         public void Start()
         {
             th = new Thread(new ThreadStart(delegate
             {
                 DownContent();
-               
-                //uplist(lvs);
+                RssItem ri = new RssItem(this.RssItemID,this.SiteName,this.ChannelCode,this.Title,this.Link,this.PubDate,this.IsRead,this.Content);
+                ListViewItem lv = new ListViewItem(new string[] { this.Title, this.PubDate.ToString("yyyy-MM-dd HH:mm:ss"), this.SiteName});
+                lv.Tag = ri;
+                lv.BackColor= Color.Red;
+                uplist(lv);
             }));
+            th.IsBackground = true;
             th.Start();
         }
         public int RssItemID { get; set; }
@@ -205,8 +210,8 @@ namespace YQSQLite
                 //htmlEditor1.HTML = doc.InnerHtml;
                 //rtbText.Text = doc.InnerText;
                 this.Content = doc.InnerText;
-                //YQDataSet.RssItemRow rir = mDs.RssItem.FindByRssItemID(this.RssItemID);
-                //rir.Content = this.Content;
+                YQDataSet.RssItemRow rir = mDs.RssItem.FindByRssItemID(this.RssItemID);
+                rir.Content = this.Content;
             }
         }
         private void CastCont(string link, string FlagCont, string[] DelFlag)
@@ -238,8 +243,8 @@ namespace YQSQLite
                 //htmlEditor1.HTML = doc.InnerHtml;
                 //rtbText.Text = doc.InnerText;
                 this.Content = doc.InnerText;
-                //YQDataSet.RssItemRow rir = mDs.RssItem.FindByRssItemID(this.RssItemID);
-                //rir.Content = this.Content;
+                YQDataSet.RssItemRow rir = mDs.RssItem.FindByRssItemID(this.RssItemID);
+                rir.Content = this.Content;
 
             }
         }
