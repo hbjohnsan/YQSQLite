@@ -368,19 +368,21 @@ namespace YQSQLite
             if (listView1.SelectedItems.Count != 0)
             {
                 listView1.SelectedItems[0].BackColor = Color.Bisque;
-                RssItem it = listView1.SelectedItems[0].Tag as RssItem;
+               // RssItem it = listView1.SelectedItems[0].Tag as RssItem;
+                string link = listView1.SelectedItems[0].Tag.ToString();
                 //初始化
                 rtbCode.Clear();
                 rtbText.Clear();
-                if (it.Content == "")
-                {
-                    // DownContent(it.Link);
-                }
-                else
-                {
-                    this.Invoke(new ThreadStart(delegate { htmlEditor1.HTML = it.Content; }));
+                //if (it.Content == "")
+                //{
+                //     DownContent(it.Link);
+                //}
+                //else
+                //{
+                //    this.Invoke(new ThreadStart(delegate { htmlEditor1.HTML = it.Content; }));
                    
-                }
+                //}
+                this.Invoke(new ThreadStart(delegate {  DownContent(link); }));
                
                
             }
@@ -617,7 +619,7 @@ namespace YQSQLite
 
             }));
         }
-
+        //点击自动批量下载新闻正文
         public void ReLoadSelectFrmListView(TreeNode tn)
         {
             NavUrl nu = tn.Tag as NavUrl;
@@ -656,6 +658,24 @@ namespace YQSQLite
             }
             //存盘吗？？？
          //  mf.SaveRssItemToDB(mf.DS.RssItem);
+
+        }
+        //只自动加载新闻列表
+        public void ReLoadSelectFrm(TreeNode tn)
+        {
+            NavUrl nu = tn.Tag as NavUrl;
+            listView1.Items.Clear();
+            var q = from p in mf.DS.RssItem.AsEnumerable()
+                    where p.ChannelCode.StartsWith(nu.Code) && p.IsRead == "F"
+                    orderby p.PubDate descending, p.Title
+                    select p;
+            foreach (var i in q)
+            {
+                ListViewItem lv = new ListViewItem(new string[] { i.Title, i.PubDate, i.SiteName });
+                lv.Tag = i.Link;
+                listView1.Items.Add(lv);
+            }
+           
 
         }
         #endregion

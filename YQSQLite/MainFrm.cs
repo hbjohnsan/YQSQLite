@@ -185,7 +185,8 @@ namespace YQSQLite
         //SelectFrom窗体的数据重载
         public void SelectFrmListViewReload(TreeNode tn)
         {
-            selectFm.ReLoadSelectFrmListView(tn);
+            //selectFm.ReLoadSelectFrmListView(tn);
+            selectFm.ReLoadSelectFrm(tn);
         }
      
         //新闻列表选择加入待处理窗体
