@@ -107,9 +107,14 @@ namespace YQSQLite
             navFm.Show(dockPanel, DockState.DockLeft);
             ruleFm.Show(navFm.Pane, DockAlignment.Bottom, 0.5);
             selectFm.Show(dockPanel);
+            
             waiteditFm.Show(dockPanel, DockState.DockRight);
             waitsendFm.Show(waiteditFm.Pane, DockAlignment.Bottom, 0.5);
             hassendfm.Show(waitsendFm.Pane, DockAlignment.Bottom, 0.5);
+
+            editFm = new EditFrm(this);
+            editFm.Show(dockPanel);
+            selectFm.Activate();
             #endregion
 
 
@@ -195,16 +200,7 @@ namespace YQSQLite
             //waiteditFm.AddRssItem(rs);
             waiteditFm.AddRssItem(ID);
         }
-        //待处理窗体移除新闻
-        public void RemoveAll()
-        {
-            waiteditFm.RemoveRssItem();
-        }
-        //待处理窗体全部移除新闻
-        public void NewsRemove()
-        {
-            waiteditFm.RemoveAll();
-        }
+      
 
         //到编辑窗体编辑“待处理” 项
         public void RssToEditFm(int ID)//RssItem its)

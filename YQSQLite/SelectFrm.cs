@@ -315,16 +315,8 @@ namespace YQSQLite
             mf.SaveRssItemToDB(mf.DS.RssItem);
             listView1.Items.Clear();
         }
-        //移除
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            mf.NewsRemove();
-        }
-        //全部移除
-        private void btnRemoveAll_Click(object sender, EventArgs e)
-        {
-            mf.RemoveAll();
-        }
+       
+      
         //不选
         private void btnsSelect_Click(object sender, EventArgs e)
         {

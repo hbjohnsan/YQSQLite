@@ -54,11 +54,11 @@ namespace YQSQLite
             this.Invoke(new ThreadStart(delegate
             {
                 txtTitle.Text = row.Title;
-                labLink.Text = row.Link;
+                linkLabel1.Text = row.Link;
                 labUpTime.Text = String.Format("{0:G}", row.PubDate);
-                rabSourc.Text = row.ChannelCode;
+                rabSourc.Text = row.SiteName;
                 htmlEditor1.HTML = row.Content;
-                webBrowser1.Navigate(row.Link);
+               // webBrowser1.Navigate(row.Link);
 
             }));
            
@@ -85,7 +85,7 @@ namespace YQSQLite
             rabSourc.Checked = true;
 
             txtTitle.Text = up.Title;
-            labLink.Text = up.Link;
+            linkLabel1.Text = up.Link;
             labUpTime.Text = up.UpTime.ToString();
             if (up.Site == "自采")
             {
@@ -94,7 +94,7 @@ namespace YQSQLite
             else
             {
                 rabSourc.Text = up.Site;
-                webBrowser1.Navigate(up.Link);
+              //  webBrowser1.Navigate(up.Link);
             }
 
 
@@ -118,7 +118,7 @@ namespace YQSQLite
                     YQDataSet.upsendRow row;
                     if (contSite == "自采")
                     {
-                        row = mf.DS.upsend.AddupsendRow(contSite, txtTitle.Text.Trim(), DateTime.Now, labLink.Text, htmlEditor1.HTML, "待报送", "待报送", contKind, stWillSendTO.ToString());
+                        row = mf.DS.upsend.AddupsendRow(contSite, txtTitle.Text.Trim(), DateTime.Now, linkLabel1.Text, htmlEditor1.HTML, "待报送", "待报送", contKind, stWillSendTO.ToString());
                         //更新到库
                         mf.upsendTap.Update(row);
                         //重新加载“待报送”                     
@@ -128,9 +128,9 @@ namespace YQSQLite
                     }
                     else
                     {
-                        row = mf.DS.upsend.AddupsendRow(contSite, txtTitle.Text.Trim(), Convert.ToDateTime(labUpTime.Text), labLink.Text, htmlEditor1.HTML, "待报送", "待报送", contKind, stWillSendTO.ToString());
+                        row = mf.DS.upsend.AddupsendRow(contSite, txtTitle.Text.Trim(), Convert.ToDateTime(labUpTime.Text), linkLabel1.Text, htmlEditor1.HTML, "待报送", "待报送", contKind, stWillSendTO.ToString());
                         YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(RssitemID);// (txtTitle.Text.Trim());
-                        rssrow.IsRead = "已读";
+                        rssrow.IsRead = "T";
                         mf.rssTap.Update(rssrow);
                         //更新到库
                         mf.upsendTap.Update(row);
@@ -153,7 +153,7 @@ namespace YQSQLite
                     row.Title = txtTitle.Text.Trim();
                     row.UpTime = Convert.ToDateTime(labUpTime.Text);
                     row.Content = htmlEditor1.HTML;
-                    row.Link = labLink.Text;
+                    row.Link = linkLabel1.Text;
                     row.Site = contSite;
                     row.ContKind = contKind;
                     row.WillSend = stWillSendTO.ToString();
@@ -217,8 +217,8 @@ namespace YQSQLite
             rabSourc.Text = "网站";
             rabZiCai.Checked = false;
             rabSourc.Checked = false;
-            labLink.Text = "";
-            labLink.Text = "";
+            linkLabel1.Text = "";
+           
             labUpTime.Text = "";
         }
         #endregion
@@ -253,7 +253,7 @@ namespace YQSQLite
                     //如果Rss新闻表被清空，移除时会出错！
                     if (rssrow != null)
                     {
-                        rssrow.IsRead = "已读";
+                        rssrow.IsRead = "T";
                         mf.rssTap.Update(rssrow);
                     }
 
@@ -275,6 +275,11 @@ namespace YQSQLite
             txtClear();
             btnAdd.Text = "待报";
             rabZiCai.Checked = true;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("IExplore.exe", linkLabel1.Text);
         }
     }
 }

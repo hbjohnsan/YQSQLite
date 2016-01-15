@@ -34,9 +34,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAddAll = new System.Windows.Forms.Button();
             this.btnsSelect = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
             this.btnSelectAll = new System.Windows.Forms.Button();
-            this.btnRemoveAll = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -50,11 +48,11 @@
             this.title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.site = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.浏览器打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.外部器打开ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -70,7 +68,7 @@
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 2, 0);
@@ -87,73 +85,51 @@
             // 
             this.panel3.Controls.Add(this.btnAddAll);
             this.panel3.Controls.Add(this.btnsSelect);
-            this.panel3.Controls.Add(this.btnRemove);
             this.panel3.Controls.Add(this.btnSelectAll);
-            this.panel3.Controls.Add(this.btnRemoveAll);
             this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(298, 4);
+            this.panel3.Location = new System.Drawing.Point(292, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(24, 554);
+            this.panel3.Size = new System.Drawing.Size(38, 554);
             this.panel3.TabIndex = 2;
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Image = global::YQSQLite.Properties.Resources.control_double_icon;
             this.btnAddAll.Location = new System.Drawing.Point(0, 192);
             this.btnAddAll.Name = "btnAddAll";
-            this.btnAddAll.Size = new System.Drawing.Size(24, 20);
+            this.btnAddAll.Size = new System.Drawing.Size(38, 20);
             this.btnAddAll.TabIndex = 0;
+            this.btnAddAll.Text = "全加";
             this.btnAddAll.UseVisualStyleBackColor = true;
             this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
             // 
             // btnsSelect
             // 
-            this.btnsSelect.Image = global::YQSQLite.Properties.Resources.no_entry_icon;
-            this.btnsSelect.Location = new System.Drawing.Point(0, 356);
+            this.btnsSelect.Location = new System.Drawing.Point(0, 260);
             this.btnsSelect.Name = "btnsSelect";
-            this.btnsSelect.Size = new System.Drawing.Size(24, 20);
+            this.btnsSelect.Size = new System.Drawing.Size(38, 20);
             this.btnsSelect.TabIndex = 0;
+            this.btnsSelect.Text = "不选";
             this.btnsSelect.UseVisualStyleBackColor = true;
             this.btnsSelect.Click += new System.EventHandler(this.btnsSelect_Click);
             // 
-            // btnRemove
-            // 
-            this.btnRemove.Image = global::YQSQLite.Properties.Resources.Actions_go_previous_icon1;
-            this.btnRemove.Location = new System.Drawing.Point(0, 264);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(24, 20);
-            this.btnRemove.TabIndex = 0;
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Image = global::YQSQLite.Properties.Resources.no_icon;
-            this.btnSelectAll.Location = new System.Drawing.Point(1, 387);
+            this.btnSelectAll.Location = new System.Drawing.Point(-1, 296);
             this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(24, 20);
+            this.btnSelectAll.Size = new System.Drawing.Size(38, 20);
             this.btnSelectAll.TabIndex = 0;
+            this.btnSelectAll.Text = "全不";
             this.btnSelectAll.UseVisualStyleBackColor = true;
             this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
             // 
-            // btnRemoveAll
-            // 
-            this.btnRemoveAll.Image = global::YQSQLite.Properties.Resources.control_double_180_icon;
-            this.btnRemoveAll.Location = new System.Drawing.Point(1, 295);
-            this.btnRemoveAll.Name = "btnRemoveAll";
-            this.btnRemoveAll.Size = new System.Drawing.Size(24, 20);
-            this.btnRemoveAll.TabIndex = 0;
-            this.btnRemoveAll.UseVisualStyleBackColor = true;
-            this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
-            // 
             // btnAdd
             // 
-            this.btnAdd.Image = global::YQSQLite.Properties.Resources._20_Right_Arrow_icon;
             this.btnAdd.Location = new System.Drawing.Point(0, 160);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(24, 20);
+            this.btnAdd.Size = new System.Drawing.Size(38, 20);
             this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "加入";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -161,9 +137,9 @@
             // 
             this.panel2.Controls.Add(this.tabControl2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(329, 4);
+            this.panel2.Location = new System.Drawing.Point(337, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(434, 554);
+            this.panel2.Size = new System.Drawing.Size(426, 554);
             this.panel2.TabIndex = 4;
             // 
             // tabControl2
@@ -176,7 +152,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(434, 554);
+            this.tabControl2.Size = new System.Drawing.Size(426, 554);
             this.tabControl2.TabIndex = 7;
             // 
             // tpHtmlEdit
@@ -185,7 +161,7 @@
             this.tpHtmlEdit.Location = new System.Drawing.Point(4, 4);
             this.tpHtmlEdit.Name = "tpHtmlEdit";
             this.tpHtmlEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.tpHtmlEdit.Size = new System.Drawing.Size(426, 528);
+            this.tpHtmlEdit.Size = new System.Drawing.Size(418, 528);
             this.tpHtmlEdit.TabIndex = 0;
             this.tpHtmlEdit.Text = "HtmlEdit";
             this.tpHtmlEdit.UseVisualStyleBackColor = true;
@@ -200,7 +176,7 @@
             this.htmlEditor1.Location = new System.Drawing.Point(3, 3);
             this.htmlEditor1.Name = "htmlEditor1";
             this.htmlEditor1.ShowToolBar = true;
-            this.htmlEditor1.Size = new System.Drawing.Size(420, 522);
+            this.htmlEditor1.Size = new System.Drawing.Size(412, 522);
             this.htmlEditor1.TabIndex = 0;
             // 
             // tpRichText
@@ -218,7 +194,7 @@
             this.rtbText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbText.Location = new System.Drawing.Point(0, 0);
             this.rtbText.Name = "rtbText";
-            this.rtbText.Size = new System.Drawing.Size(647, 139);
+            this.rtbText.Size = new System.Drawing.Size(426, 528);
             this.rtbText.TabIndex = 0;
             this.rtbText.Text = "";
             // 
@@ -237,7 +213,7 @@
             this.rtbCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbCode.Location = new System.Drawing.Point(0, 0);
             this.rtbCode.Name = "rtbCode";
-            this.rtbCode.Size = new System.Drawing.Size(647, 139);
+            this.rtbCode.Size = new System.Drawing.Size(426, 528);
             this.rtbCode.TabIndex = 0;
             this.rtbCode.Text = "";
             // 
@@ -253,7 +229,7 @@
             this.listView1.Location = new System.Drawing.Point(4, 4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(287, 554);
+            this.listView1.Size = new System.Drawing.Size(281, 554);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -275,14 +251,6 @@
             // 
             this.site.Text = "网站";
             this.site.Width = 80;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Actions-arrow-down-icon.png");
-            this.imageList1.Images.SetKeyName(1, "Actions-arrow-up-icon.png");
-            this.imageList1.Images.SetKeyName(2, "Actions-arrow-null-icon.png");
             // 
             // contextMenuStrip1
             // 
@@ -312,6 +280,14 @@
             this.外部器打开ToolStripMenuItem.Text = "外部IE查看";
             this.外部器打开ToolStripMenuItem.Click += new System.EventHandler(this.外部器打开ToolStripMenuItem_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Actions-arrow-down-icon.png");
+            this.imageList1.Images.SetKeyName(1, "Actions-arrow-up-icon.png");
+            this.imageList1.Images.SetKeyName(2, "Actions-arrow-null-icon.png");
+            // 
             // SelectFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -339,9 +315,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnRemoveAll;
         private System.Windows.Forms.Button btnAddAll;
-        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnsSelect;
         private System.Windows.Forms.Button btnSelectAll;
         private System.Windows.Forms.Panel panel2;
