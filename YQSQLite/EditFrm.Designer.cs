@@ -343,7 +343,7 @@
             // 新建自采ToolStripMenuItem
             // 
             this.新建自采ToolStripMenuItem.Name = "新建自采ToolStripMenuItem";
-            this.新建自采ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新建自采ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.新建自采ToolStripMenuItem.Text = "新建自采";
             this.新建自采ToolStripMenuItem.Click += new System.EventHandler(this.新建自采ToolStripMenuItem_Click);
             // 
@@ -357,7 +357,6 @@
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "EditFrm";
             this.Text = "编辑";
-            this.Load += new System.EventHandler(this.EditFrm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

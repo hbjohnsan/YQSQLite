@@ -14,6 +14,7 @@ using HtmlAgilityPack;
 using ScrapySharp.Extensions;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Microsoft.Win32;
 
 
 namespace YQSQLite
@@ -285,31 +286,19 @@ namespace YQSQLite
             //if (listBox1.SelectedItems.Count > 0)
             if (listView1.SelectedItems.Count > 0)
             {
-                RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-
+                // RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(id);
                 //从库中查找数据：以link为唯一索引的ID值
-                int qID = (from p in mf.DS.RssItem.AsEnumerable()
-                           where p.Link == rssitem.Link
-                           select p.RssItemID).FirstOrDefault();
-
-                YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(qID);
-                rssitem.IsRead = "W";            //待处理 变为 W
-                rssitem.Content = htmlEditor1.HTML;
-
-
-
-                mf.NewsAdd(rssitem);//重点
-
-                rir.Content = rssitem.Content;
-                rir.IsRead = rssitem.IsRead;
-                mf.rssTap.Update(rir);//todo:不能更新，ID问题，且内容部分为空。
-
-
+                //int qID = (from p in mf.DS.RssItem.AsEnumerable()
+                //           where p.Link ==rir.Link//rssitem.Link
+                //           select p.RssItemID).FirstOrDefault();               
+                rir.IsRead = "W";            //待处理 变为 W
+                rir.Content = htmlEditor1.HTML;
+                mf.rssTap.Update(rir);
                 listView1.SelectedItems[0].Remove();
                 htmlEditor1.HTML = "";
-
-
-
+                mf.NewsAdd(id);
             }
         }
         //全加
@@ -317,9 +306,11 @@ namespace YQSQLite
         {
             foreach (ListViewItem lv in listView1.Items)
             {
-                RssItem ri = lv.Tag as RssItem;
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                YQDataSet.RssItemRow ri = mf.DS.RssItem.FindByRssItemID(id);
+              
                 ri.IsRead = "W";
-                mf.NewsAdd(ri);
+              //  mf.NewsAdd(ri);
             }
             mf.SaveRssItemToDB(mf.DS.RssItem);
             listView1.Items.Clear();
@@ -339,21 +330,21 @@ namespace YQSQLite
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-                YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID);
-                rssrow.IsRead = "T";    //已读变为 T
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(id);
+                rir.IsRead = "T";    //已读变为 T
                 listView1.SelectedItems[0].Remove();
-                mf.rssTap.Update(mf.DS.RssItem.FindByRssItemID(rssitem.RssItemID));
-            }
+                mf.rssTap.Update(rir);
+            } 
         }
         //全不选
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem lv in listView1.Items)
             {
-                RssItem ri = lv.Tag as RssItem;
-                YQDataSet.RssItemRow rssrow = mf.DS.RssItem.FindByRssItemID(ri.RssItemID);
-                rssrow.IsRead = "T";
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(id);
+                rir.IsRead = "T";
             }
             mf.SaveRssItemToDB(mf.DS.RssItem);
             listView1.Items.Clear();
@@ -368,8 +359,8 @@ namespace YQSQLite
             if (listView1.SelectedItems.Count != 0)
             {
                 listView1.SelectedItems[0].BackColor = Color.Bisque;
-               // RssItem it = listView1.SelectedItems[0].Tag as RssItem;
-                string link = listView1.SelectedItems[0].Tag.ToString();
+                // RssItem it = listView1.SelectedItems[0].Tag as RssItem;
+                int id = Convert.ToInt32(listView1.SelectedItems[0].Tag.ToString());
                 //初始化
                 rtbCode.Clear();
                 rtbText.Clear();
@@ -380,11 +371,11 @@ namespace YQSQLite
                 //else
                 //{
                 //    this.Invoke(new ThreadStart(delegate { htmlEditor1.HTML = it.Content; }));
-                   
+
                 //}
-                this.Invoke(new ThreadStart(delegate {  DownContent(link); }));
-               
-               
+                this.Invoke(new ThreadStart(delegate { DownContent(mf.DS.RssItem.FindByRssItemID(id).Link); }));
+
+
             }
         }
         //定义不同网站，不同的正文定义，和排除部分源码标记
@@ -481,8 +472,8 @@ namespace YQSQLite
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-                mf.OpenUrl(rssitem.Link);
+                int id =Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                mf.OpenUrl(mf.DS.RssItem.FindByRssItemID(id).Link);
             }
         }
 
@@ -491,11 +482,18 @@ namespace YQSQLite
 
             if (listView1.SelectedItems.Count > 0)
             {
-                RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
 
                 //System.Diagnostics.Process.Start("IExplore.exe", "http://www.baidu.com");
                 //需要指定IExplore.exe，不然将使用系统默认浏览器打开，比如可能是Firefox
-                System.Diagnostics.Process.Start("IExplore.exe", rssitem.Link);
+                System.Diagnostics.Process.Start("IExplore.exe", mf.DS.RssItem.FindByRssItemID(id).Link);
+                //从注册表中读取默认浏览器可执行文件路径  
+                //RegistryKey key = Registry.ClassesRoot.OpenSubKey(@"http\shell\open\command\");
+                //string s = key.GetValue(" ").ToString();
+
+                ////s就是你的默认浏览器，不过后面带了参数，把它截去，不过需要注意的是：不同的浏览器后面的参数不一样！  
+                ////"D:\Program Files (x86)\Google\Chrome\Application\chrome.exe" -- "%1"  
+                //System.Diagnostics.Process.Start(s.Substring(0, s.Length - 8), mf.DS.RssItem.FindByRssItemID(id).Link);  
             }
         }
         #endregion
@@ -652,12 +650,12 @@ namespace YQSQLite
                 }
                 else
                 {
-                    DownContent(listRss[i].Link);    
+                    DownContent(listRss[i].Link);
                 }
 
             }
             //存盘吗？？？
-         //  mf.SaveRssItemToDB(mf.DS.RssItem);
+            //  mf.SaveRssItemToDB(mf.DS.RssItem);
 
         }
         //只自动加载新闻列表
@@ -671,11 +669,11 @@ namespace YQSQLite
                     select p;
             foreach (var i in q)
             {
-                ListViewItem lv = new ListViewItem(new string[] { i.Title, i.PubDate, i.SiteName });
-                lv.Tag = i.Link;
+                ListViewItem lv = new ListViewItem(new string[] { i.Title, String.Format("{0:G}", i.PubDate), i.SiteName });
+                lv.Tag = i.RssItemID;
                 listView1.Items.Add(lv);
             }
-           
+
 
         }
         #endregion

@@ -16,7 +16,7 @@ namespace YQSQLite
         private MainFrm mf;
         private string contSite = "";//来源
         private string contKind = "";//类别
-        private int RssitemID;
+       private int RssitemID;
         private StringBuilder stWillSendTO = new StringBuilder();//报送到
 
         public EditFrm()
@@ -42,21 +42,26 @@ namespace YQSQLite
         /// 接收到待处理窗体方法
         /// </summary>
         /// <param name="rssit"></param>
-        public void EditRssItem(RssItem it)
+        public void EditRssItem(int ID)//RssItem it)
         {
-            RssitemID = it.RssItemID;
+            RssitemID = ID;
             btnRemove.Enabled = true;
             btnAdd.Text = "待报";
             rabSourc.Checked = true;
 
-            //需使用多线程代理类
+            
+            YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(ID);
+            this.Invoke(new ThreadStart(delegate
+            {
+                txtTitle.Text = row.Title;
+                labLink.Text = row.Link;
+                labUpTime.Text = String.Format("{0:G}", row.PubDate);
+                rabSourc.Text = row.ChannelCode;
+                htmlEditor1.HTML = row.Content;
+                webBrowser1.Navigate(row.Link);
+
+            }));
            
-            txtTitle.Text =it.Title;
-            labLink.Text = it.Link;
-            labUpTime.Text = it.PubDate.ToString("yyyy-MM-dd HH:mm:ss");
-            rabSourc.Text = it.ChannelCode;
-            htmlEditor1.HTML = it.Content;
-            webBrowser1.Navigate(it.Link);
         }
 
         #endregion

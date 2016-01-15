@@ -20,12 +20,13 @@ namespace YQSQLite
         public WaitEdit(MainFrm f)
         {
             InitializeComponent();
-            mf = f;
+            mf = f; 
+            ReLoad();
         }
 
         private void WaitEdit_Load(object sender, EventArgs e)
         {
-            ReLoad();
+           
         }
 
         public void ReLoad()
@@ -36,24 +37,18 @@ namespace YQSQLite
                     select p;
             foreach (var it in q)
             {
-                RssItem rssit = new RssItem();
-                rssit.Title = it.Title;
-                rssit.ChannelCode = it.ChannelCode;
-                rssit.PubDate = Convert.ToDateTime(it.PubDate);
-                rssit.Link = it.Link;
-                rssit.Content = it.Content;
-                rssit.IsRead = it.IsRead;
                 ListViewItem lv = new ListViewItem(it.Title);
-                lv.Tag = rssit;
+                lv.Tag =it.RssItemID;
                 listView1.Items.Add(lv);
             }
         }
 
         //加入Rss新闻为预处理
-        public void AddRssItem(RssItem item)
+        public void AddRssItem(int ID)
         {
-            ListViewItem lv = new ListViewItem(item.Title);
-            lv.Tag = item;
+            YQDataSet.RssItemRow ri = mf.DS.RssItem.FindByRssItemID(ID);
+            ListViewItem lv = new ListViewItem(ri.Title);
+            lv.Tag = ID;
             listView1.Items.Add(lv);
         }
         //移除
@@ -61,8 +56,8 @@ namespace YQSQLite
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                RssItem rssit = listView1.SelectedItems[0].Tag as RssItem;
-                YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(rssit.RssItemID);
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(id);
                 row.IsRead = "T";
                 mf.rssTap.Update(row);
                 listView1.SelectedItems[0].Remove();
@@ -73,8 +68,8 @@ namespace YQSQLite
         {
             foreach (ListViewItem lv in listView1.Items)
             {
-                RssItem it = lv.Tag as RssItem;
-                YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(it.RssItemID);
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(id);
                 row.IsRead = "T";
             }
             mf.SaveRssItemToDB(mf.DS.RssItem);
@@ -82,17 +77,21 @@ namespace YQSQLite
         }
 
 
-        
+
         public void listClear()
         {
             listView1.Items.Clear();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RssItem rssitem = listView1.SelectedItems[0].Tag as RssItem;
-            mf.RssToEditFm(rssitem);
+      
 
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+                mf.RssToEditFm(id);
+            }
         }
     }
 }
