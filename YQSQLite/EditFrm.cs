@@ -47,7 +47,7 @@ namespace YQSQLite
             RssitemID = ID;
             btnRemove.Enabled = true;
             btnAdd.Text = "待报";
-            rabSourc.Checked = true;
+            //rabSourc.Checked = true;
 
             
             YQDataSet.RssItemRow row = mf.DS.RssItem.FindByRssItemID(ID);
@@ -56,7 +56,7 @@ namespace YQSQLite
                 txtTitle.Text = row.Title;
                 linkLabel1.Text = row.Link;
                 labUpTime.Text = String.Format("{0:G}", row.PubDate);
-                rabSourc.Text = row.SiteName;
+                labSourc.Text = row.SiteName;
                 htmlEditor1.HTML = row.Content;
                // webBrowser1.Navigate(row.Link);
 
@@ -82,21 +82,14 @@ namespace YQSQLite
             // htmlEditor1.HTML = "";
             btnRemove.Enabled = true;
             btnAdd.Text = "修改";
-            rabSourc.Checked = true;
+            //rabSourc.Checked = true;
 
             txtTitle.Text = up.Title;
             linkLabel1.Text = up.Link;
             labUpTime.Text = up.UpTime.ToString();
-            if (up.Site == "自采")
-            {
-                rabZiCai.Checked = true;
-            }
-            else
-            {
-                rabSourc.Text = up.Site;
-              //  webBrowser1.Navigate(up.Link);
-            }
-
+            
+                labSourc.Text = up.Site;
+           
 
             htmlEditor1.HTML = up.Content;
 
@@ -175,14 +168,14 @@ namespace YQSQLite
         private void getContrlText()
         {
             //来源
-            foreach (Control ctr in gboxLY.Controls)
-            {
-                RadioButton rb = ctr as RadioButton;
-                if (rb.Checked)
-                {
-                    contSite = rb.Text;
-                }
-            }
+            //foreach (Control ctr in gboxLY.Controls)
+            //{
+            //    RadioButton rb = ctr as RadioButton;
+            //    if (rb.Checked)
+            //    {
+            //        contSite = rb.Text;
+            //    }
+            //}
 
             //类别
             foreach (Control ctr in gboxLB.Controls)
@@ -214,15 +207,12 @@ namespace YQSQLite
         {
             txtTitle.Text = "";
             htmlEditor1.HTML = "";
-            rabSourc.Text = "网站";
-            rabZiCai.Checked = false;
-            rabSourc.Checked = false;
-            linkLabel1.Text = "";
-           
+            labSourc.Text = "网站";           
+            linkLabel1.Text = "";           
             labUpTime.Text = "";
         }
         #endregion
-
+        //移除
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (txtTitle.Text != string.Empty)
@@ -270,16 +260,21 @@ namespace YQSQLite
             }
         }
 
-        private void 新建自采ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            txtClear();
-            btnAdd.Text = "待报";
-            rabZiCai.Checked = true;
-        }
-
+        
+        //外部浏览器打开
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("IExplore.exe", linkLabel1.Text);
         }
+        //新建自采
+        private void btnZiCai_Click(object sender, EventArgs e)
+        {
+            txtClear();
+            btnAdd.Text = "待报";
+            labSourc.Text = "自采";
+            labUpTime.Text = DateTime.Now.ToString();
+        }
+
+       
     }
 }
