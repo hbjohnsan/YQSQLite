@@ -333,8 +333,9 @@ namespace YQSQLite
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem lv in listView1.Items)
-            {
-                int id = Int32.Parse(listView1.SelectedItems[0].Tag.ToString());
+            {   
+                //在列表项必须有一个选中，才可点全不选，否则出错。SelectedItems 改为Items 
+                int id = Int32.Parse(listView1.Items[0].Tag.ToString());
                 YQDataSet.RssItemRow rir = mf.DS.RssItem.FindByRssItemID(id);
                 rir.IsRead = "T";
             }

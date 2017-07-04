@@ -196,7 +196,7 @@ namespace YQSQLite
                     if (f == 0)
                     {
                         //这里过渡日期
-                        if (Convert.ToDateTime(result.PubDate) > (DateTime.Now.AddDays(-7)))
+                        if (Convert.ToDateTime(result.PubDate.Trim()) > (DateTime.Now.AddDays(-7)))
                         {
 
                             //先在DS中加入一行，
